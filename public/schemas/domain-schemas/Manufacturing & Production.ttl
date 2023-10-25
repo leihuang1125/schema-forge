@@ -1,0 +1,343 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <https://schemaForge.net/pattern/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema1:Distribution a rdfs:Class ;
+    rdfs:label "Distribution" ;
+    rdfs:comment "A distribution pattern for transporting products from one location to another." .
+
+schema1:Factory a rdfs:Class ;
+    rdfs:label "Factory" ;
+    rdfs:comment "A facility where products are manufactured or assembled.",
+        "A factory that operates production lines.",
+        "A factory where a production line is located" ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:Inventory a rdfs:Class ;
+    rdfs:comment "An inventory entity." .
+
+schema1:Machine a rdfs:Class ;
+    rdfs:comment "A machine used in production lines." .
+
+schema1:Order a rdfs:Class ;
+    rdfs:label "Order" ;
+    rdfs:comment "An order placed by a customer." .
+
+schema1:Product a rdfs:Class ;
+    rdfs:label "Product" ;
+    rdfs:comment "A product available for purchase.",
+        "A product produced by a production line",
+        "A product that is transported in a distribution pattern.",
+        "A tangible item or service that is manufactured or provided by a company." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:ProductSpecification a rdfs:Class ;
+    rdfs:label "Product Specification" ;
+    rdfs:comment "A specification for a product."@en ;
+    rdfs:isDefinedBy schema1: ;
+    rdfs:subClassOf schema1:Product .
+
+schema1:ProductionLine a rdfs:Class ;
+    rdfs:label "Production Line" ;
+    rdfs:comment "A production line in a factory",
+        "A production line operated by a factory.",
+        "A production line where machines are used." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:QualityControl a rdfs:Class ;
+    rdfs:label "Quality Control" ;
+    rdfs:comment "A process used to ensure that a product or service meets the established quality criteria." .
+
+schema1:Supplier a rdfs:Class ;
+    rdfs:label "Supplier" ;
+    rdfs:comment "A supplier of materials to factories." .
+
+schema1:Warehouse a rdfs:Class ;
+    rdfs:comment "A warehouse entity that stores inventory." .
+
+schema1:ArrivalDate a rdf:Property ;
+    rdfs:label "Arrival Date" ;
+    rdfs:comment "The date when the distribution pattern arrives at the destination." ;
+    rdfs:domain schema1:Distribution ;
+    rdfs:range xsd:date .
+
+schema1:Capacity a rdf:Property ;
+    rdfs:label "Capacity" ;
+    rdfs:comment "The capacity of a factory.",
+        "The capacity of a warehouse.",
+        "The maximum production capacity of a production line" ;
+    rdfs:domain schema1:Factory,
+        schema1:ProductionLine,
+        schema1:Warehouse ;
+    rdfs:range xsd:integer .
+
+schema1:CheckDate a rdf:Property ;
+    rdfs:label "Check Date" ;
+    rdfs:comment "The date on which the quality control check was performed." ;
+    rdfs:domain schema1:QualityControl ;
+    rdfs:range xsd:date .
+
+schema1:Checks a rdf:Property ;
+    rdfs:label "Checks" ;
+    rdfs:comment "The product that is subject to the quality control check." ;
+    rdfs:domain schema1:QualityControl ;
+    rdfs:range schema1:Product .
+
+schema1:Contact a rdf:Property ;
+    rdfs:label "Contact" ;
+    rdfs:comment "The contact information of a supplier." ;
+    rdfs:domain schema1:Supplier ;
+    rdfs:range xsd:string .
+
+schema1:ContactNumber a rdf:Property ;
+    rdfs:label "Contact Number" ;
+    rdfs:comment "The contact number for a factory." ;
+    rdfs:domain schema1:Factory ;
+    rdfs:range xsd:string .
+
+schema1:CustomerName a rdf:Property ;
+    rdfs:label "Customer Name" ;
+    rdfs:comment "The name of the customer who placed the order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:string .
+
+schema1:DeliveryDate a rdf:Property ;
+    rdfs:label "Delivery Date" ;
+    rdfs:comment "The expected delivery date for the order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:date .
+
+schema1:DispatchDate a rdf:Property ;
+    rdfs:label "Dispatch Date" ;
+    rdfs:comment "The date when the distribution pattern is dispatched." ;
+    rdfs:domain schema1:Distribution ;
+    rdfs:range xsd:date .
+
+schema1:DistributionID a rdf:Property ;
+    rdfs:label "Distribution ID" ;
+    rdfs:comment "The unique identifier for a distribution pattern." ;
+    rdfs:domain schema1:Distribution ;
+    rdfs:range xsd:integer .
+
+schema1:EndLocation a rdf:Property ;
+    rdfs:label "End Location" ;
+    rdfs:comment "The end location of the distribution pattern." ;
+    rdfs:domain schema1:Distribution ;
+    rdfs:range xsd:string .
+
+schema1:Equipment a rdf:Property ;
+    rdfs:comment "The equipment used in a production line" ;
+    rdfs:domain schema1:ProductionLine ;
+    rdfs:range xsd:string .
+
+schema1:FactoryID a rdf:Property ;
+    rdfs:label "Factory ID" ;
+    rdfs:comment "The primary identifier for a factory." ;
+    rdfs:domain schema1:Factory ;
+    rdfs:range xsd:integer .
+
+schema1:FactoryName a rdf:Property ;
+    rdfs:label "Factory Name" ;
+    rdfs:comment "The name of a factory." ;
+    rdfs:domain schema1:Factory ;
+    rdfs:range xsd:string .
+
+schema1:LastMaintenanceDate a rdf:Property ;
+    rdfs:comment "The last maintenance date of a machine." ;
+    rdfs:domain schema1:Machine ;
+    rdfs:range xsd:date .
+
+schema1:LineID a rdf:Property ;
+    rdfs:comment "The unique identifier of a production line" ;
+    rdfs:domain schema1:ProductionLine ;
+    rdfs:range xsd:integer .
+
+schema1:LocatedIn a rdf:Property ;
+    rdfs:comment "Relates a production line to the factory it is located in" ;
+    rdfs:domain schema1:ProductionLine ;
+    rdfs:range schema1:Factory .
+
+schema1:Location a rdf:Property ;
+    rdfs:label "Location" ;
+    rdfs:comment "The location of a factory.",
+        "The location of a supplier.",
+        "The location of a warehouse." ;
+    rdfs:domain schema1:Factory,
+        schema1:Supplier,
+        schema1:Warehouse ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:MachineID a rdf:Property ;
+    rdfs:comment "The primary identifier of a machine." ;
+    rdfs:domain schema1:Machine ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdf:ID .
+
+schema1:MaintenanceSchedule a rdf:Property ;
+    rdfs:comment "The maintenance schedule of a machine." ;
+    rdfs:domain schema1:Machine ;
+    rdfs:range xsd:integer .
+
+schema1:MaterialsSupplied a rdf:Property ;
+    rdfs:label "Materials Supplied" ;
+    rdfs:comment "The materials supplied by a supplier to factories." ;
+    rdfs:domain schema1:Supplier ;
+    rdfs:range xsd:string .
+
+schema1:Operates a rdf:Property ;
+    rdfs:label "Operates" ;
+    rdfs:comment "A factory that operates a production line." ;
+    rdfs:domain schema1:Factory ;
+    rdfs:range schema1:ProductionLine .
+
+schema1:OperatingHours a rdf:Property ;
+    rdfs:label "Operating Hours" ;
+    rdfs:comment "The operating hours of a factory.",
+        "The operating hours of a production line" ;
+    rdfs:domain schema1:Factory,
+        schema1:ProductionLine ;
+    rdfs:range xsd:string .
+
+schema1:OrderDate a rdf:Property ;
+    rdfs:label "Order Date" ;
+    rdfs:comment "The date when the order was placed." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:date .
+
+schema1:OrderID a rdf:Property ;
+    rdfs:label "Order ID" ;
+    rdfs:comment "The unique identifier for an order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:string .
+
+schema1:PaymentStatus a rdf:Property ;
+    rdfs:label "Payment Status" ;
+    rdfs:comment "The payment status of the order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:string .
+
+schema1:Produces a rdf:Property ;
+    rdfs:comment "Relates a production line to the products it produces" ;
+    rdfs:domain schema1:ProductionLine ;
+    rdfs:range schema1:Product .
+
+schema1:ProductID a rdf:Property ;
+    rdfs:label "Product ID" ;
+    rdfs:comment "The primary identifier for a product."@en ;
+    rdfs:domain schema1:Product .
+
+schema1:PurchaseDate a rdf:Property ;
+    rdfs:comment "The purchase date of a machine." ;
+    rdfs:domain schema1:Machine ;
+    rdfs:range xsd:date .
+
+schema1:QCID a rdf:Property ;
+    rdfs:label "Quality Control Identifier" ;
+    rdfs:comment "A unique identifier used to identify a quality control process." ;
+    rdfs:domain schema1:QualityControl ;
+    rdfs:range xsd:string .
+
+schema1:Recommendations a rdf:Property ;
+    rdfs:label "Recommendations" ;
+    rdfs:comment "Any recommendations or actions suggested as a result of the quality control check." ;
+    rdfs:domain schema1:QualityControl ;
+    rdfs:range xsd:string .
+
+schema1:Results a rdf:Property ;
+    rdfs:label "Results" ;
+    rdfs:comment "The results of the quality control check." ;
+    rdfs:domain schema1:QualityControl ;
+    rdfs:range xsd:string .
+
+schema1:SecurityLevel a rdf:Property ;
+    rdfs:comment "The security level of a warehouse." ;
+    rdfs:domain schema1:Warehouse ;
+    rdfs:range xsd:string .
+
+schema1:StartLocation a rdf:Property ;
+    rdfs:label "Start Location" ;
+    rdfs:comment "The starting location of the distribution pattern." ;
+    rdfs:domain schema1:Distribution ;
+    rdfs:range xsd:string .
+
+schema1:Stores a rdf:Property ;
+    rdfs:comment "Relates a warehouse to its inventory." ;
+    rdfs:domain schema1:Warehouse ;
+    rdfs:range schema1:Inventory .
+
+schema1:SupervisedBy a rdf:Property ;
+    rdfs:label "Supervised By" ;
+    rdfs:comment "The quality control process that supervises the factory." ;
+    rdfs:domain schema1:Factory ;
+    rdfs:range schema1:QualityControl .
+
+schema1:SupplierID a rdf:Property ;
+    rdfs:label "Supplier ID" ;
+    rdfs:comment "The primary identifier for a supplier." ;
+    rdfs:domain schema1:Supplier ;
+    rdfs:range xsd:string .
+
+schema1:SupplierName a rdf:Property ;
+    rdfs:label "Supplier Name" ;
+    rdfs:comment "The name of a supplier." ;
+    rdfs:domain schema1:Supplier ;
+    rdfs:range xsd:string .
+
+schema1:SuppliesTo a rdf:Property ;
+    rdfs:label "Supplies To" ;
+    rdfs:comment "A relationship indicating that a supplier supplies materials to a factory." ;
+    rdfs:domain schema1:Supplier ;
+    rdfs:range schema1:Factory .
+
+schema1:TotalAmount a rdf:Property ;
+    rdfs:label "Total Amount" ;
+    rdfs:comment "The total amount of the order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:decimal .
+
+schema1:Transports a rdf:Property ;
+    rdfs:label "Transports" ;
+    rdfs:comment "The relationship between a distribution pattern and the product it transports." ;
+    rdfs:domain schema1:Distribution ;
+    rdfs:range schema1:Product .
+
+schema1:Type a rdf:Property ;
+    rdfs:comment "The type of a machine." ;
+    rdfs:domain schema1:Machine ;
+    rdfs:range xsd:string .
+
+schema1:UsedIn a rdf:Property ;
+    rdfs:comment "Relates a machine to a production line." ;
+    rdfs:domain schema1:Machine ;
+    rdfs:range schema1:ProductionLine .
+
+schema1:VehicleType a rdf:Property ;
+    rdfs:label "Vehicle Type" ;
+    rdfs:comment "The type of vehicle used for transportation in a distribution pattern." ;
+    rdfs:domain schema1:Distribution ;
+    rdfs:range xsd:string .
+
+schema1:WarehouseID a rdf:Property ;
+    rdfs:comment "The primary identifier for a warehouse." ;
+    rdfs:domain schema1:Warehouse ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdf:ID .
+
+schema1:belongsTo a rdf:Property ;
+    rdfs:label "belongs to" ;
+    rdfs:comment "Relates a product to an order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range schema1:Product .
+
+schema1:hasOrder a rdf:Property ;
+    rdfs:label "has order" ;
+    rdfs:comment "Relates an order to the collection of orders." ;
+    rdfs:domain schema1:Orders ;
+    rdfs:range schema1:Order .
+
+schema1:Orders a rdf:Class ;
+    rdfs:label "Orders" ;
+    rdfs:comment "A collection of orders." .
+

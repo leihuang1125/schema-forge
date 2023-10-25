@@ -1,0 +1,121 @@
+Education
+Student
+Attributes:
+StudentID (Unique Identifier)
+FirstName
+LastName
+DOB (Date of Birth)
+Major
+Minor (if applicable)
+EnrollmentDate
+ExpectedGraduationDate
+GPA (Grade Point Average)
+Email
+Phone
+Address
+Relationships:
+EnrolledIn -> Course
+MemberOf -> Club/Group
+AdvisedBy -> Faculty
+LivesIn -> Dormitory
+Course
+Attributes:
+CourseID (Unique Identifier)
+CourseName
+CourseDescription
+Credits
+Schedule (e.g., MWF 10:00 AM - 11:00 AM)
+RoomNumber
+Semester
+Year
+Syllabus (link or document)
+Relationships:
+TaughtBy -> Faculty
+Enrolls -> Student
+PartOf -> Department
+Faculty/Instructor
+Attributes:
+FacultyID (Unique Identifier)
+FirstName
+LastName
+Email
+Phone
+Office
+Designation (e.g., Professor, Assistant Professor)
+Specialty
+Publications (list or link to database)
+Relationships:
+Teaches -> Course
+Advises -> Student
+MemberOf -> Department
+Department
+Attributes:
+DepartmentID (Unique Identifier)
+DepartmentName
+Description
+OfficeLocation
+Phone
+Relationships:
+Offers -> Course
+Employs -> Faculty
+PartOf -> College
+College/School (within a university)
+Attributes:
+CollegeID (Unique Identifier)
+CollegeName
+Description
+Dean
+Location
+Relationships:
+Contains -> Department
+BelongsTo -> University
+University
+Attributes:
+UniversityID (Unique Identifier)
+Name
+Address
+Founded
+Type (Public/Private)
+Mascot
+Relationships:
+Comprises -> College/School
+Club/Group
+Attributes:
+ClubID (Unique Identifier)
+ClubName
+Description
+FoundedDate
+Advisor
+Relationships:
+HasMember -> Student
+OverseenBy -> Faculty
+Dormitory/Residence Hall
+Attributes:
+DormitoryID (Unique Identifier)
+Name
+Address
+Capacity
+Amenities (e.g., Gym, Cafeteria)
+Relationships:
+Houses -> Student
+Grades/Transcript
+Attributes:
+TranscriptID (Unique Identifier)
+Semester
+Year
+Grade (e.g., A, B+)
+CourseTaken
+Relationships:
+BelongsTo -> Student
+ForCourse -> Course
+Assignments/Exams
+Attributes:
+AssignmentID (Unique Identifier)
+Title
+Description
+DueDate
+TotalPoints
+Relationships:
+ForCourse -> Course
+EvaluatedBy -> Faculty
+AttemptedBy -> Student

@@ -1,0 +1,185 @@
+Health Care
+Patient Record
+Attributes:
+PatientID (Unique Identifier)
+FirstName
+LastName
+DOB (Date of Birth)
+Gender
+Address
+ContactNumber
+Email
+EmergencyContactName
+EmergencyContactNumber
+BloodType
+Allergies
+PrimaryCareDoctor
+Relationships:
+Has_Treatment -> Treatment
+Has_Medication -> Medication
+Has_Allergy -> Allergy
+Has_Insurance -> Insurance
+Treatment
+Attributes:
+TreatmentID (Unique Identifier)
+TreatmentName
+StartDate
+EndDate
+Duration
+Outcome
+TreatmentDescription
+SideEffects
+Relationships:
+PrescribedBy -> Doctor
+Used_MedicalEquipment -> MedicalEquipment
+Medication
+Attributes:
+MedicationID (Unique Identifier)
+MedicationName
+Dosage
+Frequency
+RouteOfAdministration
+StartDate
+EndDate
+PotentialSideEffects
+Contraindications
+Relationships:
+PrescribedBy -> Doctor
+Doctor
+Attributes:
+DoctorID (Unique Identifier)
+FirstName
+LastName
+Specialty
+LicenseNumber
+ContactNumber
+Email
+Clinic/HospitalAffiliation
+Relationships:
+Treats_Patient -> PatientRecord
+Prescribes_Treatment -> Treatment
+Prescribes_Medication -> Medication
+Insurance
+Attributes:
+InsuranceID (Unique Identifier)
+InsuranceProvider
+PlanName
+CoverageStartDate
+CoverageEndDate
+CoverageDetails
+PremiumAmount
+PolicyNumber
+Relationships:
+Covers_Patient -> PatientRecord
+Allergy
+Attributes:
+AllergyID (Unique Identifier)
+AllergenName
+ReactionType
+Severity
+Notes
+Relationships:
+Allergic_Patient -> PatientRecord
+MedicalEquipment
+Attributes:
+EquipmentID (Unique Identifier)
+EquipmentName
+Manufacturer
+Model
+Usage
+Relationships:
+UsedFor_Treatment -> Treatment
+Appointments
+Attributes:
+AppointmentID (Unique Identifier)
+Date
+Time
+Duration
+ReasonForVisit
+Notes
+Relationships:
+AttendedBy_Patient -> PatientRecord
+AttendedBy_Doctor -> Doctor
+InsuranceClaim
+ Attributes:
+ClaimID (Unique Identifier)
+DateSubmitted
+DateProcessed
+ClaimAmount
+ApprovedAmount
+Status (e.g., Pending, Approved, Denied)
+ReasonForClaim (e.g., Treatment, Medication, Equipment)
+RejectionReason (if applicable)
+DeductibleApplied
+OutOfPocketCost
+Details/Description
+Relationships:
+MadeBy_Patient -> PatientRecord
+ReviewedBy_Insurance -> Insurance
+Refers_To_Treatment -> Treatment (if the claim is for a treatment)
+Refers_To_Medication -> Medication (if the claim is for medication)
+Refers_To_MedicalEquipment -> MedicalEquipment (if the claim is related to equipment)
+1. Claim Creation
+Attributes:
+CreationDate
+CreatedBy (could be a Patient or a Healthcare Provider)
+ServiceDate (date when the actual medical service was provided)
+TotalAmount (total cost without insurance)
+Relationships:
+CreatedFor_Patient -> PatientRecord
+Refers_To_Treatment -> Treatment
+Refers_To_Medication -> Medication
+Refers_To_MedicalEquipment -> MedicalEquipment
+2. Claim Review
+Attributes:
+ReviewDate
+Reviewer (person/department within the insurance provider that reviewed the claim)
+ReviewNotes (additional notes/details regarding the review)
+Relationships:
+ReviewedBy_Insurance -> Insurance
+Refers_To_Claim -> InsuranceClaim
+3. Claim Approval
+Attributes:
+ApprovalDate
+ApprovedAmount
+PaymentDate (when the approved amount was paid)
+PaymentMethod
+Relationships:
+ApprovedFor_Patient -> PatientRecord
+PaidTo_Provider -> Doctor or Clinic/Hospital
+Refers_To_Claim -> InsuranceClaim
+4. Claim Denial
+Attributes:
+DenialDate
+DenialReason
+AppealDate (if an appeal is made)
+AppealOutcome
+Relationships:
+DeniedFor_Patient -> PatientRecord
+Refers_To_Claim -> InsuranceClaim
+5. Co-payment and Deductibles
+Attributes:
+DatePaid
+Amount
+PaymentMethod
+Relationships:
+PaidBy_Patient -> PatientRecord
+Refers_To_Claim -> InsuranceClaim
+6. Annual Maximums
+Attributes:
+Year
+MaximumCoveredAmount
+TotalClaimedAmount (amount claimed by the patient for the year)
+RemainingAmount (MaximumCoveredAmount - TotalClaimedAmount)
+Relationships:
+AppliesTo_Patient -> PatientRecord
+Refers_To_Insurance -> Insurance
+7. Record Keeping
+Attributes:
+RecordCreationDate
+RecordLastUpdatedDate
+DocumentType (e.g., electronic, paper)
+DocumentDetails
+Relationships:
+BelongsTo_Patient -> PatientRecord
+Refers_To_Claim -> InsuranceClaim

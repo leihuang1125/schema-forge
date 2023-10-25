@@ -1,0 +1,120 @@
+Retail and E-Commerce
+
+Product Catalog
+Attributes:
+ProductID (Unique Identifier)
+Name
+Description
+Price
+Category
+SubCategory
+StockQuantity
+SKU (Stock Keeping Unit)
+Weight
+Dimensions (Height, Width, Depth)
+Manufacturer
+Brand
+Images (a collection of images or links to images)
+AverageRating
+Reviews (a collection of review entities)
+Relationships:
+SoldBy -> Seller
+BelongsIn -> Category
+HasDiscount -> Discount
+Customer Profile
+Attributes:
+CustomerID (Unique Identifier)
+FirstName
+LastName
+Email
+Phone
+ShippingAddress
+BillingAddress
+AccountCreationDate
+PurchaseHistory (a collection of Purchase entities)
+Relationships:
+Purchased -> Order
+Reviews -> Product
+Order
+Attributes:
+OrderID (Unique Identifier)
+Date
+TotalAmount
+ShippingFee
+PaymentMethod
+Status (e.g., Pending, Shipped, Delivered, Returned)
+TrackingNumber
+Relationships:
+Contains -> Product
+PurchasedBy -> Customer
+FulfilledBy -> Seller
+ShipsThrough -> ShippingProvider
+Shopping Cart
+Attributes:
+CartID (Unique Identifier)
+DateLastModified
+Relationships:
+BelongsTo -> Customer
+Contains -> Product
+Seller/Supplier
+Attributes:
+SellerID (Unique Identifier)
+Name
+Address
+Phone
+Email
+Website
+Rating
+Relationships:
+Sells -> Product
+Fulfills -> Order
+Shipping Provider
+Attributes:
+ProviderID (Unique Identifier)
+Name
+TrackingWebsite
+Relationships:
+Ships -> Order
+Category
+Attributes:
+CategoryID (Unique Identifier)
+Name
+Description
+Relationships:
+Contains -> Product
+Discount/Promotion
+Attributes:
+DiscountID (Unique Identifier)
+Type (e.g., Percentage, Fixed Amount, Buy One Get One)
+Amount
+StartDate
+EndDate
+PromoCode
+Relationships:
+AppliesTo -> Product
+Review
+Attributes:
+ReviewID (Unique Identifier)
+Date
+Rating
+Comment
+Title
+Relationships:
+WrittenBy -> Customer
+Reviews -> Product
+Wishlist
+Attributes:
+WishlistID (Unique Identifier)
+Relationships:
+BelongsTo -> Customer
+Contains -> Product
+Payment Method
+Attributes:
+PaymentID (Unique Identifier)
+Type (e.g., Credit Card, PayPal, Bank Transfer)
+CardNumber (Last4Digits for security)
+ExpiryDate
+Relationships:
+UsedBy -> Customer
+PaysFor -> Order
+

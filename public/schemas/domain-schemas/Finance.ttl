@@ -1,0 +1,455 @@
+@prefix ex: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <https://schemaForge.net/pattern/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema1:Account a rdfs:Class ;
+    rdfs:label "Account" ;
+    rdfs:comment "A financial account held by a bank for a customer.",
+        "A financial account.",
+        "A representation of a customer's account.",
+        "An account that can be associated with transaction records." ;
+    rdfs:subClassOf schema1:Product .
+
+schema1:Bank a rdfs:Class ;
+    rdfs:label "Bank" ;
+    rdfs:comment "A bank that can process transaction records.",
+        "A bank that issues a loan",
+        "A bank.",
+        "A financial institution that provides banking and financial services to customers.",
+        "A financial institution." ;
+    rdfs:subClassOf schema1:Organization .
+
+schema1:Branch a rdfs:Class ;
+    rdfs:label "Branch" ;
+    rdfs:comment "A branch of a bank.",
+        "A branch where transaction records can occur." .
+
+schema1:Customer a rdfs:Class ;
+    rdfs:label "Customer" ;
+    rdfs:comment "A customer of a bank.",
+        "A customer served by an investment firm.",
+        "A customer who can have transaction records.",
+        "A customer who owns investments.",
+        "A customer who takes a loan",
+        "A person or organization that has an account with a bank." ;
+    rdfs:subClassOf schema1:Organization .
+
+schema1:CustomerProfile a rdfs:Class ;
+    rdfs:label "Customer Profile" ;
+    rdfs:comment "A representation of a customer's profile." .
+
+schema1:Investment a rdfs:Class ;
+    rdfs:label "Investment" ;
+    rdfs:comment "A representation of a customer's investment.",
+        "An investment made by a customer in a specific type with a specific amount and date.",
+        "An investment managed by an investment firm." .
+
+schema1:InvestmentFirm a rdfs:Class ;
+    rdfs:label "Investment Firm" ;
+    rdfs:comment "A financial institution which manages investments and serves customers.",
+        "A firm that manages investments." .
+
+schema1:Loan a rdfs:Class ;
+    rdfs:label "Loan" ;
+    rdfs:comment "A loan with its attributes and relationships",
+        "A representation of a customer's loan." .
+
+schema1:TransactionRecord a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Transaction Record" ;
+    rdfs:comment "A record of a financial transaction processed by a bank.",
+        "A record of a financial transaction.",
+        "The transaction record processed by a branch." ;
+    rdfs:domain schema1:Branch ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdfs:label .
+
+ex:Duration a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range xsd:int .
+
+ex:EndDate a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range xsd:date .
+
+ex:InterestRate a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range xsd:decimal .
+
+ex:IssuedBy a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range schema1:Bank .
+
+ex:LoanID a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range xsd:string .
+
+ex:MonthlyPayment a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range xsd:decimal .
+
+ex:OutstandingAmount a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range xsd:decimal .
+
+ex:PrincipalAmount a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range xsd:decimal .
+
+ex:StartDate a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range xsd:date .
+
+ex:TakenBy a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range schema1:Customer .
+
+ex:Type a rdf:Property ;
+    rdfs:domain schema1:Loan ;
+    rdfs:range xsd:string .
+
+schema1:AccountCreationDate a rdf:Property ;
+    rdfs:label "Account Creation Date" ;
+    rdfs:comment "The date on which the account was created." ;
+    rdfs:domain schema1:Account ;
+    rdfs:range xsd:date .
+
+schema1:AccountID a rdf:Property ;
+    rdfs:label "Account ID" ;
+    rdfs:comment "A unique identifier for the account." ;
+    rdfs:domain schema1:Account ;
+    rdfs:range xsd:integer .
+
+schema1:AccountNumber a rdf:Property ;
+    rdfs:label "Account Number" ;
+    rdfs:comment "The account number." ;
+    rdfs:domain schema1:Account ;
+    rdfs:range xsd:string .
+
+schema1:Address a rdf:Property ;
+    rdfs:label "Address" ;
+    rdfs:comment "The address of a branch.",
+        "The address of the customer." ;
+    rdfs:domain schema1:Branch,
+        schema1:CustomerProfile ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdfs:label .
+
+schema1:Amount a rdf:Property ;
+    rdfs:label "Amount" ;
+    rdfs:comment "The amount invested.",
+        "The amount of the transaction." ;
+    rdfs:domain schema1:Investment,
+        schema1:TransactionRecord ;
+    rdfs:range xsd:decimal .
+
+schema1:AssociatedWith a rdf:Property ;
+    rdfs:label "Associated With" ;
+    rdfs:comment "Relates a transaction record to the account it is associated with." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range schema1:Account .
+
+schema1:Balance a rdf:Property ;
+    rdfs:label "Balance" ;
+    rdfs:comment "The current balance of the account." ;
+    rdfs:domain schema1:Account ;
+    rdfs:range xsd:decimal .
+
+schema1:BankID a rdf:Property ;
+    rdfs:label "Bank ID" ;
+    rdfs:comment "The unique identifier for a bank." ;
+    rdfs:domain schema1:Bank ;
+    rdfs:range xsd:string .
+
+schema1:BelongsTo a rdf:Property ;
+    rdfs:label "Belongs To" ;
+    rdfs:comment "Relates a transaction record to the customer it belongs to." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range schema1:Customer .
+
+schema1:BranchID a rdf:Property ;
+    rdfs:label "Branch ID" ;
+    rdfs:comment "An unique identifier for a branch." ;
+    rdfs:domain schema1:Branch ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdfs:label .
+
+schema1:BusinessHours a rdf:Property ;
+    rdfs:label "Business Hours" ;
+    rdfs:comment "The business hours of a branch." ;
+    rdfs:domain schema1:Branch ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdfs:label .
+
+schema1:Category a rdf:Property ;
+    rdfs:label "Category" ;
+    rdfs:comment "The category of the transaction." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range xsd:string .
+
+schema1:CreditScore a rdf:Property ;
+    rdfs:label "Credit Score" ;
+    rdfs:comment "The credit score of the customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:integer .
+
+schema1:Currency a rdf:Property ;
+    rdfs:label "Currency" ;
+    rdfs:comment "The currency used in the transaction." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range xsd:string .
+
+schema1:CustomerID a rdf:Property ;
+    rdfs:label "Customer ID" ;
+    rdfs:comment "A unique identifier for the customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:DOB a rdf:Property ;
+    rdfs:label "Date of Birth" ;
+    rdfs:comment "The date of birth of the customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:date .
+
+schema1:Date a rdf:Property ;
+    rdfs:label "Date" ;
+    rdfs:comment "The date of the transaction." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range xsd:date .
+
+schema1:DateOfInvestment a rdf:Property ;
+    rdfs:label "Date of Investment" ;
+    rdfs:comment "The date when the investment was made." ;
+    rdfs:domain schema1:Investment ;
+    rdfs:range xsd:date .
+
+schema1:Description a rdf:Property ;
+    rdfs:label "Description" ;
+    rdfs:comment "A description of the transaction." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range xsd:string .
+
+schema1:Email a rdf:Property ;
+    rdfs:label "Email" ;
+    rdfs:comment "The email address of the customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:FirmID a rdf:Property ;
+    rdfs:label "Firm ID" ;
+    rdfs:comment "The unique identifier for an investment firm." ;
+    rdfs:domain schema1:InvestmentFirm ;
+    rdfs:range xsd:string .
+
+schema1:FirstName a rdf:Property ;
+    rdfs:label "First Name" ;
+    rdfs:comment "The first name of the customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:FoundedDate a rdf:Property ;
+    rdfs:label "Founded Date" ;
+    rdfs:comment "The date when a bank was founded.",
+        "The date when the investment firm was founded." ;
+    rdfs:domain schema1:Bank,
+        schema1:InvestmentFirm ;
+    rdfs:range xsd:date .
+
+schema1:Has_Account a rdf:Property ;
+    rdfs:label "Has Account" ;
+    rdfs:comment "Relates a customer to their account." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range schema1:Account .
+
+schema1:Has_Investment a rdf:Property ;
+    rdfs:label "Has Investment" ;
+    rdfs:comment "Relates a customer to their investment." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range schema1:Investment .
+
+schema1:Has_Loan a rdf:Property ;
+    rdfs:label "Has Loan" ;
+    rdfs:comment "Relates a customer to their loan." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range schema1:Loan .
+
+schema1:Headquarters a rdf:Property ;
+    rdfs:label "Headquarters" ;
+    rdfs:comment "The location of a bank's headquarters.",
+        "The location of the investment firm's headquarters." ;
+    rdfs:domain schema1:Bank,
+        schema1:InvestmentFirm ;
+    rdfs:range xsd:string .
+
+schema1:HeldBy a rdf:Property ;
+    rdfs:label "Held By" ;
+    rdfs:comment "The bank that holds the account." ;
+    rdfs:domain schema1:Account ;
+    rdfs:range schema1:Bank .
+
+schema1:Holds a rdf:Property ;
+    rdfs:label "Holds" ;
+    rdfs:comment "The relationship between a bank and an account. The bank holds the account." ;
+    rdfs:domain schema1:Bank ;
+    rdfs:range schema1:Account .
+
+schema1:IBAN a rdf:Property ;
+    rdfs:label "IBAN" ;
+    rdfs:comment "The International Bank Account Number for the account." ;
+    rdfs:domain schema1:Account ;
+    rdfs:range xsd:string .
+
+schema1:InterestRate a rdf:Property ;
+    rdfs:label "Interest Rate" ;
+    rdfs:comment "The interest rate of the account." ;
+    rdfs:domain schema1:Account ;
+    rdfs:range xsd:decimal .
+
+schema1:InvestmentDuration a rdf:Property ;
+    rdfs:label "Investment Duration" ;
+    rdfs:comment "The duration of the investment in years." ;
+    rdfs:domain schema1:Investment ;
+    rdfs:range xsd:int .
+
+schema1:InvestmentID a rdf:Property ;
+    rdfs:label "Investment ID" ;
+    rdfs:comment "The unique identifier for an investment." ;
+    rdfs:domain schema1:Investment ;
+    rdfs:range xsd:string .
+
+schema1:LastName a rdf:Property ;
+    rdfs:label "Last Name" ;
+    rdfs:comment "The last name of the customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:Location a rdf:Property ;
+    rdfs:label "Location" ;
+    rdfs:comment "The location of the transaction." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range xsd:string .
+
+schema1:ManagedBy a rdf:Property ;
+    rdfs:label "Managed By" ;
+    rdfs:comment "The investment firm that manages the investment." ;
+    rdfs:domain schema1:Investment ;
+    rdfs:range schema1:InvestmentFirm .
+
+schema1:Manages a rdf:Property ;
+    rdfs:label "Manages" ;
+    rdfs:comment "Indicates that the investment firm manages a particular investment." ;
+    rdfs:domain schema1:InvestmentFirm ;
+    rdfs:range schema1:Investment .
+
+schema1:MerchantName a rdf:Property ;
+    rdfs:label "Merchant Name" ;
+    rdfs:comment "The name of the merchant associated with the transaction." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range xsd:string .
+
+schema1:Name a rdf:Property ;
+    rdfs:label "Name" ;
+    rdfs:comment "The name of a bank.",
+        "The name of the investment firm." ;
+    rdfs:domain schema1:Bank,
+        schema1:InvestmentFirm ;
+    rdfs:range xsd:string .
+
+schema1:NationalID a rdf:Property ;
+    rdfs:label "National ID" ;
+    rdfs:comment "The national identification number or social security number of the customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:NumberofBranches a rdf:Property ;
+    rdfs:label "Number of Branches" ;
+    rdfs:comment "The total number of branches owned by a bank." ;
+    rdfs:domain schema1:Bank ;
+    rdfs:range xsd:integer .
+
+schema1:Occupation a rdf:Property ;
+    rdfs:label "Occupation" ;
+    rdfs:comment "The occupation of the customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:OccurredAt a rdf:Property ;
+    rdfs:label "Occurred At" ;
+    rdfs:comment "Relates a transaction record to the branch where it occurred." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range schema1:Branch .
+
+schema1:OwnedBy a rdf:Property ;
+    rdfs:label "Owned By" ;
+    rdfs:comment "The customer who owns the account.",
+        "The customer who owns the investment." ;
+    rdfs:domain schema1:Account,
+        schema1:Investment ;
+    rdfs:range schema1:Customer .
+
+schema1:PartOf a rdf:Property ;
+    rdfs:label "Part Of" ;
+    rdfs:comment "Defines the bank that a branch is part of." ;
+    rdfs:domain schema1:Branch ;
+    rdfs:range schema1:Bank ;
+    rdfs:subPropertyOf rdfs:label .
+
+schema1:Phone a rdf:Property ;
+    rdfs:label "Phone" ;
+    rdfs:comment "The phone number of a branch.",
+        "The phone number of the customer." ;
+    rdfs:domain schema1:Branch,
+        schema1:CustomerProfile ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdfs:label .
+
+schema1:ProcessedBy a rdf:Property ;
+    rdfs:label "Processed By" ;
+    rdfs:comment "Relates a transaction record to the bank that processed it." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range schema1:Bank .
+
+schema1:Processes a rdf:Property ;
+    rdfs:label "Processes" ;
+    rdfs:comment "The relationship between a bank and a transaction record. The bank processes the transaction record." ;
+    rdfs:domain schema1:Bank ;
+    rdfs:range schema1:TransactionRecord .
+
+schema1:Returns a rdf:Property ;
+    rdfs:label "Returns" ;
+    rdfs:comment "The returns generated by the investment." ;
+    rdfs:domain schema1:Investment ;
+    rdfs:range xsd:decimal .
+
+schema1:SWIFT_BIC a rdf:Property ;
+    rdfs:label "SWIFT/BIC" ;
+    rdfs:comment "The Bank Identifier Code for the account." ;
+    rdfs:domain schema1:Account ;
+    rdfs:range xsd:string .
+
+schema1:Serves a rdf:Property ;
+    rdfs:label "Serves" ;
+    rdfs:comment "Indicates that the investment firm serves a particular customer.",
+        "The relationship between a bank and its customer. The bank serves the customer." ;
+    rdfs:domain schema1:Bank,
+        schema1:InvestmentFirm ;
+    rdfs:range schema1:Customer .
+
+schema1:TransactionID a rdf:Property ;
+    rdfs:label "Transaction ID" ;
+    rdfs:comment "The unique identifier of a transaction." ;
+    rdfs:domain schema1:TransactionRecord ;
+    rdfs:range xsd:string .
+
+schema1:Type a rdf:Property ;
+    rdfs:label "Type" ;
+    rdfs:comment "The type of investment, such as stocks, bonds, or mutual funds.",
+        "The type of the account such as savings, checking, or joint.",
+        "The type of the transaction." ;
+    rdfs:domain schema1:Account,
+        schema1:Investment,
+        schema1:TransactionRecord ;
+    rdfs:range xsd:string .
+

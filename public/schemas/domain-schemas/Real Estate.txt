@@ -1,0 +1,117 @@
+Real Estate
+
+Property Listing
+Attributes:
+PropertyID (Unique Identifier)
+Address
+StreetAddress
+City
+State/Province
+PostalCode
+Country
+Size (in square meters or square feet)
+Price
+Type (e.g., House, Apartment, Condo, Townhouse)
+Bedrooms
+Bathrooms
+YearBuilt
+Amenities (e.g., Pool, Gym, Fireplace, Garage)
+Photos (a collection of images or links to images)
+Description
+Status (e.g., Available, Sold, Rented)
+Relationships:
+ListedBy -> Agent
+OwnedBy -> Owner
+Agent
+Attributes:
+AgentID (Unique Identifier)
+FirstName
+LastName
+Phone
+Email
+LicenseNumber
+Photo
+Bio
+Ratings
+Reviews
+Relationships:
+Lists -> PropertyListing
+WorksFor -> RealtyCompany
+Owner
+Attributes:
+OwnerID (Unique Identifier)
+FirstName
+LastName
+Phone
+Email
+Address
+Relationships:
+Owns -> PropertyListing
+RealtyCompany
+Attributes:
+CompanyID (Unique Identifier)
+Name
+Address
+Phone
+Website
+FoundedDate
+NumberofAgents
+Relationships:
+Employs -> Agent
+Represents -> PropertyListing
+Buyer Profile
+Attributes:
+BuyerID (Unique Identifier)
+FirstName
+LastName
+Phone
+Email
+PreferredLocation
+Budget
+Preferences (e.g., 3-bedroom, pool, near school)
+Relationships:
+InterestedIn -> PropertyListing
+DealtWith -> Agent
+Mortgage Information
+Attributes:
+MortgageID (Unique Identifier)
+Bank/Institution
+LoanAmount
+InterestRate
+Duration
+MonthlyPayment
+Relationships:
+AttachedTo -> PropertyListing
+ProvidedBy -> Bank
+Inspection Reports
+Attributes:
+ReportID (Unique Identifier)
+Date
+InspectorName
+Summary
+DetailedFindings
+Relationships:
+PertainsTo -> PropertyListing
+Rental Agreement
+Attributes:
+AgreementID (Unique Identifier)
+StartDate
+EndDate
+MonthlyRent
+DepositAmount
+TermsAndConditions
+Relationships:
+PertainsTo -> PropertyListing
+SignedBy -> Tenant
+Tenant Profile
+Attributes:
+TenantID (Unique Identifier)
+FirstName
+LastName
+Phone
+Email
+PreviousRentalHistory
+Relationships:
+Rents -> PropertyListing
+AgreementWith -> Rental Agreement
+

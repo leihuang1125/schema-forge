@@ -1,0 +1,2659 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <https://schemaForge.net/pattern/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+_:n5a440d5fe6e84776b8ffa3476068440ab1 a rdf:Property,
+        rdfs:Class .
+
+_:n5a440d5fe6e84776b8ffa3476068440ab2 a rdf:Property,
+        rdfs:Class .
+
+schema1: a rdfs:Class ;
+    rdfs:label "Schema" ;
+    rdfs:comment "A namespace for schema elements." .
+
+<https://schemaForge.net/pattern/#Covers_Patient> a rdfs:Class ;
+    rdfs:label "Covers_Patient" ;
+    rdfs:comment "A pattern that describes the concept of covers patient." .
+
+<https://schemaForge.net/pattern/#PatientRecord> a rdfs:Class ;
+    rdfs:label "PatientRecord" ;
+    rdfs:comment "A record that contains information about a patient." .
+
+schema1:Address a rdfs:Class ;
+    rdfs:label "Address" ;
+    rdfs:comment "A physical address of a location or entity." .
+
+schema1:Allergic_Patient a rdfs:Class ;
+    rdfs:label "Allergic Patient",
+        "Allergic Patient"@en ;
+    rdfs:comment "A class representing a patient with allergies.",
+        "A class representing a patient with allergies."@en ;
+    rdfs:subClassOf schema1:Person .
+
+schema1:Allergies a rdfs:Class ;
+    rdfs:label "Allergies" ;
+    rdfs:comment "A class representing different types of allergies." .
+
+schema1:Allergy a rdfs:Class ;
+    rdfs:label "Allergy" ;
+    rdfs:comment "Represents an allergy condition.",
+        "This class represents an allergy." .
+
+schema1:AllergyID a rdfs:Class ;
+    rdfs:label "AllergyID" ;
+    rdfs:comment "A unique identifier for an allergy." .
+
+schema1:Amount a rdfs:Class ;
+    rdfs:label "Amount" ;
+    rdfs:comment "A pattern representing a numerical amount." ;
+    schema1:triple """
+    schema:Amount rdf:type rdfs:Class ;
+        rdfs:label "Amount" ;
+        rdfs:comment "A pattern representing a numerical amount." .
+    schema:value rdf:type rdf:Property ;
+        rdfs:label "value" ;
+        rdfs:comment "The numerical value of an amount." ;
+        rdfs:range xsd:float ;
+        rdfs:domain schema:Amount .
+    schema:currency rdf:type rdf:Property ;
+        rdfs:label "currency" ;
+        rdfs:comment "The currency of an amount." ;
+        rdfs:range xsd:string ;
+        rdfs:domain schema:Amount .
+    schema:source rdf:type rdf:Property ;
+        rdfs:label "source" ;
+        rdfs:comment "The source of an amount." ;
+        rdfs:range xsd:string ;
+        rdfs:domain schema:Amount .
+""" .
+
+schema1:AnnualMaximums a rdfs:Class ;
+    rdfs:comment "A pattern to represent annual maximum values." .
+
+schema1:Appeal a rdfs:Class ;
+    rdfs:label "Appeal" ;
+    rdfs:comment "A process of challenging a decision made by a court." .
+
+schema1:AppealDate a rdfs:Class ;
+    rdfs:label "Appeal Date" ;
+    rdfs:comment "The date on which an appeal is made." .
+
+schema1:AppealOutcome a rdfs:Class ;
+    rdfs:label "Appeal Outcome" ;
+    rdfs:comment "The outcome of an appeal process." .
+
+schema1:Appointment a rdfs:Class ;
+    rdfs:label "Appointment" ;
+    rdfs:comment "An appointment for a specific event or meeting." .
+
+schema1:AppointmentID a rdfs:Class ;
+    rdfs:label "AppointmentID" ;
+    rdfs:comment "A unique identifier for an appointment." .
+
+schema1:Appointments a rdfs:Class ;
+    rdfs:label "Appointments" ;
+    rdfs:comment "A collection of scheduled appointments." .
+
+schema1:ApprovalDate a rdfs:Class ;
+    rdfs:label "Approval Date" ;
+    rdfs:comment "A date that represents the approval of something." .
+
+schema1:ApprovedAmount a rdfs:Class ;
+    rdfs:label "Approved Amount" ;
+    rdfs:comment "A class representing the approved amount for a certain entity.",
+        "A pattern for representing approved amounts." .
+
+schema1:ApprovedFor_Patient a rdfs:Class ;
+    rdfs:label "ApprovedFor_Patient" ;
+    rdfs:comment "The class representing the approval status for a patient record." .
+
+schema1:AttendedBy_Doctor a rdfs:Class ;
+    rdfs:label "Attended By Doctor" ;
+    rdfs:subClassOf schema1:Doctor .
+
+schema1:AttendedBy_Patient a rdfs:Class ;
+    rdfs:label "Attended By Patient" ;
+    rdfs:comment "A pattern that represents the attendance of a patient in a medical setting." ;
+    schema1:isPatternOf schema1:PatientRecord .
+
+schema1:Attribute a rdfs:Class ;
+    rdfs:label "Attribute",
+        "Attribute"@en ;
+    rdfs:comment "A class representing a single attribute of an entity.",
+        "The class representing attributes."@en ;
+    rdfs:subClassOf schema1:Attributes .
+
+schema1:Attributes a rdfs:Class ;
+    rdfs:label "Attributes",
+        "Attributes"@en ;
+    rdfs:comment "A class representing attributes in a pattern.",
+        "A class representing attributes of an entity.",
+        "A class representing attributes.",
+        "A class representing the attributes of an entity",
+        "A class representing the attributes of an entity.",
+        "The class representing attributes in a pattern.",
+        "The class that represents attributes in a pattern.",
+        "A class representing attributes in a pattern."@en,
+        "A class representing attributes or characteristics of an entity."@en,
+        "A class representing attributes within a schema."@en,
+        "A collection of attributes that describe an entity."@en,
+        "The class representing attributes in a pattern."@en .
+
+schema1:BelongsTo_Patient a rdfs:Class ;
+    rdfs:label "BelongsTo_Patient" ;
+    rdfs:comment "An association between a concept and a patient record." ;
+    rdfs:subClassOf schema1:PatientRecord .
+
+schema1:BloodGroup a rdfs:Class ;
+    rdfs:label "Blood Group"@en ;
+    rdfs:comment "A specific classification within a Blood Type based on the presence or absence of certain antigens."@en .
+
+schema1:BloodType a rdfs:Class ;
+    rdfs:label "Blood Type"@en ;
+    rdfs:comment "A medical classification of blood based on the presence or absence of specific antigens and antibodies."@en .
+
+schema1:Case a rdfs:Class ;
+    rdfs:label "Case" ;
+    rdfs:comment "A legal proceeding before a court." .
+
+schema1:Claim a rdfs:Class ;
+    rdfs:label "Claim" ;
+    rdfs:comment "A claim is a statement made by a source that asserts something as true or factual.",
+        "A demand for compensation or reimbursement submitted by a party.",
+        "A request for reimbursement or payment for medical treatment.",
+        "A request made by a policyholder for compensation due to a loss or damage covered by the insurance policy.",
+        "An Insurance Claim." ;
+    schema1:Refers_To schema1:Treatment .
+
+schema1:ClaimAmount a rdfs:Class ;
+    rdfs:label "Claim Amount" ;
+    rdfs:comment "A pattern representing the amount claimed in a claim." .
+
+schema1:ClaimApproval a rdfs:Class ;
+    rdfs:label "Claim Approval" ;
+    rdfs:comment "A process or action of approving a claim." .
+
+schema1:ClaimCreation a rdfs:Class ;
+    rdfs:label "Claim Creation" ;
+    rdfs:comment "An entity representing the creation of a claim." .
+
+schema1:ClaimDenial a rdfs:Class ;
+    rdfs:label "Claim Denial"@en ;
+    rdfs:comment "A claim denial describes a situation where an insurance claim is rejected by an insurance company."@en .
+
+schema1:ClaimID a rdfs:Class ;
+    rdfs:label "Claim ID" ;
+    rdfs:comment "A unique identifier for a claim." .
+
+schema1:ClaimReview a rdfs:Class ;
+    rdfs:label "Claim Review" ;
+    rdfs:comment "A claim review is an evaluation or assessment of the truthfulness and accuracy of a claim made by a source." .
+
+schema1:ClaimStatus a rdfs:Class ;
+    rdfs:label "Claim Status" ;
+    rdfs:comment "The current state or condition of a claim." .
+
+schema1:ClinicHospital a rdfs:Class ;
+    rdfs:label "Clinic/Hospital" ;
+    rdfs:comment "A clinic or hospital is a healthcare facility where medical treatment is provided." .
+
+schema1:Co-payment a rdfs:Class ;
+    rdfs:label "Co-payment" ;
+    rdfs:comment "A fixed amount or percentage that the insured must pay at the time of service or when receiving prescription medication" .
+
+schema1:Color a rdfs:Class ;
+    rdfs:label "Color" ;
+    rdfs:comment "A class representing different colors." .
+
+schema1:ContactNumber a rdfs:Class ;
+    rdfs:label "Contact Number",
+        "Contact Number"@en ;
+    rdfs:comment "A contact number is a numeric sequence used for communication purposes.",
+        "A contact number is a sequence of numeric digits used to contact someone."@en .
+
+schema1:Contraindications a rdfs:Class ;
+    rdfs:label "Contraindications" ;
+    rdfs:comment "A pattern that represents possible contraindications for a medical treatment or procedure.",
+        "The superclass for all contraindications patterns." ;
+    rdfs:subClassOf rdfs:Class .
+
+schema1:CoverageDetails a rdfs:Class ;
+    rdfs:label "Coverage Details" ;
+    rdfs:comment "A class representing the details of a coverage." .
+
+schema1:CoverageEndDate a rdfs:Class ;
+    rdfs:label "Coverage End Date" ;
+    rdfs:comment "The end date of a coverage period." .
+
+schema1:CreatedBy a rdfs:Class ;
+    rdfs:label "CreatedBy" ;
+    rdfs:comment "The pattern of an entity being created by either a patient or a healthcare provider." .
+
+schema1:CreatedFor_Patient a rdfs:Class ;
+    rdfs:label "CreatedFor_Patient" ;
+    rdfs:comment "A class representing the relationship between a record and the patient it is created for." .
+
+schema1:CreationDate a rdfs:Class ;
+    rdfs:label "Creation Date" ;
+    rdfs:comment "A date representing the creation of an entity" .
+
+schema1:DOB a rdfs:Class ;
+    rdfs:label "Date of Birth" ;
+    rdfs:comment "The date on which a person was born." .
+
+schema1:Date a rdfs:Class ;
+    rdfs:label "Date" ;
+    rdfs:comment "A specific point in time, specified by a year, month, and day." .
+
+schema1:DatePaid a rdfs:Class ;
+    rdfs:label "Date Paid" ;
+    rdfs:comment "A class representing the date on which a payment was made." .
+
+schema1:DateProcessed a rdfs:Class ;
+    rdfs:label "DateProcessed" ;
+    rdfs:comment "A pattern representing a date that has been processed." .
+
+schema1:DateSubmitted a rdfs:Class ;
+    rdfs:comment "The DateSubmitted class represents a submission date." .
+
+schema1:DeductibleApplied a rdfs:Class ;
+    rdfs:label "Deductible Applied" ;
+    rdfs:comment "A pattern representing the application of a deductible." .
+
+schema1:Deductibles a rdfs:Class ;
+    rdfs:label "Deductibles" ;
+    rdfs:comment "A fixed amount that the insured must pay before the insurance coverage kicks in" .
+
+schema1:DenialDate a rdfs:Class ;
+    rdfs:comment "A pattern representing denial date" .
+
+schema1:DenialReason a rdfs:Class ;
+    rdfs:label "DenialReason" ;
+    rdfs:comment "A pattern representing a reason for denial." .
+
+schema1:DeniedFor_Patient a rdfs:Class ;
+    rdfs:label "DeniedFor_Patient" ;
+    rdfs:comment "A pattern indicating denial for a specific patient." .
+
+schema1:Doctor a rdfs:Class ;
+    rdfs:label "Doctor" ;
+    rdfs:comment "A doctor is a medical professional who practices medicine and treats patients.",
+        "A doctor is a medical professional who practices medicine, typically in a hospital or clinic environment. They examine, diagnose, and treat patients to help them recover from illnesses and injuries.",
+        "A medical practitioner responsible for patient care.",
+        "A medical professional who is qualified and licensed to diagnose and treat medical conditions.",
+        "A medical professional who is qualified to diagnose, treat, and prescribe medications to patients.",
+        "A medical professional who practises medicine and is responsible for the diagnosis, treatment, and prevention of disease." .
+
+schema1:DoctorID a rdfs:Class ;
+    rdfs:comment "A unique identifier for a doctor." .
+
+schema1:DocumentDetails a rdfs:Class ;
+    rdfs:label "DocumentDetails"@en ;
+    rdfs:comment "A class representing the details of a document."@en .
+
+schema1:Dosage a rdfs:Class ;
+    rdfs:comment "The measurement of the amount of a medication or substance to be given to a patient."@en .
+
+schema1:Duration a rdfs:Class ;
+    rdfs:label "Duration" ;
+    rdfs:comment "A duration of time.",
+        "Represents a duration of time." .
+
+schema1:Effect a rdfs:Class ;
+    rdfs:label "Effect" ;
+    rdfs:comment "A class representing different effects of an allergy." .
+
+schema1:Email a rdfs:Class ;
+    rdfs:label "Email" ;
+    rdfs:comment "A representation of an email message.",
+        "The class representing an email." .
+
+schema1:EmergencyContactName a rdfs:Class ;
+    rdfs:label "EmergencyContactName" ;
+    rdfs:comment "A pattern representing the name of an emergency contact." .
+
+schema1:EmergencyContactNumber a rdfs:Class ;
+    rdfs:label "Emergency Contact Number" ;
+    rdfs:comment "A pattern representing an emergency contact number." .
+
+schema1:EndDate a rdfs:Class ;
+    rdfs:label "EndDate",
+        "EndDate"@en ;
+    rdfs:comment "The end date of an event or activity.",
+        "A class representing the end date of an event or task."@en .
+
+schema1:Entity a rdfs:Class ;
+    rdfs:label "Entity",
+        "Entity"@en ;
+    rdfs:comment "A class representing an entity.",
+        "A class representing entities.",
+        "A real-world entity that can be a part of a relationship.",
+        "A class representing an entity or object with attributes."@en,
+        "A class that represents an entity in a relationship."@en ;
+    rdfs:subClassOf schema1:Thing .
+
+schema1:Equipment a rdfs:Class ;
+    rdfs:label "Equipment" ;
+    rdfs:comment "A device or tool used to assist with medical treatment or support." ;
+    rdfs:subClassOf schema1:ReasonForClaim .
+
+schema1:EquipmentID a rdfs:Class ;
+    rdfs:label "EquipmentID" ;
+    rdfs:comment "A unique identifier for an equipment." .
+
+schema1:EquipmentName a rdfs:Class ;
+    rdfs:label "EquipmentName" ;
+    rdfs:comment "Represents the name of an equipment." .
+
+schema1:Event a rdfs:Class ;
+    rdfs:label "Event",
+        "Event"@en ;
+    rdfs:comment "An occurrence or happening that can be described.",
+        "An event that occurs on a specific date range."@en .
+
+schema1:EventOrActivity a rdfs:Class ;
+    rdfs:label "EventOrActivity" ;
+    rdfs:comment "A class representing an event or activity." .
+
+schema1:Female a rdfs:Class ;
+    rdfs:label "Female" ;
+    rdfs:comment "The gender classification for a female person" ;
+    rdfs:subClassOf schema1:Gender .
+
+schema1:FirstName a rdfs:Class ;
+    rdfs:label "FirstName" ;
+    rdfs:comment "A class representing a first name.",
+        "A class representing a person's first name." .
+
+schema1:Frequency a rdfs:Class ;
+    rdfs:comment "The frequency of an event or phenomenon."^^xsd:string .
+
+schema1:Gender a rdfs:Class ;
+    rdfs:label "Gender" ;
+    rdfs:comment "A class representing different genders.",
+        "A classification of a person as male or female" .
+
+schema1:Has_Allergy a rdfs:Class ;
+    rdfs:comment "This class represents a person who has an allergy." ;
+    rdfs:subClassOf schema1:Allergy .
+
+schema1:Has_Insurance a rdfs:Class ;
+    rdfs:label "Has Insurance" .
+
+schema1:HealthcareProvider a rdfs:Class ;
+    rdfs:label "HealthcareProvider" ;
+    rdfs:comment "A person or organization that provides medical advice or treatment to patients." .
+
+schema1:Insurance a rdfs:Class ;
+    rdfs:label "Insurance" ;
+    rdfs:comment "A class representing insurance.",
+        "A contract, represented by a policy, in which an individual or entity receives financial protection or reimbursement against losses from an insurance company.",
+        "A type of financial product or service provided by an insurance company.",
+        "Represents the concept of Insurance." ;
+    rdfs:subClassOf owl:Thing .
+
+schema1:InsuranceClaim a rdfs:Class ;
+    rdfs:label "Insurance Claim",
+        "InsuranceClaim",
+        "Insurance Claim"@en,
+        "InsuranceClaim"@en ;
+    rdfs:comment "A claim made by an individual or organization to an insurance company for reimbursement of covered losses.",
+        "A class representing an insurance claim made by a policyholder.",
+        "A specific type of Claim related to Insurance.",
+        "An individual insurance claim made by a policyholder.",
+        "A claim made by an individual or entity for insurance coverage."@en,
+        "An insurance claim is a formal request made by a policyholder to an insurance company for coverage or compensation for a covered loss or policy event."@en ;
+    rdfs:subClassOf schema1:Claim .
+
+schema1:InsuranceCompany a rdfs:Class ;
+    rdfs:label "Insurance Company",
+        "InsuranceCompany" ;
+    rdfs:comment "A company that provides insurance coverage to individuals or organizations.",
+        "A company that provides insurance policies and services." ;
+    rdfs:subClassOf owl:Thing .
+
+schema1:InsuranceID a rdfs:Class ;
+    rdfs:label "InsuranceID" ;
+    rdfs:comment "A unique identifier for an insurance policy." .
+
+schema1:InsuranceProvider a rdfs:Class ;
+    rdfs:label "Insurance Provider",
+        "InsuranceProvider" ;
+    rdfs:comment "A company or organization that offers insurance policies to individuals or businesses.",
+        "A company or organization that provides insurance policies to individuals or businesses." .
+
+schema1:LastName a rdfs:Class ;
+    rdfs:label "Last Name",
+        "LastName"@en ;
+    rdfs:comment "The pattern for a person's last name.",
+        "A pattern representing the last name of a person."@en .
+
+schema1:LastNamePattern a rdfs:Class ;
+    rdfs:label "LastNamePattern"@en ;
+    rdfs:comment "A pattern used to validate a last name."@en ;
+    rdfs:subClassOf schema1:LastName .
+
+schema1:LicenseNumber a rdfs:Class ;
+    rdfs:label "License Number" ;
+    rdfs:comment "A license number that uniquely identifies a license." .
+
+schema1:MadeBy_Patient a rdfs:Class ;
+    rdfs:label "MadeBy_Patient" ;
+    rdfs:comment "A pattern class representing the fact that something is made by a patient." .
+
+schema1:Male a rdfs:Class ;
+    rdfs:label "Male" ;
+    rdfs:comment "The gender classification for a male person" ;
+    rdfs:subClassOf schema1:Gender .
+
+schema1:Manufacturer a rdfs:Class ;
+    rdfs:label "Manufacturer" ;
+    rdfs:comment "A manufacturer is a company or organization that produces goods or products." .
+
+schema1:MaximumCoveredAmount a rdfs:Class ;
+    rdfs:label "Maximum Covered Amount",
+        "Maximum Covered Amount"@en ;
+    rdfs:comment "The maximum amount that can be covered for a claim.",
+        "The maximum amount covered by an insurance policy."@en .
+
+schema1:MedicalEquipment a rdfs:Class ;
+    rdfs:label "Medical Equipment",
+        "MedicalEquipment" ;
+    rdfs:comment "A class representing medical equipment used in healthcare settings.",
+        "A device or tool used in medical practice.",
+        "An entity representing a type of medical equipment." .
+
+schema1:Medication a rdf:Class,
+        rdfs:Class ;
+    rdfs:label "Medication" ;
+    rdfs:comment "A class representing a type of medication.",
+        "A substance or preparation used to treat, alleviate, or prevent a disease or medical condition.",
+        "A substance used for the treatment or prevention of diseases.",
+        "A substance used for the treatment, cure, or prevention of a disease or medical condition.",
+        "A substance used to treat or manage a medical condition.",
+        "The class representing a medication." ;
+    rdfs:subClassOf schema1:ReasonForClaim .
+
+schema1:MedicationID a rdfs:Class ;
+    rdfs:label "Medication ID" ;
+    rdfs:comment "A unique identifier for a medication" .
+
+schema1:MedicationName a rdfs:Class ;
+    rdfs:comment "A name of a medication." .
+
+schema1:Model a rdfs:Class ;
+    rdfs:label "Model"@en ;
+    rdfs:comment "A model is a representation of something in the real world. It describes the structure, behavior, and properties of the thing it represents."@en .
+
+schema1:MonetaryAmount a rdfs:Class ;
+    rdfs:label "Monetary Amount" ;
+    rdfs:comment "Represents a specific amount of money." .
+
+schema1:NonBinary a rdfs:Class ;
+    rdfs:label "Non-Binary" ;
+    rdfs:comment "The gender classification for a person who does not identify exclusively as either male or female" ;
+    rdfs:subClassOf schema1:Gender .
+
+schema1:Notes a rdfs:Class ;
+    rdfs:label "Notes",
+        "Notes"@en ;
+    rdfs:comment "A class representing notes.",
+        "A collection of textual notes or comments."@en ;
+    rdfs:subClassOf rdfs:Resource,
+        schema1:Text .
+
+schema1:OrganizationOrEvent a rdfs:Class ;
+    rdfs:label "Organization or Event" ;
+    rdfs:comment "A pattern representing an organization or event." .
+
+schema1:OutOfPocketCost a rdfs:Class ;
+    rdfs:label "Out-of-Pocket Cost" ;
+    rdfs:comment "The amount of money that an individual needs to pay for medical expenses out of their own pocket." .
+
+schema1:Outcome a rdfs:Class ;
+    rdfs:label "Outcome" ;
+    rdfs:comment "An outcome is the result or consequence that is obtained by following a specific pattern." .
+
+schema1:PaidBy_Patient a rdfs:Class ;
+    rdfs:label "PaidBy_Patient" ;
+    rdfs:comment "A pattern indicating that a patient is responsible for the payment" .
+
+schema1:PaidTo_Provider a rdfs:Class ;
+    rdfs:label "PaidTo_Provider" ;
+    rdfs:comment "The pattern PaidTo_Provider represents the act of payment made to a healthcare provider such as a doctor, clinic, or hospital." .
+
+schema1:Patient a rdfs:Class ;
+    rdfs:label "Patient" ;
+    rdfs:comment "A person receiving medical treatment.",
+        "A person who seeks medical advice or treatment from a healthcare provider.",
+        "An individual who seeks or receives medical treatment or care from a doctor." .
+
+schema1:PatientID a rdfs:Class ;
+    rdfs:label "PatientID" ;
+    rdfs:comment "A unique identifier for a patient." .
+
+schema1:PatientRecord a rdf:Class,
+        rdfs:Class ;
+    rdfs:label "Patient Record",
+        "PatientRecord",
+        "Patient Record"@en ;
+    rdfs:comment "A class representing a record associated with a patient.",
+        "A class representing a record of a patient's medical information.",
+        "A record associated with a patient",
+        "A record containing information about a patient.",
+        "A record or documentation related to a specific patient",
+        "A record that belongs to a patient.",
+        "A record that contains information about a patient's medical history.",
+        "The class representing a patient record.",
+        "A class representing a record of a patient's medical information."@en .
+
+schema1:Pattern a rdfs:Class ;
+    rdfs:label "Pattern",
+        "Pattern"@en ;
+    rdfs:comment "A pattern is a design template or a model that can be followed or applied to different contexts to achieve desired outcomes.",
+        "A pattern is a regular arrangement or sequence of elements or features.",
+        "A general schema pattern that can be used to represent a specific concept or data structure."@en,
+        "The class representing a generic pattern."@en .
+
+schema1:PatternValidation a rdfs:Class ;
+    rdfs:label "PatternValidation"@en ;
+    rdfs:comment "A validation process using a pattern."@en .
+
+schema1:Payment a rdfs:Class ;
+    rdfs:label "Payment" ;
+    rdfs:comment "The act of transferring money, goods, or services in exchange for something" .
+
+schema1:PaymentDate a rdfs:Class ;
+    rdfs:label "Payment Date" ;
+    rdfs:comment "The date when the approved amount was paid." .
+
+schema1:PaymentMethod a rdfs:Class ;
+    rdfs:label "Payment Method",
+        "Payment Method"@en ;
+    rdfs:comment "A method of making a payment",
+        "A method of paying for goods or services" .
+
+schema1:Person a rdfs:Class ;
+    rdfs:label "Person" ;
+    rdfs:comment "A class representing a person.",
+        "A pattern representing a person.",
+        "A person who received a payment." .
+
+schema1:PersonOrOrganization a rdfs:Class ;
+    rdfs:label "Person or Organization" ;
+    rdfs:comment "Represents either a person or an organization." .
+
+schema1:PlanName a rdfs:Class ;
+    rdfs:label "PlanName" ;
+    rdfs:comment "A pattern to represent a plan name" .
+
+schema1:PolicyNumber a rdfs:Class ;
+    rdfs:label "Policy Number" ;
+    rdfs:comment "A unique identifier assigned to an insurance policy." ;
+    rdfs:subClassOf rdfs:Resource .
+
+schema1:PotentialSideEffects a rdfs:Class ;
+    rdfs:label "Potential Side Effects" ;
+    rdfs:comment "A potential side effect of a medication or treatment."@en .
+
+schema1:PremiumAmount a rdfs:Class ;
+    rdfs:label "Premium Amount" ;
+    rdfs:comment "A class representing the amount of premium paid for an insurance policy." .
+
+schema1:PrescribedBy a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "PrescribedBy" ;
+    rdfs:comment "A relationship indicating that a doctor has prescribed a medication to a patient.",
+        "The relationship between a patient and a doctor where the doctor prescribes medication to the patient." ;
+    rdfs:domain schema1:Patient ;
+    rdfs:range schema1:Doctor .
+
+schema1:Prescribes_Medication a rdfs:Class ;
+    rdfs:label "Prescribes Medication" ;
+    rdfs:comment "A class representing the action of prescribing a medication." .
+
+schema1:Prescribes_Treatment a rdfs:Class ;
+    rdfs:label "Prescribes Treatment" ;
+    rdfs:comment "The act of prescribing a treatment or therapy to a patient." .
+
+schema1:PrimaryCareDoctor a rdfs:Class ;
+    rdfs:label "Primary Care Doctor"@en ;
+    rdfs:comment "A doctor who provides primary care services to patients."@en .
+
+schema1:ReactionType a rdfs:Class ;
+    rdfs:label "Reaction Type"@en ;
+    rdfs:comment "The type of a reaction."@en ;
+    rdfs:subClassOf schema1:Type .
+
+schema1:ReasonForClaim a rdfs:Class ;
+    rdfs:label "Reason for Claim" ;
+    rdfs:comment "A reason given for filing a claim against a party." .
+
+schema1:ReasonForVisit a rdfs:Class ;
+    rdfs:label "Reason for Visit" ;
+    rdfs:comment "An entity representing the reason for visiting a location or seeking a service." .
+
+schema1:Record a rdfs:Class ;
+    rdfs:label "Record" ;
+    rdfs:comment "A representation of a record entry." .
+
+schema1:RecordCreationDate a rdfs:Class ;
+    rdfs:comment "Represents the creation date of a record." .
+
+schema1:RecordKeeping a rdfs:Class ;
+    rdfs:label "Record Keeping" ;
+    rdfs:comment "A pattern for managing and storing records." .
+
+schema1:RecordLastUpdatedDate a rdfs:Class ;
+    rdfs:label "Record Last Updated Date"@en ;
+    rdfs:comment "The pattern for representing the date when a record was last updated."@en ;
+    rdfs:subClassOf schema1:Pattern .
+
+schema1:Refers_To_Claim a rdfs:Class ;
+    rdfs:label "Refers_To_Claim",
+        "Refers to Claim"@en,
+        "Refers_To_Claim"@en ;
+    rdfs:comment "A class representing the relationship between a concept and an insurance claim.",
+        "A pattern that refers to an insurance claim.",
+        "A pattern indicating that a certain entity refers to an insurance claim."@en,
+        "A pattern that refers to an insurance claim."@en .
+
+schema1:Refers_To_Insurance a rdfs:Class ;
+    rdfs:label "Refers To Insurance" ;
+    rdfs:comment "A class representing a pattern that refers to insurance." .
+
+schema1:Refers_To_MedicalEquipment a rdfs:Class ;
+    rdfs:label "Refers_To_MedicalEquipment" ;
+    rdfs:comment "A pattern representing a claim related to medical equipment." ;
+    rdfs:subPropertyOf schema1:MedicalEquipment .
+
+schema1:Refers_To_Medication a rdfs:Class ;
+    rdfs:label "Refers To Medication" ;
+    rdfs:comment "A pattern that refers to a medication.",
+        "The pattern of referring to a medication." ;
+    rdfs:subClassOf schema1:Medication ;
+    schema1:subClassOf schema1:Medication .
+
+schema1:Refers_To_Treatment a rdfs:Class ;
+    rdfs:label "Refers_To_Treatment" ;
+    rdfs:comment "The class that represents the relationship between a pattern and treatment." .
+
+schema1:RejectionReason a rdfs:Class ;
+    rdfs:label "RejectionReason"@en ;
+    rdfs:comment "A class representing the reason for rejection."@en .
+
+schema1:Relationship a rdfs:Class ;
+    rdfs:label "Relationship" ;
+    rdfs:comment "A connection or association between two or more entities." .
+
+schema1:Relationships a rdfs:Class ;
+    rdfs:label "Relationships",
+        "Relationships"@en ;
+    rdfs:comment "A class representing different types of relationships between entities.",
+        "A class representing relationships between entities.",
+        "A pattern to represent relationships between entities.",
+        "A class that represents relationships between entities."@en ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:RemainingAmount a rdfs:Class ;
+    rdfs:label "Remaining Amount" ;
+    rdfs:comment "The remaining amount after deducting the total claimed amount from the maximum covered amount." .
+
+schema1:Review a rdfs:Class ;
+    rdfs:label "Review" ;
+    rdfs:comment "A pattern for representing a review.",
+        "A review provides a detailed evaluation or assessment of a claim made by a source." .
+
+schema1:ReviewDate a rdfs:Class ;
+    rdfs:comment "A class representing the date of a review." .
+
+schema1:ReviewNotes a rdfs:Class ;
+    rdfs:label "Review Notes" ;
+    rdfs:comment "A pattern for providing additional notes or details regarding a review." .
+
+schema1:ReviewedBy_Insurance a rdfs:Class,
+        rdfs:Property ;
+    rdfs:label "Reviewed by Insurance",
+        "ReviewedBy_Insurance" ;
+    rdfs:comment "A pattern where an entity is reviewed by insurance.",
+        "Relates an entity being reviewed to the concept of Insurance." ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range schema1:Insurance ;
+    rdfs:subClassOf schema1:Insurance .
+
+schema1:Reviewer a rdfs:Class ;
+    rdfs:label "Reviewer" ;
+    rdfs:comment "A person or department within the insurance provider that reviews the claim." .
+
+schema1:RouteOfAdministration a rdfs:Class ;
+    rdfs:label "RouteOfAdministration"@en ;
+    rdfs:comment "The route of administration refers to the method by which a drug or medication is introduced into the body. This pattern specifies the common types of routes of drug administration, such as oral, intravenous, intramuscular, nasal, etc."@en .
+
+schema1:ServiceDate a rdfs:Class ;
+    rdfs:label "Service Date" ;
+    rdfs:comment "A date when an actual medical service was provided" .
+
+schema1:Severity a rdfs:Class ;
+    rdfs:label "Severity" ;
+    rdfs:comment "A class representing the severity of a side effect.",
+        "A measure of the extent of harm or damage caused by an event or condition." .
+
+schema1:SideEffect a rdfs:Class ;
+    rdfs:label "Side Effect" ;
+    rdfs:comment "A class representing a specific side effect of a medication or treatment." .
+
+schema1:SideEffects a rdfs:Class ;
+    rdfs:label "Side Effects" ;
+    rdfs:comment "A class representing the potential side effects of a medication or treatment." .
+
+schema1:Specialty a rdfs:Class ;
+    rdfs:label "Specialty"@en ;
+    rdfs:comment "A specialized field or area of expertise in a particular domain."@en .
+
+schema1:StartDate a rdfs:Class ;
+    rdfs:label "Start Date",
+        "StartDate" ;
+    rdfs:comment "A class representing the start date of an event or activity." .
+
+schema1:Status a rdfs:Class ;
+    rdfs:comment "A status in a pattern." .
+
+schema1:Symptom a rdfs:Class ;
+    rdfs:label "Symptom" ;
+    rdfs:comment "Represents a symptom associated with an allergy." .
+
+schema1:Time a rdfs:Class ;
+    rdfs:label "Time" ;
+    rdfs:comment "A class representing time." .
+
+schema1:TotalAmount a rdfs:Class ;
+    rdfs:label "TotalAmount" ;
+    rdfs:comment "The total cost of a purchase without insurance included." .
+
+schema1:TotalClaimedAmount a rdfs:Class ;
+    rdfs:label "Total Claimed Amount",
+        "TotalClaimedAmount" ;
+    rdfs:comment "The amount claimed by the patient for the year.",
+        "The total amount claimed." .
+
+schema1:Treatment a rdfs:Class ;
+    rdfs:label "Treatment" ;
+    rdfs:comment "A medical procedure performed to alleviate a health issue or condition.",
+        "A medical treatment.",
+        "A process or course of action designed to achieve a desired outcome in a medical or therapeutic context.",
+        "The class representing a medical treatment.",
+        "The class that represents a treatment.",
+        "The medical or therapeutic approach taken to address a disease, injury, or condition in a patient.",
+        "A treatment provided to an entity."@en ;
+    rdfs:subClassOf schema1:ReasonForClaim ;
+    schema1:hasName rdf:type .
+
+schema1:TreatmentDescription a rdfs:Class ;
+    rdfs:label "Treatment Description" .
+
+schema1:TreatmentID a rdfs:Class ;
+    rdfs:label "TreatmentID" ;
+    rdfs:comment "A unique identifier for a treatment." .
+
+schema1:Triple a rdfs:Class ;
+    rdfs:comment "A triple in the turtle format."^^xsd:string .
+
+schema1:TruthRatingSystem a rdfs:Class ;
+    rdfs:label "Truth Rating System" ;
+    rdfs:comment "A truth rating system provides a standardized framework or criteria for evaluating the truthfulness and accuracy of claims." .
+
+schema1:Type a rdfs:Class ;
+    rdfs:label "Type"@en ;
+    rdfs:comment "The class of all types."@en .
+
+schema1:UniqueIdentifier a rdfs:Class ;
+    rdfs:label "UniqueIdentifier" ;
+    rdfs:comment "An identifier that distinguishes one entity from all others within a specific context." .
+
+schema1:Usage a rdfs:Class ;
+    rdfs:label "Usage" ;
+    rdfs:comment "Usage is the way in which something is used or operated." ;
+    rdfs:subClassOf schema1:Pattern .
+
+schema1:UsedFor_Treatment a rdfs:Class ;
+    rdfs:label "UsedFor_Treatment" ;
+    rdfs:comment "The class representing the relationship between a medication and the treatment it is used for." .
+
+schema1:Used_MedicalEquipment a rdfs:Class ;
+    rdfs:label "Used Medical Equipment" ;
+    rdfs:subClassOf schema1:MedicalEquipment .
+
+schema1:Year a rdfs:Class ;
+    rdfs:label "Year" ;
+    rdfs:comment "A representation of a year." .
+
+schema1:format a rdfs:Class ;
+    rdfs:label "format" ;
+    rdfs:comment "A class representing a data format." .
+
+schema1:namespace a rdfs:Class,
+        rdfs:Property ;
+    rdfs:label "Namespace",
+        "namespace",
+        "namespace"@en ;
+    rdfs:comment "A class representing namespaces.",
+        "A property indicating the namespace of schema elements",
+        "Specifies the namespace for the schema elements.",
+        "The namespace of the pattern attributes.",
+        "The namespace for the schema elements."@en ;
+    rdfs:domain schema1:Attributes,
+        schema1:InsuranceProvider ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:prefix a rdfs:Class ;
+    rdfs:label "prefix" ;
+    rdfs:comment "A class representing prefixes in a namespace." .
+
+schema1:schemaLanguage a rdfs:Class,
+        rdfs:Property ;
+    rdfs:label "Schema Language",
+        "schemaLanguage",
+        "schemaLanguage"@en ;
+    rdfs:comment "A class representing the language used for the schema.",
+        "Specifies the language used for defining the schema elements.",
+        "The language used for the schema of the pattern.",
+        "The language used for the schema representation."@en ;
+    rdfs:domain schema1:Attributes,
+        schema1:InsuranceProvider ;
+    rdfs:range xsd:string .
+
+schema1:triple a rdf:Class,
+        rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Triple",
+        "triple" ;
+    rdfs:comment "A class representing a triple in a relationship",
+        "A class representing a triple statement.",
+        "A triple representing an amount in the turtle format.",
+        "The triple form of a Year instance." ;
+    rdfs:domain schema1:Amount,
+        schema1:Year ;
+    rdfs:range rdf:List,
+        xsd:string .
+
+schema1:turtleFormat a rdfs:Class,
+        rdfs:Datatype ;
+    rdfs:label "turtleFormat" ;
+    rdfs:comment "A class representing the Turtle serialization format for RDF.",
+        "The format used for representing triples in the turtle syntax." .
+
+<example:Entity123> schema1:hasDateSubmitted "2022-01-01"^^xsd:date .
+
+<example:Entity456> schema1:hasDateSubmitted "2022-02-15"^^xsd:date .
+
+<https://schemaForge.net/pattern/#Covers_Patient_Record> a rdfs:Property ;
+    rdfs:label "Covers_Patient_Record" ;
+    rdf:domain <https://schemaForge.net/pattern/#Covers_Patient> ;
+    rdf:range <https://schemaForge.net/pattern/#PatientRecord> ;
+    rdfs:comment "Relates a covers patient pattern to a patient record." .
+
+schema1:AppliesTo_Patient rdfs:comment "The pattern applied to a patient record." ;
+    rdfs:subClassOf schema1:PatientRecord .
+
+schema1:Approved a schema1:Status ;
+    rdfs:comment "The status indicating that a request is approved." .
+
+schema1:ApprovedAmountProperty a rdf:Property ;
+    rdfs:comment "A property for specifying the approved amount for a given entity." ;
+    rdfs:domain schema1:ApprovedAmount ;
+    rdfs:range xsd:float .
+
+schema1:ChemicalReaction a schema1:ReactionType ;
+    rdfs:label "Chemical Reaction"@en ;
+    rdfs:comment "A reaction involving a chemical change or transformation."@en .
+
+schema1:ColorType a rdf:Property ;
+    rdfs:label "ColorType" ;
+    rdfs:comment "Relates a color to its type." ;
+    rdfs:domain schema1:Color ;
+    rdfs:range xsd:string .
+
+schema1:CoverageDetailsProperty a rdf:Property ;
+    rdfs:label "coverageDetailsProperty" ;
+    rdfs:comment "A property of the CoverageDetails class representing a specific detail of a coverage." ;
+    rdfs:domain schema1:CoverageDetails ;
+    rdfs:range xsd:string .
+
+schema1:CoverageStartDate a rdf:Property ;
+    rdfs:label "Coverage Start Date" ;
+    rdfs:comment "The start date of the coverage period." ;
+    rdfs:domain schema1:Coverage ;
+    rdfs:range xsd:date .
+
+<https://schemaForge.net/pattern/DateProcessed/day> a rdf:Property ;
+    rdfs:label "day" ;
+    rdfs:comment "The day component of a processed date." ;
+    rdfs:domain schema1:DateProcessed ;
+    rdfs:range xsd:integer .
+
+<https://schemaForge.net/pattern/DateProcessed/hour> a rdf:Property ;
+    rdfs:label "hour" ;
+    rdfs:comment "The hour component of a processed date." ;
+    rdfs:domain schema1:DateProcessed ;
+    rdfs:range xsd:integer .
+
+<https://schemaForge.net/pattern/DateProcessed/minute> a rdf:Property ;
+    rdfs:label "minute" ;
+    rdfs:comment "The minute component of a processed date." ;
+    rdfs:domain schema1:DateProcessed ;
+    rdfs:range xsd:integer .
+
+<https://schemaForge.net/pattern/DateProcessed/month> a rdf:Property ;
+    rdfs:label "month" ;
+    rdfs:comment "The month component of a processed date." ;
+    rdfs:domain schema1:DateProcessed ;
+    rdfs:range xsd:integer .
+
+<https://schemaForge.net/pattern/DateProcessed/second> a rdf:Property ;
+    rdfs:label "second" ;
+    rdfs:comment "The second component of a processed date." ;
+    rdfs:domain schema1:DateProcessed ;
+    rdfs:range xsd:integer .
+
+<https://schemaForge.net/pattern/DateProcessed/year> a rdf:Property ;
+    rdfs:label "year" ;
+    rdfs:comment "The year component of a processed date." ;
+    rdfs:domain schema1:DateProcessed ;
+    rdfs:range xsd:integer .
+
+schema1:DeductibleApplied_amount a rdfs:Property ;
+    rdfs:label "deductibleAmount" ;
+    rdfs:comment "Relates an instance to the deductible amount applied." ;
+    rdfs:domain schema1:DeductibleApplied ;
+    rdfs:range xsd:float .
+
+schema1:DeductibleApplied_base a rdfs:Property ;
+    rdfs:label "deductibleApplied" ;
+    rdfs:comment "Relates an instance to the deductible applied." ;
+    rdfs:domain schema1:DeductibleApplied ;
+    rdfs:range xsd:boolean .
+
+schema1:Denied a schema1:Status ;
+    rdfs:comment "The status indicating that a request is denied." .
+
+schema1:EffectType a rdf:Property ;
+    rdfs:label "EffectType" ;
+    rdfs:comment "Relates an effect to its type." ;
+    rdfs:domain schema1:Effect ;
+    rdfs:range xsd:string .
+
+schema1:ElectronicDocument rdfs:label "Electronic Document" ;
+    rdfs:comment "A document that exists in electronic form." ;
+    rdfs:subClassOf schema1:DocumentType .
+
+schema1:EntityNameProperty a rdf:Property ;
+    rdfs:label "EntityNameProperty" ;
+    rdfs:comment "Relates an entity to its name." ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range xsd:string .
+
+schema1:Event1 a schema1:Event,
+        schema1:EventOrActivity ;
+    rdfs:label "Event 1"@en ;
+    rdfs:comment "An example event."@en ;
+    schema1:hasEndDate "2022-12-31"^^xsd:date ;
+    schema1:hasStartDate schema1:StartDate1 .
+
+schema1:Has_Medication a rdf:Property ;
+    rdfs:label "Has Medication" ;
+    rdfs:comment "Relates an entity to its associated medication." ;
+    rdfs:subPropertyOf schema1:Medication .
+
+schema1:Has_Treatment a rdf:Property ;
+    rdfs:comment "Relates an entity to its treatment."@en ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range schema1:Treatment .
+
+schema1:HighSeverity a schema1:Severity ;
+    rdfs:label "High severity" ;
+    rdfs:comment "Indicates a high level of harm or damage." .
+
+schema1:LowSeverity a schema1:Severity ;
+    rdfs:label "Low severity" ;
+    rdfs:comment "Indicates a low level of harm or damage." .
+
+schema1:MaximumCoveredAmountValue a rdf:Property ;
+    rdfs:label "Maximum Covered Amount Value"@en ;
+    rdfs:comment "The value of the maximum amount covered by an insurance policy."@en ;
+    rdfs:domain schema1:MaximumCoveredAmount ;
+    rdfs:range xsd:float .
+
+schema1:MediumSeverity a schema1:Severity ;
+    rdfs:label "Medium severity" ;
+    rdfs:comment "Indicates a moderate level of harm or damage." .
+
+schema1:MobileNumber a rdf:Datatype ;
+    rdfs:label "Mobile Number"@en ;
+    rdfs:comment "A mobile number is a specific type of contact number used for mobile communication."@en ;
+    rdfs:subClassOf xsd:string,
+        schema1:ContactNumber .
+
+schema1:PaperDocument rdfs:label "Paper Document" ;
+    rdfs:comment "A document that exists in paper form." ;
+    rdfs:subClassOf schema1:DocumentType .
+
+schema1:Pending a schema1:Status ;
+    rdfs:comment "The status indicating that a request is pending." .
+
+schema1:PhoneNumber a rdf:Datatype ;
+    rdfs:label "Phone Number"@en ;
+    rdfs:comment "A phone number is a specific type of contact number used for making phone calls."@en ;
+    rdfs:subClassOf xsd:string,
+        schema1:ContactNumber .
+
+schema1:PhysicalReaction a schema1:ReactionType ;
+    rdfs:label "Physical Reaction"@en ;
+    rdfs:comment "A reaction involving a physical change or transformation."@en .
+
+schema1:RDFS a schema1:schemaLanguage ;
+    rdfs:label "RDFS" ;
+    rdfs:comment "The RDF Schema Language." .
+
+schema1:Refers_To a rdfs:Property ;
+    rdfs:label "Refers To" ;
+    rdfs:comment "Indicates that a claim is for a treatment." .
+
+<https://schemaForge.net/pattern/ServiceDate/date> a rdf:Property ;
+    rdfs:label "date" ;
+    rdfs:comment "The date when the actual medical service was provided" ;
+    rdfs:domain schema1:ServiceDate ;
+    rdfs:range xsd:date .
+
+schema1:TreatmentID1 a schema1:TreatmentID ;
+    schema1:uniqueIdentifier "treatment123" .
+
+schema1:TreatmentID2 a schema1:TreatmentID ;
+    schema1:uniqueIdentifier "treatment456" .
+
+schema1:TreatmentName a rdf:Property ;
+    rdfs:label "Treatment Name" ;
+    rdfs:comment "The name of a treatment." ;
+    rdfs:range xsd:string .
+
+schema1:Treats_Patient a rdf:Property ;
+    rdfs:label "Treats Patient" ;
+    rdfs:comment "Relates a healthcare professional to a patient they treat" .
+
+schema1:Turtle a schema1:turtleFormat ;
+    rdfs:label "Turtle" ;
+    rdfs:comment "The Turtle serialization format for RDF." .
+
+schema1:YearTripleSubclassOf a rdf:Property ;
+    rdfs:label "subclassOf" ;
+    rdfs:comment "The subclass relationship between YearTriple instances." ;
+    rdfs:domain schema1:yearTriple ;
+    rdfs:range schema1:yearTriple .
+
+schema1:activeSubstance a rdf:Property ;
+    rdfs:label "activeSubstance" ;
+    rdfs:comment "The active substance(s) contained in the medication." ;
+    rdfs:domain schema1:Medication ;
+    rdfs:range xsd:string .
+
+schema1:addressStreet a rdf:Property ;
+    rdfs:domain schema1:Address .
+
+schema1:administrationRoute a rdf:Property ;
+    rdfs:label "administrationRoute" ;
+    rdfs:comment "The route through which the medication is administered (e.g., oral, intravenous, topical)." ;
+    rdfs:domain schema1:Medication ;
+    rdfs:range xsd:string .
+
+schema1:amount a rdf:Property ;
+    rdfs:label "amount" ;
+    rdfs:comment "The value of the monetary amount." ;
+    rdfs:domain schema1:MonetaryAmount ;
+    rdfs:range xsd:decimal .
+
+schema1:amountClaimed a rdf:Property ;
+    rdfs:label "amountClaimed" ;
+    rdfs:comment "The amount claimed by the patient." ;
+    rdfs:domain schema1:TotalClaimedAmount ;
+    rdfs:range xsd:float .
+
+schema1:amountValue a rdf:Property ;
+    rdfs:label "amountValue" ;
+    rdfs:comment "Specifies the value of an approved amount." ;
+    rdfs:domain schema1:ApprovedAmount ;
+    rdfs:range xsd:decimal .
+
+schema1:appointmentId a rdf:Property ;
+    rdfs:label "appointmentId" ;
+    rdfs:comment "The unique identifier of an appointment." ;
+    rdfs:domain schema1:Appointments ;
+    rdfs:range xsd:string .
+
+schema1:approvedAmount a rdf:Property ;
+    rdfs:label "Approved Amount" ;
+    rdfs:comment "The amount that has been approved for payment." ;
+    rdfs:domain schema1:PaymentDate ;
+    rdfs:range xsd:float .
+
+schema1:attributeTriple a schema1:triple ;
+    rdfs:label "attributeTriple" ;
+    rdfs:comment "A class representing a triple statement for attributes." .
+
+schema1:body a rdf:Property ;
+    rdfs:label "Email body" ;
+    rdfs:comment "The content of the email message." ;
+    rdfs:domain schema1:Email ;
+    rdfs:range xsd:string .
+
+schema1:claimAmountCurrency a rdf:Property ;
+    rdfs:label "Claim Amount Currency" ;
+    rdfs:comment "The currency in which the claim amount is expressed." ;
+    rdfs:domain schema1:ClaimAmount ;
+    rdfs:range xsd:string .
+
+schema1:claimAmountValue a rdf:Property ;
+    rdfs:label "Claim Amount Value" ;
+    rdfs:comment "The value of the claimed amount." ;
+    rdfs:domain schema1:ClaimAmount ;
+    rdfs:range xsd:decimal .
+
+schema1:claimReviewed a rdf:Property ;
+    rdfs:label "claim reviewed" ;
+    rdfs:comment "The claim that is being reviewed." ;
+    rdfs:domain schema1:ClaimReview ;
+    rdfs:range schema1:Claim .
+
+schema1:claimReviewedBy a rdf:Property ;
+    rdfs:label "claimReviewedBy" ;
+    rdfs:comment "Relates a reviewer to the claims they have reviewed." ;
+    rdfs:domain schema1:Reviewer ;
+    rdfs:range schema1:Claim .
+
+schema1:claimant a rdf:Property ;
+    rdfs:label "claimant" ;
+    rdfs:comment "The person or organization making the insurance claim." ;
+    rdfs:domain schema1:InsuranceClaim ;
+    rdfs:range schema1:PersonOrOrganization .
+
+schema1:claimedBy a rdf:Property ;
+    rdfs:label "claimed by" ;
+    rdfs:comment "The insurance company to which the claim has been made." ;
+    rdfs:domain schema1:InsuranceClaim ;
+    rdfs:range schema1:InsuranceCompany .
+
+schema1:claims a rdf:Property ;
+    rdfs:label "Claims" ;
+    rdfs:comment "Specifies that a Refers_To_Medication entity is for a Medication." ;
+    rdfs:domain schema1:Refers_To_Medication ;
+    rdfs:range schema1:Medication .
+
+schema1:comment a rdf:Property ;
+    rdfs:label "comment"@en ;
+    rdfs:comment "A description or explanation of the purpose or nature of a resource."@en ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:contraindication a rdf:Class ;
+    rdfs:label "Contraindication" ;
+    rdfs:comment "An individual instance of a contraindication for a medical treatment or procedure." ;
+    rdfs:subClassOf schema1:Contraindications .
+
+schema1:contraindicationOf a rdf:Property ;
+    rdfs:label "contraindicationOf" ;
+    rdfs:comment "A relationship that indicates the medical treatment or procedure for which the contraindication exists." ;
+    rdfs:domain schema1:Contraindications ;
+    rdfs:range rdf:Resource .
+
+schema1:coverageAmount a rdf:Property ;
+    rdfs:label "coverageAmount" ;
+    rdfs:comment "The amount of coverage provided by the insurance policy." ;
+    rdfs:domain schema1:Insurance ;
+    rdfs:range xsd:decimal .
+
+schema1:created a rdf:Property ;
+    rdfs:label "created" ;
+    rdfs:comment "Relates an entity to the entity that created it." ;
+    rdfs:domain schema1:CreatedBy ;
+    rdfs:range [ rdfs:subClassOf rdfs:Resource ] .
+
+schema1:currency a rdf:Property ;
+    rdfs:label "currency" ;
+    rdfs:comment "The currency code of the monetary amount.",
+        "The currency of an amount." ;
+    rdfs:domain schema1:Amount,
+        schema1:MonetaryAmount ;
+    rdfs:range xsd:string .
+
+schema1:datatype a rdf:Property ;
+    rdfs:label "datatype" ;
+    rdfs:comment "A property representing the datatype of an attribute." ;
+    rdfs:domain schema1:Attributes ;
+    rdfs:range xsd:string .
+
+schema1:datePaid a rdf:Property ;
+    rdfs:label "Date Paid" ;
+    rdfs:comment "The actual date when the approved amount was paid." ;
+    rdfs:domain schema1:PaymentDate ;
+    rdfs:range xsd:date .
+
+schema1:day a rdf:Property ;
+    rdfs:label "day" ;
+    rdfs:comment "The day of the review date.",
+        "The day value of a Date." ;
+    rdfs:domain schema1:Date,
+        schema1:ReviewDate ;
+    rdfs:range xsd:gDay,
+        xsd:nonNegativeInteger .
+
+schema1:description a rdf:Property,
+        rdfs:Property ;
+    rdfs:label "Description",
+        "description" ;
+    rdfs:comment "A property representing the description of an attribute.",
+        "Provides a description for the entity.",
+        "The description of the pattern." ;
+    rdfs:domain schema1:Attributes,
+        schema1:InsuranceProvider,
+        schema1:Pattern,
+        schema1:TreatmentDescription ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:dismissed a schema1:AppealOutcome ;
+    rdfs:label "Dismissed" ;
+    rdfs:comment "The appeal was dismissed." .
+
+schema1:dosageForm a rdf:Property ;
+    rdfs:label "dosageForm" ;
+    rdfs:comment "The form in which the medication is administered (e.g., tablet, capsule, liquid)." ;
+    rdfs:domain schema1:Medication ;
+    rdfs:range xsd:string .
+
+schema1:endDate a rdf:Property ;
+    rdfs:label "endDate" ;
+    rdfs:comment "The date when the insurance policy coverage ends." ;
+    rdfs:domain schema1:Insurance ;
+    rdfs:range xsd:date .
+
+schema1:endTime a rdf:Property ;
+    rdfs:label "endTime" ;
+    rdfs:comment "The end time of an appointment." ;
+    rdfs:domain schema1:Appointments ;
+    rdfs:range xsd:dateTime .
+
+schema1:example a rdf:Property ;
+    rdfs:label "example" ;
+    rdfs:comment "An example of the pattern." ;
+    rdfs:domain schema1:Pattern ;
+    rdfs:range xsd:string .
+
+schema1:exampleDate a schema1:Date ;
+    schema1:day "01"^^xsd:gDay ;
+    schema1:month "01"^^xsd:gMonth ;
+    schema1:year "2022"^^xsd:gYear .
+
+schema1:exampleOfWork a rdf:Property ;
+    rdfs:label "example of work" ;
+    rdfs:comment "An example or evidence supporting the evaluation or assessment provided in the review." ;
+    rdfs:domain schema1:Review ;
+    rdfs:range rdfs:Literal .
+
+schema1:exampleReview schema1:hasReviewNotes "These are some additional notes regarding the review."^^xsd:string .
+
+schema1:from a rdf:Property ;
+    rdfs:label "Email sender" ;
+    rdfs:comment "The sender of the email message." ;
+    rdfs:domain schema1:Email ;
+    rdfs:range xsd:string .
+
+schema1:gender a rdf:Property ;
+    rdfs:label "gender" ;
+    rdfs:comment "Indicates the gender of a person" ;
+    rdfs:domain schema1:Gender ;
+    rdfs:range xsd:string .
+
+schema1:hasAge a rdf:Property ;
+    rdfs:label "hasAge" ;
+    rdfs:comment "Relates a person to their age." ;
+    rdfs:domain schema1:Person ;
+    rdfs:range xsd:integer .
+
+schema1:hasAllergy a rdf:Property ;
+    rdfs:label "hasAllergy" ;
+    rdfs:comment "Relates an individual to their allergy." ;
+    rdfs:domain schema1:Person ;
+    rdfs:range schema1:Allergies .
+
+schema1:hasAmount a rdf:Property ;
+    rdfs:label "has amount" ;
+    rdfs:comment "The property to specify the amount of premium paid for an insurance policy.",
+        "Specifies the amount of the medication or substance to be given."@en ;
+    rdfs:domain schema1:Dosage,
+        schema1:PremiumAmount ;
+    rdfs:range xsd:float,
+        xsd:string .
+
+schema1:hasAmountValue a rdf:Property ;
+    rdfs:label "hasAmountValue" ;
+    rdfs:comment "Relates a currency to its amount value." ;
+    rdfs:domain schema1:Currency ;
+    rdfs:range xsd:decimal .
+
+schema1:hasAppeal a rdf:Property ;
+    rdfs:label "has Appeal" ;
+    rdfs:domain schema1:Case ;
+    rdfs:range schema1:Appeal .
+
+schema1:hasAppealDate a rdf:Property ;
+    rdfs:label "has Appeal Date" ;
+    rdfs:domain schema1:Appeal ;
+    rdfs:range xsd:date .
+
+schema1:hasAppointmentID a rdf:Property ;
+    rdfs:label "hasAppointmentID" ;
+    rdfs:comment "Relates an appointment to its unique identifier." ;
+    rdfs:domain schema1:Appointment ;
+    rdfs:range schema1:AppointmentID .
+
+schema1:hasApprovalDate a rdf:Property ;
+    rdfs:label "has approval date" ;
+    rdfs:comment "This property is used to indicate the approval date of an entity." ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range xsd:date .
+
+schema1:hasApprovedAmount a rdf:Property ;
+    rdfs:label "hasApprovedAmount" ;
+    rdfs:comment "Relates an entity to its approved amount." ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range xsd:decimal .
+
+schema1:hasAttribute a rdf:Property ;
+    rdfs:label "hasAttribute",
+        "hasAttribute"@en ;
+    rdfs:comment "A property representing the attributes of an entity.",
+        "Relates an entity to its attributes",
+        "Relates an entity to its attributes.",
+        "The property that relates a pattern to its attributes.",
+        "Relates a pattern to its attributes."@en,
+        "Relates an entity to its attribute(s)."@en ;
+    rdfs:domain schema1:Attributes,
+        schema1:Entity,
+        schema1:Pattern ;
+    rdfs:range rdfs:Class,
+        rdfs:Literal,
+        rdfs:Resource,
+        schema1:Attribute,
+        schema1:Attributes ;
+    rdfs:subPropertyOf rdfs:isDefinedBy .
+
+schema1:hasAttributeValue a rdf:Property ;
+    rdfs:comment "The property that relates an attribute to its value." ;
+    rdfs:range xsd:string .
+
+schema1:hasAuthor a rdf:DatatypeProperty,
+        rdf:Property ;
+    rdfs:label "hasAuthor"@en ;
+    rdfs:comment "Relates a document to its author."@en,
+        "Specifies the author of the model."@en ;
+    rdfs:domain schema1:DocumentDetails,
+        schema1:Model ;
+    rdfs:range xsd:string .
+
+schema1:hasBloodGroup a rdf:Property ;
+    rdfs:label "has blood group"@en ;
+    rdfs:comment "Relates an individual entity to its blood group."@en ;
+    rdfs:domain _:n5a440d5fe6e84776b8ffa3476068440ab2 ;
+    rdfs:range schema1:BloodGroup .
+
+schema1:hasBloodType a rdf:Property ;
+    rdfs:label "has blood type"@en ;
+    rdfs:comment "Relates an individual entity to its blood type."@en ;
+    rdfs:domain _:n5a440d5fe6e84776b8ffa3476068440ab1 ;
+    rdfs:range schema1:BloodType .
+
+schema1:hasBody a rdf:Property ;
+    rdfs:label "hasBody" ;
+    rdfs:comment "The property to indicate the body content of an email." ;
+    rdfs:domain schema1:Email ;
+    rdfs:range xsd:string .
+
+schema1:hasClaim a rdf:Property ;
+    rdfs:label "has claim" ;
+    rdfs:comment "Relates a claim to the claim approval process." ;
+    rdfs:domain schema1:ClaimApproval ;
+    rdfs:range schema1:Claim .
+
+schema1:hasClaimID a rdf:Property ;
+    rdfs:label "has Claim ID" ;
+    rdfs:comment "Relates a claim with its unique identifier" ;
+    rdfs:domain schema1:Claim ;
+    rdfs:range xsd:string .
+
+schema1:hasColor a rdf:Property ;
+    rdfs:label "hasColor" ;
+    rdfs:comment "Relates a gender to its color." ;
+    rdfs:domain schema1:Gender ;
+    rdfs:range schema1:Color .
+
+schema1:hasConstraints a rdf:Property ;
+    rdfs:label "hasConstraints"@en ;
+    rdfs:comment "Property used to specify the constraints of an attribute."@en ;
+    rdfs:domain schema1:Attribute ;
+    rdfs:range xsd:string .
+
+schema1:hasContactNumber a rdf:Property ;
+    rdfs:label "has contact number"@en ;
+    rdfs:comment "Relates an individual or organization to a contact number."@en ;
+    rdfs:domain schema1:Thing ;
+    rdfs:range schema1:ContactNumber .
+
+schema1:hasContraindication a rdf:Property ;
+    rdfs:label "hasContraindication" ;
+    rdfs:comment "A relationship that indicates the contraindications associated with a medical treatment or procedure." ;
+    rdfs:domain schema1:TreatmentOrProcedure ;
+    rdfs:range schema1:Contraindications .
+
+schema1:hasCoverageEndDate a rdf:Property ;
+    rdfs:label "has coverage end date" ;
+    rdfs:comment "Specifies the coverage end date of an entity." ;
+    rdfs:domain schema1:CoverageEndDate ;
+    rdfs:range xsd:date .
+
+schema1:hasCreationDate a rdf:DatatypeProperty,
+        rdf:Property ;
+    rdfs:label "has creation date",
+        "hasCreationDate"@en ;
+    rdfs:comment "Indicates the creation date of an entity",
+        "Relates a document to its creation date."@en,
+        "Specifies the creation date of the model."@en ;
+    rdfs:domain schema1:DocumentDetails,
+        schema1:Entity,
+        schema1:Model ;
+    rdfs:range xsd:date .
+
+schema1:hasCurrency a rdf:Property ;
+    rdfs:label "hasCurrency" ;
+    rdfs:comment "Relates an approved amount to its currency." ;
+    rdfs:domain schema1:ApprovedAmount ;
+    rdfs:range schema1:Currency .
+
+schema1:hasDOB a rdf:Property ;
+    rdfs:label "has Date of Birth" ;
+    rdfs:comment "Relates an entity to the Date of Birth property." ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range schema1:DOB .
+
+schema1:hasDataType a rdf:Property ;
+    rdfs:label "hasDataType"@en ;
+    rdfs:comment "Property used to specify the data type of an attribute."@en ;
+    rdfs:domain schema1:Attribute ;
+    rdfs:range xsd:anyURI .
+
+schema1:hasDateSubmitted a rdf:Property ;
+    rdfs:comment "The hasDateSubmitted property is used to specify the submission date for a given entity." ;
+    rdfs:domain schema1:DateSubmitted ;
+    rdfs:range xsd:date .
+
+schema1:hasDays a rdf:Property ;
+    rdfs:label "hasDays" ;
+    rdfs:comment "The duration in days of the specified entity." ;
+    rdfs:domain schema1:Duration ;
+    rdfs:range xsd:nonNegativeInteger .
+
+schema1:hasDefaultValue a rdf:Property ;
+    rdfs:label "hasDefaultValue"@en ;
+    rdfs:comment "Property used to specify the default value of an attribute."@en ;
+    rdfs:domain schema1:Attribute ;
+    rdfs:range xsd:string .
+
+schema1:hasDenialDate a rdf:Property ;
+    rdfs:label "has denial date"@en ;
+    rdfs:comment "Specifies the date of denial for a particular entity",
+        "Relates a claim denial to the date when the claim was denied."@en ;
+    rdfs:domain schema1:ClaimDenial,
+        schema1:DenialDate ;
+    rdfs:range xsd:date .
+
+schema1:hasDescription a rdf:DatatypeProperty,
+        rdf:Property ;
+    rdfs:label "has description",
+        "hasDescription",
+        "hasDescription"@en ;
+    rdfs:comment "A property indicating the description of a side effect.",
+        "A property representing the description of an attribute.",
+        "Property used to specify the description of an attribute."@en,
+        "Specifies the description of the model."@en ;
+    rdfs:domain schema1:Attribute,
+        schema1:Attributes,
+        schema1:Model,
+        schema1:SideEffect ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:hasDetails rdfs:label "has details" ;
+    rdfs:comment "Relates an entity to its additional details or description." ;
+    rdfs:domain schema1:entity ;
+    rdfs:range schema1:Details .
+
+schema1:hasDoctor a rdf:Property ;
+    rdfs:label "has doctor" ;
+    rdfs:comment "Relates a doctor to a patient record." ;
+    rdfs:domain schema1:PatientRecord ;
+    rdfs:range schema1:Doctor .
+
+schema1:hasDuration a rdf:Property ;
+    rdfs:comment "Specifies the duration for which the dosage is to be administered."@en ;
+    rdfs:domain schema1:Dosage ;
+    rdfs:range xsd:string .
+
+schema1:hasEffect a rdf:Property ;
+    rdfs:label "hasEffect" ;
+    rdfs:comment "Relates an allergy to its effect." ;
+    rdfs:domain schema1:Allergies ;
+    rdfs:range schema1:Effect .
+
+schema1:hasEmergencyContactNumber a rdf:Property ;
+    rdfs:label "has Emergency Contact Number" ;
+    rdfs:comment "Relates an individual to their emergency contact number." ;
+    rdfs:domain schema1:Person ;
+    rdfs:range schema1:EmergencyContactNumber .
+
+schema1:hasEndDate a rdf:Property ;
+    rdfs:label "hasEndDate",
+        "hasEndDate"@en ;
+    rdfs:comment "Relates an event or activity to its end date.",
+        "Indicates the end date of an event or task."@en ;
+    rdfs:domain schema1:Event ;
+    rdfs:range xsd:date,
+        schema1:EndDate .
+
+schema1:hasEntity a rdf:Property ;
+    rdfs:label "has entity" ;
+    rdfs:comment "Relates a coverage end date to the entity it belongs to." ;
+    rdfs:domain schema1:CoverageEndDate ;
+    rdfs:range rdfs:Resource .
+
+schema1:hasExampleValue a rdf:Property ;
+    rdfs:label "hasExampleValue"@en ;
+    rdfs:comment "Property used to specify an example value of an attribute."@en ;
+    rdfs:domain schema1:Attribute ;
+    rdfs:range xsd:string .
+
+schema1:hasFileSize a rdf:Property ;
+    rdfs:label "hasFileSize"@en ;
+    rdfs:comment "Relates a document to its file size in bytes."@en ;
+    rdfs:domain schema1:DocumentDetails ;
+    rdfs:range xsd:integer .
+
+schema1:hasFirstName a rdf:Property ;
+    rdfs:label "hasFirstName" ;
+    rdfs:comment "A property indicating the first name of a person.",
+        "Defines a property for specifying the first name of a person." ;
+    rdfs:domain schema1:Person ;
+    rdfs:range schema1:FirstName .
+
+schema1:hasFirstNameProperty a rdf:Property ;
+    rdfs:comment "Defines a property for specifying the first name of an entity." ;
+    rdfs:domain schema1:FirstName ;
+    rdfs:range xsd:string .
+
+schema1:hasFormat a rdf:Property ;
+    rdfs:label "hasFormat"@en ;
+    rdfs:comment "Relates a document to its file format."@en ;
+    rdfs:domain schema1:DocumentDetails ;
+    rdfs:range xsd:string .
+
+schema1:hasFrequency a rdf:Property ;
+    rdfs:comment "Specifies the frequency at which the dosage is to be administered."@en ;
+    rdfs:domain schema1:Dosage ;
+    rdfs:range xsd:string .
+
+schema1:hasGender a rdf:Property ;
+    rdfs:label "hasGender" ;
+    rdfs:comment "Relates a person to their gender." ;
+    rdfs:domain schema1:Person ;
+    rdfs:range schema1:Gender .
+
+schema1:hasHours a rdf:Property ;
+    rdfs:label "hasHours" ;
+    rdfs:comment "The duration in hours of the specified entity." ;
+    rdfs:domain schema1:Duration ;
+    rdfs:range xsd:nonNegativeInteger .
+
+schema1:hasID a rdf:Property ;
+    rdfs:label "hasID" ;
+    rdfs:comment "Relates an EquipmentID to its identifier value." ;
+    rdfs:domain schema1:EquipmentID ;
+    rdfs:range xsd:string .
+
+schema1:hasInsuranceID a rdf:Property ;
+    rdfs:label "hasInsuranceID" ;
+    rdfs:comment "Relates an entity to an InsuranceID." ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range schema1:InsuranceID .
+
+schema1:hasInterval a rdf:Property ;
+    rdfs:comment "Specifies the time interval between consecutive doses of the medication."@en ;
+    rdfs:domain schema1:Dosage ;
+    rdfs:range xsd:string .
+
+schema1:hasLanguage a rdf:Property ;
+    rdfs:label "hasLanguage"@en ;
+    rdfs:comment "Relates a document to its language."@en ;
+    rdfs:domain schema1:DocumentDetails ;
+    rdfs:range xsd:string .
+
+schema1:hasLastName a rdf:Property ;
+    rdfs:label "has Last Name" ;
+    rdfs:comment "Relates an individual to their last name." ;
+    rdfs:domain schema1:LastNameTriple ;
+    rdfs:range xsd:string .
+
+schema1:hasLicenseNumber a rdf:Property ;
+    rdfs:label "has License Number" ;
+    rdfs:comment "Relates an entity to its license number." .
+
+schema1:hasLocation a rdf:Property ;
+    rdfs:comment "Relates an instance of AnnualMaximums pattern to the location where the observation was made." ;
+    rdfs:domain schema1:AnnualMaximums ;
+    rdfs:range xsd:string .
+
+schema1:hasMaximumCoveredAmount a rdf:Property ;
+    rdfs:label "has Maximum Covered Amount",
+        "Has Maximum Covered Amount"@en ;
+    rdfs:comment "Relates an entity to its maximum covered amount.",
+        "Relates an insurance policy to its maximum covered amount."@en ;
+    rdfs:domain schema1:InsurancePolicy,
+        schema1:RemainingAmount ;
+    rdfs:range schema1:MaximumCoveredAmount .
+
+schema1:hasMaximumValue a rdf:Property ;
+    rdfs:comment "Relates an instance of AnnualMaximums pattern to its maximum value." ;
+    rdfs:domain schema1:AnnualMaximums ;
+    rdfs:range xsd:decimal .
+
+schema1:hasMildSeverity a rdf:Property ;
+    rdfs:label "has mild severity" ;
+    rdfs:comment "A property indicating that a side effect has mild severity." ;
+    rdfs:domain schema1:SideEffect ;
+    rdfs:range schema1:MildSeverity .
+
+schema1:hasMinutes a rdf:Property ;
+    rdfs:label "hasMinutes" ;
+    rdfs:comment "The duration in minutes of the specified entity." ;
+    rdfs:domain schema1:Duration ;
+    rdfs:range xsd:nonNegativeInteger .
+
+schema1:hasModerateSeverity a rdf:Property ;
+    rdfs:label "has moderate severity" ;
+    rdfs:comment "A property indicating that a side effect has moderate severity." ;
+    rdfs:domain schema1:SideEffect ;
+    rdfs:range schema1:ModerateSeverity .
+
+schema1:hasModificationDate a rdf:DatatypeProperty,
+        rdf:Property ;
+    rdfs:label "hasModificationDate"@en ;
+    rdfs:comment "Specifies the modification date of the model."@en ;
+    rdfs:domain schema1:Model ;
+    rdfs:range xsd:date .
+
+schema1:hasMonths a rdf:Property ;
+    rdfs:label "hasMonths" ;
+    rdfs:comment "The duration in months of the specified entity." ;
+    rdfs:domain schema1:Duration ;
+    rdfs:range xsd:nonNegativeInteger .
+
+schema1:hasName a rdf:DatatypeProperty,
+        rdf:Property ;
+    rdfs:label "hasName",
+        "hasName"@en ;
+    rdfs:comment "A property representing the name of an attribute.",
+        "Relates a person to their name.",
+        "Relates an EquipmentName to its name.",
+        "Represents the name of an attribute in a pattern.",
+        "Specifies the name of a symptom.",
+        "The property that specifies the name of a doctor.",
+        "The property used to specify the name of an allergen.",
+        "Property used to specify the name of an attribute."@en,
+        "Relates an attribute to its name."@en,
+        "Specifies the name of the model."@en ;
+    rdfs:domain schema1:Allergen,
+        schema1:Attribute,
+        schema1:Attributes,
+        schema1:Doctor,
+        schema1:EquipmentName,
+        schema1:Model,
+        schema1:Person,
+        schema1:Symptom ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:hasObject a rdf:Property ;
+    rdfs:label "hasObject" ;
+    rdfs:comment "A property indicating the object entity in a relationship.",
+        "Defines the object entity in a relationship.",
+        "Relates a Triple to its object."^^xsd:string,
+        "Relates a relationship to its object entity.",
+        "Relates a relationship to its object.",
+        "Relates a triple to its object entity." ;
+    rdfs:domain schema1:Relationships,
+        schema1:Triple,
+        schema1:triple ;
+    rdfs:range rdfs:Resource,
+        xsd:string,
+        schema1:Entity .
+
+schema1:hasOrganizationOrEvent a rdf:Property ;
+    rdfs:label "has Organization or Event" ;
+    rdfs:comment "Relates an individual to an organization or event." ;
+    rdfs:domain schema1:Person ;
+    rdfs:range schema1:OrganizationOrEvent .
+
+schema1:hasOutOfPocketCost a rdf:Property ;
+    rdfs:label "has out-of-pocket cost" ;
+    rdfs:comment "Relates a medical service or treatment to its associated out-of-pocket cost." ;
+    rdfs:domain schema1:OutOfPocketCost ;
+    rdfs:range xsd:float .
+
+schema1:hasOutcome a rdf:Property ;
+    rdfs:label "hasOutcome" ;
+    rdfs:comment "Relates a pattern to its associated outcome(s)" ;
+    rdfs:domain schema1:Pattern ;
+    rdfs:range schema1:Outcome .
+
+schema1:hasPatient a rdf:Property ;
+    rdfs:label "has patient",
+        "hasPatient" ;
+    rdfs:comment "Indicates the patient associated with a record.",
+        "Relates a patient to their medical record." ;
+    rdfs:domain schema1:PatientRecord ;
+    rdfs:range schema1:CreatedFor_Patient,
+        schema1:Patient .
+
+schema1:hasPatientID a rdf:Property ;
+    rdfs:label "hasPatientID" ;
+    rdfs:comment "Relates a entity with its unique patient identifier." ;
+    rdfs:domain schema1:UniqueIdentifier ;
+    rdfs:range schema1:PatientID .
+
+schema1:hasPatientRecord a rdf:Property ;
+    rdfs:label "has patient record",
+        "has patient record"@en ;
+    rdfs:comment "Relates an Allergic_Patient to their PatientRecord.",
+        "Relates an Allergic_Patient to their PatientRecord."@en ;
+    rdfs:domain schema1:Allergic_Patient ;
+    rdfs:range schema1:PatientRecord ;
+    rdfs:subPropertyOf schema1:hasPart .
+
+schema1:hasPattern a rdf:Property ;
+    rdfs:label "hasPattern"@en ;
+    rdfs:comment "Relates an entity with a validation pattern."@en ;
+    rdfs:domain schema1:LastName ;
+    rdfs:range schema1:LastNamePattern .
+
+schema1:hasPaymentMethod a rdf:Property ;
+    rdfs:label "has payment method" ;
+    rdfs:domain schema1:Payment ;
+    rdfs:range schema1:PaymentMethod .
+
+schema1:hasPerson a rdf:Property ;
+    rdfs:label "has Person" ;
+    rdfs:comment "Relates an organization or event to a person." ;
+    rdfs:domain schema1:OrganizationOrEvent ;
+    rdfs:range schema1:Person .
+
+schema1:hasPhoneNumber a rdf:Property ;
+    rdfs:label "has phone number" ;
+    rdfs:comment "Relates an entity to its contact number." ;
+    rdfs:domain schema1:ContactNumber ;
+    rdfs:range xsd:string .
+
+schema1:hasPlanName a rdf:Property ;
+    rdfs:label "hasPlanName" ;
+    rdfs:comment "Relates a plan to its name" ;
+    rdfs:domain schema1:Plan ;
+    rdfs:range xsd:string .
+
+schema1:hasPolicyNumber a rdf:Property ;
+    rdfs:label "has policy number"@en ;
+    rdfs:comment "Relates a claim denial to the policy number of the insurance policy."@en ;
+    rdfs:domain schema1:ClaimDenial ;
+    rdfs:range xsd:string .
+
+schema1:hasPredicate a rdf:Property ;
+    rdfs:label "hasPredicate" ;
+    rdfs:comment "A property indicating the predicate entity in a relationship.",
+        "Relates a Triple to its predicate."^^xsd:string,
+        "Relates a relationship to its predicate.",
+        "Relates a triple to its predicate entity." ;
+    rdfs:domain schema1:Relationships,
+        schema1:Triple,
+        schema1:triple ;
+    rdfs:range rdf:Property,
+        rdfs:Resource,
+        xsd:string .
+
+schema1:hasReason a rdf:Property ;
+    rdfs:label "hasReason",
+        "hasReason"@en ;
+    rdfs:comment "Relates a denial reason to the reason itself.",
+        "The property to indicate the reason for rejection."@en ;
+    rdfs:domain schema1:DenialReason,
+        schema1:RejectionReason ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:hasReasonForVisit a rdf:Property ;
+    rdfs:label "has reason for visit" ;
+    rdfs:comment "Indicates the reason for visiting a location or seeking a service." ;
+    rdfs:domain schema1:Location ;
+    rdfs:range schema1:ReasonForVisit .
+
+schema1:hasRecord a rdf:Property ;
+    rdfs:label "hasRecord" ;
+    rdfs:comment "Relates an entity to its record." ;
+    rdfs:domain schema1:RecordKeeping ;
+    rdfs:range schema1:Record .
+
+schema1:hasRecordCreationDate a rdf:Property ;
+    rdfs:comment "Relates a record to its creation date." ;
+    rdfs:domain schema1:Record ;
+    rdfs:range xsd:date .
+
+schema1:hasRejectionReason a rdf:Property ;
+    rdfs:label "has rejection reason"@en ;
+    rdfs:comment "Relates a claim denial to the specific reason for the denial."@en ;
+    rdfs:domain schema1:ClaimDenial ;
+    rdfs:range xsd:string .
+
+schema1:hasRelation a rdf:Property ;
+    rdfs:comment "Defines the type of relationship between the subject and object entities." ;
+    rdfs:domain schema1:Relationships ;
+    rdfs:range rdfs:Resource .
+
+schema1:hasRelationship a rdf:Property ;
+    rdfs:label "hasRelationship"@en ;
+    rdfs:comment "A property that indicates the presence of a relationship between two entities."@en ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range schema1:Entity ;
+    rdfs:subPropertyOf schema1:isRelatedTo .
+
+schema1:hasRemainingAmount a rdf:Property ;
+    rdfs:label "has Remaining Amount" ;
+    rdfs:comment "Relates an entity to its remaining amount." ;
+    rdfs:domain schema1:MaximumCoveredAmount ;
+    rdfs:range schema1:RemainingAmount .
+
+schema1:hasReviewNotes a rdf:Property ;
+    rdfs:label "has review notes" ;
+    rdfs:comment "Relates a review to its additional notes or details." ;
+    rdfs:domain schema1:Review ;
+    rdfs:range schema1:ReviewNotes .
+
+schema1:hasSeconds a rdf:Property ;
+    rdfs:label "hasSeconds" ;
+    rdfs:comment "The duration in seconds of the specified entity." ;
+    rdfs:domain schema1:Duration ;
+    rdfs:range xsd:nonNegativeInteger .
+
+schema1:hasSevereSeverity a rdf:Property ;
+    rdfs:label "has severe severity" ;
+    rdfs:comment "A property indicating that a side effect has severe severity." ;
+    rdfs:domain schema1:SideEffect ;
+    rdfs:range schema1:SevereSeverity .
+
+schema1:hasSeverity a rdf:Property ;
+    rdfs:label "has severity",
+        "hasSeverity" ;
+    rdfs:comment "A property indicating the severity of a side effect.",
+        "Relates an event or condition to its severity.",
+        "Specifies the severity of a symptom." ;
+    rdfs:domain schema1:EventOrCondition,
+        schema1:SideEffect,
+        schema1:Symptom ;
+    rdfs:range xsd:string,
+        schema1:Severity .
+
+schema1:hasSideEffect a rdf:Property ;
+    rdfs:label "has side effect" ;
+    rdfs:comment "A property indicating that a medication or treatment has a specific side effect." ;
+    rdfs:domain schema1:SideEffects ;
+    rdfs:range schema1:SideEffect .
+
+schema1:hasSpecialty a rdf:Property ;
+    rdfs:label "hasSpecialty" ;
+    rdfs:comment "The property that specifies the specialty or field of expertise of a doctor, such as cardiology or pediatrics." ;
+    rdfs:domain schema1:Doctor ;
+    rdfs:range xsd:string .
+
+schema1:hasStartDate a rdf:Property ;
+    rdfs:label "hasStartDate" ;
+    rdfs:comment "Relates an event or activity to its start date." ;
+    rdfs:domain schema1:EventOrActivity ;
+    rdfs:range schema1:StartDate .
+
+schema1:hasStatus a rdf:Property ;
+    rdfs:label "has status" ;
+    rdfs:comment "Relates a claim to its status." ;
+    rdfs:domain schema1:Claim ;
+    rdfs:range schema1:ClaimStatus .
+
+schema1:hasSubject a rdf:Property ;
+    rdfs:label "hasSubject" ;
+    rdfs:comment "A property indicating the subject entity in a relationship.",
+        "Defines the subject entity in a relationship.",
+        "Relates a Triple to its subject."^^xsd:string,
+        "Relates a relationship to its subject entity.",
+        "Relates a relationship to its subject.",
+        "Relates a triple to its subject entity.",
+        "The property to indicate the subject of an email." ;
+    rdfs:domain schema1:Email,
+        schema1:Relationships,
+        schema1:Triple,
+        schema1:triple ;
+    rdfs:range rdfs:Resource,
+        xsd:string,
+        schema1:Entity .
+
+schema1:hasSymptom a rdf:Property ;
+    rdfs:label "hasSymptom" ;
+    rdfs:comment "Specifies the symptoms associated with an allergy." ;
+    rdfs:domain schema1:Allergy ;
+    rdfs:range schema1:Symptom .
+
+schema1:hasTitle a rdf:Property ;
+    rdfs:label "hasTitle"@en ;
+    rdfs:comment "Relates a document to its title."@en ;
+    rdfs:domain schema1:DocumentDetails ;
+    rdfs:range xsd:string .
+
+schema1:hasTotalClaimedAmount a rdf:Property ;
+    rdfs:label "has Total Claimed Amount" ;
+    rdfs:comment "Relates an entity to its total claimed amount." ;
+    rdfs:domain schema1:RemainingAmount ;
+    rdfs:range schema1:TotalClaimedAmount .
+
+schema1:hasTriple a rdf:Property ;
+    rdfs:comment "Relates a Frequency to its triples in turtle format."^^xsd:string ;
+    rdfs:domain schema1:Frequency ;
+    rdfs:range rdf:List .
+
+schema1:hasType a rdf:Property ;
+    rdfs:label "hasType",
+        "hasType"@en ;
+    rdfs:comment "A property representing the data type of an attribute.",
+        "Relates a relationship to its type.",
+        "Represents the type of an attribute in a pattern.",
+        "Specifies the type of relationship.",
+        "Relates an attribute to its type."@en ;
+    rdfs:domain schema1:Attributes,
+        schema1:Relationships ;
+    rdfs:range rdfs:Literal,
+        xsd:anyURI,
+        xsd:string .
+
+schema1:hasUnit a rdf:Property ;
+    rdfs:comment "Relates a Frequency to its unit of measure."^^xsd:string,
+        "Specifies the unit of measurement for the dosage amount."@en ;
+    rdfs:domain schema1:Dosage,
+        schema1:Frequency ;
+    rdfs:range xsd:string .
+
+schema1:hasValue a rdf:Property ;
+    rdfs:label "hasValue" ;
+    rdfs:comment "Relates a Frequency to its numeric value."^^xsd:string,
+        "Specifies the value of a duration." ;
+    rdfs:domain schema1:Duration,
+        schema1:Frequency ;
+    rdfs:range xsd:duration,
+        xsd:float .
+
+schema1:hasVersion a rdf:DatatypeProperty,
+        rdf:Property ;
+    rdfs:label "hasVersion"@en ;
+    rdfs:comment "Specifies the version of the model."@en ;
+    rdfs:domain schema1:Model ;
+    rdfs:range xsd:string .
+
+schema1:hasYear a rdf:Property ;
+    rdfs:comment "Relates an instance of AnnualMaximums pattern to its year of observation." ;
+    rdfs:domain schema1:AnnualMaximums ;
+    rdfs:range xsd:gYear .
+
+schema1:hasYears a rdf:Property ;
+    rdfs:label "hasYears" ;
+    rdfs:comment "The duration in years of the specified entity." ;
+    rdfs:domain schema1:Duration ;
+    rdfs:range xsd:nonNegativeInteger .
+
+schema1:hours a rdf:Property ;
+    rdfs:label "hours" ;
+    rdfs:comment "The number of hours in a time instance." ;
+    rdfs:domain schema1:Time ;
+    rdfs:range xsd:integer .
+
+schema1:inDays a rdf:Property ;
+    rdfs:label "inDays" ;
+    rdfs:comment "Specifies the duration in days." ;
+    rdfs:domain schema1:Duration ;
+    rdfs:range xsd:decimal .
+
+schema1:inHours a rdf:Property ;
+    rdfs:label "inHours" ;
+    rdfs:comment "Specifies the duration in hours." ;
+    rdfs:domain schema1:Duration ;
+    rdfs:range xsd:float .
+
+schema1:inMinutes a rdf:Property ;
+    rdfs:label "inMinutes" ;
+    rdfs:comment "Specifies the duration in minutes." ;
+    rdfs:domain schema1:Duration ;
+    rdfs:range xsd:int .
+
+schema1:inWeeks a rdf:Property ;
+    rdfs:label "inWeeks" ;
+    rdfs:comment "Specifies the duration in weeks." ;
+    rdfs:domain schema1:Duration ;
+    rdfs:range xsd:integer .
+
+schema1:insuranceType a rdf:Property ;
+    rdfs:label "insuranceType" ;
+    rdfs:comment "The type of insurance coverage provided by the policy." ;
+    rdfs:domain schema1:Insurance ;
+    rdfs:range xsd:string .
+
+schema1:intramuscular a schema1:RouteOfAdministration ;
+    rdfs:label "Intramuscular"@en ;
+    rdfs:comment "The drug is injected into a muscle using a needle."@en .
+
+schema1:intravenous a schema1:RouteOfAdministration ;
+    rdfs:label "Intravenous"@en ;
+    rdfs:comment "The drug is directly administered into a vein, typically through an IV."@en .
+
+schema1:isAssociatedWith a rdf:Property ;
+    rdfs:label "isAssociatedWith" ;
+    rdfs:comment "Indicates the record associated with a patient." ;
+    rdfs:domain schema1:CreatedFor_Patient ;
+    rdfs:range schema1:PatientRecord .
+
+schema1:isBusinessPhone a rdf:Property ;
+    rdfs:label "is business phone" ;
+    rdfs:comment "Indicates whether the contact number is for business purposes." ;
+    rdfs:domain schema1:ContactNumber ;
+    rdfs:range xsd:boolean .
+
+schema1:isFaxNumber a rdf:Property ;
+    rdfs:label "is fax number" ;
+    rdfs:comment "Indicates whether the contact number is a fax number." ;
+    rdfs:domain schema1:ContactNumber ;
+    rdfs:range xsd:boolean .
+
+schema1:isMobilePhone a rdf:Property ;
+    rdfs:label "is mobile phone" ;
+    rdfs:comment "Indicates whether the contact number is a mobile phone number." ;
+    rdfs:domain schema1:ContactNumber ;
+    rdfs:range xsd:boolean .
+
+schema1:isSentFrom a rdf:Property ;
+    rdfs:label "isSentFrom" ;
+    rdfs:comment "The property to indicate the sender of an email." ;
+    rdfs:domain schema1:Email ;
+    rdfs:range xsd:string .
+
+schema1:isSentTo a rdf:Property ;
+    rdfs:label "isSentTo" ;
+    rdfs:comment "The property to indicate the recipient of an email." ;
+    rdfs:domain schema1:Email ;
+    rdfs:range xsd:string .
+
+schema1:john a schema1:Person ;
+    schema1:hasFirstName schema1:johnFirstName .
+
+schema1:label a rdf:Property ;
+    rdfs:label "label"@en ;
+    rdfs:comment "The human-readable label or name of a resource."@en ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:location a rdf:Property ;
+    rdfs:label "location" ;
+    rdfs:comment "The location of an appointment." ;
+    rdfs:domain schema1:Appointments ;
+    rdfs:range xsd:string .
+
+schema1:losses a rdf:Property ;
+    rdfs:label "losses" ;
+    rdfs:comment "The amount of monetary losses covered by the insurance claim." ;
+    rdfs:domain schema1:InsuranceClaim ;
+    rdfs:range schema1:MonetaryAmount .
+
+schema1:madeBy a rdf:Property ;
+    rdfs:label "madeBy" ;
+    rdfs:comment "Relates an instance of MadeBy_Patient to an instance of PatientRecord." ;
+    rdfs:domain schema1:MadeBy_Patient ;
+    rdfs:range schema1:PatientRecord .
+
+schema1:mandatory a rdf:Property ;
+    rdfs:label "mandatory" ;
+    rdfs:comment "A property indicating whether an attribute is mandatory or optional." ;
+    rdfs:domain schema1:Attributes ;
+    rdfs:range xsd:boolean .
+
+schema1:mary a schema1:Person ;
+    schema1:hasFirstName schema1:maryFirstName .
+
+schema1:medicationName a rdf:Property ;
+    rdfs:label "medicationName" ;
+    rdfs:comment "The name of the medication." ;
+    rdfs:domain schema1:Medication ;
+    rdfs:range xsd:string .
+
+schema1:minutes a rdf:Property ;
+    rdfs:label "minutes" ;
+    rdfs:comment "The number of minutes in a time instance." ;
+    rdfs:domain schema1:Time ;
+    rdfs:range xsd:integer .
+
+schema1:month a rdf:Property ;
+    rdfs:label "month" ;
+    rdfs:comment "The month of the review date.",
+        "The month value of a Date." ;
+    rdfs:domain schema1:Date,
+        schema1:ReviewDate ;
+    rdfs:range xsd:gMonth,
+        xsd:nonNegativeInteger .
+
+schema1:name a rdf:Property ;
+    rdfs:label "name" ;
+    rdfs:comment "A property representing the name of an attribute." ;
+    rdfs:domain schema1:Attributes ;
+    rdfs:range xsd:string .
+
+schema1:namespaceDefinitionHeader a schema1:triple ;
+    rdfs:label "namespaceDefinitionHeader" ;
+    rdfs:comment "A class representing the definition header for namespaces." .
+
+schema1:nasal a schema1:RouteOfAdministration ;
+    rdfs:label "Nasal"@en ;
+    rdfs:comment "The drug is administered through the nose, commonly in the form of a nasal spray or drops."@en .
+
+schema1:object a rdf:Property ;
+    rdfs:label "object" ;
+    rdfs:comment "A property representing the object of a relationship.",
+        "A property that specifies the object of a relationship.",
+        "Relates a relationship to its object entity.",
+        "Represents the object entity in a relationship.",
+        "Represents the object entity in the relationship.",
+        "Represents the object entity involved in a relationship." ;
+    rdfs:domain schema1:Relationships ;
+    rdfs:range rdfs:Resource,
+        schema1:Entity .
+
+schema1:oral a schema1:RouteOfAdministration ;
+    rdfs:label "Oral"@en ;
+    rdfs:comment "The drug is taken by mouth, usually in the form of a pill, tablet, capsule, or liquid."@en .
+
+schema1:overturned a schema1:AppealOutcome ;
+    rdfs:label "Overturned" ;
+    rdfs:comment "The initial decision was overturned." .
+
+schema1:participant a rdf:Property ;
+    rdfs:label "participant" ;
+    rdfs:comment "A participant involved in an appointment." ;
+    rdfs:domain schema1:Appointments ;
+    rdfs:range xsd:string .
+
+schema1:payment1 a schema1:PaidTo_Provider ;
+    rdfs:comment "Payment made to a healthcare provider." ;
+    schema1:receivesPayment schema1:JohnDoe .
+
+schema1:payment2 a schema1:PaidTo_Provider ;
+    rdfs:comment "Payment made to a healthcare provider." ;
+    schema1:receivesPayment schema1:CityClinic .
+
+schema1:paymentDate a rdf:Property ;
+    rdfs:label "payment date" ;
+    rdfs:comment "Relates a payment to the date it was made." ;
+    rdfs:domain schema1:DatePaid ;
+    rdfs:range xsd:date .
+
+schema1:paymentMethod a rdf:Property ;
+    rdfs:label "payment method" ;
+    rdfs:domain schema1:Payment ;
+    rdfs:range schema1:PaymentMethod .
+
+schema1:paymentRecipient a rdf:Property ;
+    rdfs:label "Payment Recipient" ;
+    rdfs:comment "The person who received the payment." ;
+    rdfs:domain schema1:PaymentDate ;
+    rdfs:range schema1:Person .
+
+schema1:policyHolder a rdf:Property ;
+    rdfs:label "policyHolder" ;
+    rdfs:comment "The individual or entity that holds the insurance policy." ;
+    rdfs:domain schema1:Insurance ;
+    rdfs:range rdfs:Resource .
+
+schema1:policyNumber a rdf:Property ;
+    rdfs:label "policyNumber" ;
+    rdfs:comment "The unique identifier for a specific insurance policy." ;
+    rdfs:domain schema1:Insurance ;
+    rdfs:range xsd:string .
+
+schema1:predicate a rdf:Property ;
+    rdfs:label "predicate" ;
+    rdfs:comment "A property representing the predicate of a relationship.",
+        "A property that specifies the predicate of a relationship.",
+        "Relates a relationship to its predicate entity.",
+        "Represents the predicate entity in a relationship.",
+        "Represents the relationship between the subject and object entities." ;
+    rdfs:domain schema1:Relationships ;
+    rdfs:range rdfs:Resource,
+        schema1:Entity .
+
+schema1:prescribedBy a rdf:Property ;
+    rdfs:label "prescribed by" ;
+    rdfs:comment "Indicates that a medication has been prescribed by a doctor." ;
+    rdfs:domain schema1:Medication ;
+    rdfs:range schema1:Doctor .
+
+schema1:prescribes a rdf:Property ;
+    rdfs:label "prescribes" ;
+    rdfs:comment "Relates a Prescribes_Medication instance to the Medication it prescribes." ;
+    rdfs:domain schema1:Prescribes_Medication ;
+    rdfs:range schema1:Medication .
+
+schema1:prescriptionOnly a rdf:Property ;
+    rdfs:label "prescriptionOnly" ;
+    rdfs:comment "Indicates whether the medication requires a prescription." ;
+    rdfs:domain schema1:Medication ;
+    rdfs:range xsd:boolean .
+
+schema1:ratedClaim a rdf:Property ;
+    rdfs:label "rated claim" ;
+    rdfs:comment "The claim that is being rated and reviewed." ;
+    rdfs:domain schema1:ClaimReview ;
+    rdfs:range rdfs:Literal .
+
+schema1:ratingValue a rdf:Property ;
+    rdfs:label "rating value" ;
+    rdfs:comment "The rating or evaluation value given to the claim." ;
+    rdfs:domain schema1:ClaimReview ;
+    rdfs:range xsd:float .
+
+schema1:rdf a schema1:namespace ;
+    rdfs:label "rdf" ;
+    rdfs:comment "The RDF namespace." .
+
+schema1:rdfs a schema1:namespace ;
+    rdfs:label "rdfs" ;
+    rdfs:comment "The RDF Schema namespace." .
+
+schema1:receivesPayment a rdf:Property ;
+    rdfs:label "receivesPayment" ;
+    rdfs:comment "The receivesPayment property represents the act of a PaidTo_Provider entity receiving a payment." ;
+    rdfs:domain schema1:PaidTo_Provider ;
+    rdfs:range [ a rdf:Union ;
+            rdf:member schema1:ClinicHospital,
+                schema1:Doctor ] .
+
+schema1:recordContent a rdf:Property ;
+    rdfs:label "recordContent" ;
+    rdfs:comment "The content of a record entry." ;
+    rdfs:domain schema1:Record ;
+    rdfs:range xsd:string .
+
+schema1:recordDate a rdf:Property ;
+    rdfs:label "recordDate" ;
+    rdfs:comment "The date of a record entry." ;
+    rdfs:domain schema1:Record ;
+    rdfs:range xsd:date .
+
+schema1:recordId a rdf:Property ;
+    rdfs:label "recordId" ;
+    rdfs:comment "An identifier for a record." ;
+    rdfs:domain schema1:Record ;
+    rdfs:range xsd:integer .
+
+schema1:refersTo a rdf:Property ;
+    rdfs:label "refersTo" ;
+    rdfs:comment "Relates a claim to the medical equipment it refers to.",
+        "The property that relates a pattern to a treatment." ;
+    rdfs:domain schema1:Refers_To_MedicalEquipment,
+        schema1:Refers_To_Treatment ;
+    rdfs:range schema1:MedicalEquipment,
+        schema1:Treatment .
+
+schema1:refersToClaim a rdf:Property ;
+    rdfs:label "Refers To Claim",
+        "refersToClaim" ;
+    rdfs:comment "A property indicating the relationship between a concept and an insurance claim.",
+        "Indicates that an entity refers to an Insurance Claim." ;
+    rdfs:domain schema1:Entity,
+        schema1:Refers_To_Claim ;
+    rdfs:range schema1:Claim,
+        schema1:InsuranceClaim .
+
+schema1:relationship a rdf:Property ;
+    rdfs:label "relationship" ;
+    rdfs:comment "A property representing a relationship between two entities." ;
+    rdfs:domain schema1:Relationships ;
+    rdfs:range schema1:Entity .
+
+schema1:reviewBody a rdf:Property ;
+    rdfs:label "review body" ;
+    rdfs:comment "The main body of the review, containing the detailed evaluation." ;
+    rdfs:domain schema1:Review ;
+    rdfs:range rdfs:Literal .
+
+schema1:reviewDate a rdf:Property ;
+    rdfs:label "review date" ;
+    rdfs:comment "The date when the claim review was performed." ;
+    rdfs:domain schema1:ClaimReview ;
+    rdfs:range xsd:date .
+
+schema1:reviewedBy a rdf:Property ;
+    rdfs:label "reviewedBy" ;
+    rdfs:comment "Relates a claim to the reviewer who reviewed it." ;
+    rdfs:domain schema1:Claim ;
+    rdfs:range schema1:Reviewer .
+
+schema1:reviewer a rdf:Property ;
+    rdfs:label "reviewer" ;
+    rdfs:comment "The person or organization performing the claim review." ;
+    rdfs:domain schema1:ClaimReview ;
+    rdfs:range rdfs:Literal .
+
+schema1:schemaForge.net a schema1:Entity ;
+    rdfs:label "schemaForge.net" ;
+    rdfs:comment "A namespace used for defining schema elements." .
+
+schema1:seconds a rdf:Property ;
+    rdfs:label "seconds" ;
+    rdfs:comment "The number of seconds in a time instance." ;
+    rdfs:domain schema1:Time ;
+    rdfs:range xsd:integer .
+
+schema1:sideEffects a rdf:Property ;
+    rdfs:label "side effects" ;
+    rdfs:domain schema1:TreatmentDescription ;
+    rdfs:range rdfs:Literal .
+
+schema1:source a rdf:Property ;
+    rdfs:label "source" ;
+    rdfs:comment "The source of an amount." ;
+    rdfs:domain schema1:Amount ;
+    rdfs:range xsd:string .
+
+schema1:startDate a rdf:Property ;
+    rdfs:label "startDate" ;
+    rdfs:comment "The date when the insurance policy coverage begins." ;
+    rdfs:domain schema1:Insurance ;
+    rdfs:range xsd:date .
+
+schema1:startDateProperty a rdf:Property ;
+    rdfs:label "Start Date Property" ;
+    rdfs:comment "A property indicating the start date of an event or activity." ;
+    rdfs:domain schema1:StartDate ;
+    rdfs:range xsd:date .
+
+schema1:startTime a rdf:Property ;
+    rdfs:label "startTime" ;
+    rdfs:comment "The start time of an appointment." ;
+    rdfs:domain schema1:Appointments ;
+    rdfs:range xsd:dateTime .
+
+schema1:subClassOf a rdf:Property ;
+    rdfs:label "subClassOf"@en ;
+    rdfs:comment "A property that denotes a subclass relationship between two classes."@en ;
+    rdfs:range rdfs:Class .
+
+schema1:subject a rdf:Property ;
+    rdfs:label "Email subject",
+        "subject" ;
+    rdfs:comment "A property representing the subject of a relationship.",
+        "A property that specifies the subject of a relationship.",
+        "Relates a relationship to its subject entity.",
+        "Represents the subject entity in a relationship.",
+        "Represents the subject entity in the relationship.",
+        "Represents the subject entity involved in a relationship.",
+        "The subject of the email message." ;
+    rdfs:domain schema1:Email,
+        schema1:Relationships ;
+    rdfs:range rdfs:Resource,
+        xsd:string,
+        schema1:Entity .
+
+schema1:to a rdf:Property ;
+    rdfs:label "Email recipient" ;
+    rdfs:comment "The recipient of the email message." ;
+    rdfs:domain schema1:Email ;
+    rdfs:range xsd:string .
+
+schema1:totalCostWithoutInsurance a rdf:Property ;
+    rdfs:label "totalCostWithoutInsurance" ;
+    rdfs:comment "The total cost of a purchase without insurance included." ;
+    rdfs:domain schema1:TotalAmount ;
+    rdfs:range xsd:decimal .
+
+schema1:treatment a rdf:Property ;
+    rdfs:label "treatment" ;
+    rdfs:domain schema1:TreatmentDescription ;
+    rdfs:range rdfs:Literal .
+
+schema1:treatmentOrProcedure a rdf:Class ;
+    rdfs:label "TreatmentOrProcedure" ;
+    rdfs:comment "A medical treatment or procedure." .
+
+schema1:tripleStatement a schema1:triple ;
+    rdfs:label "tripleStatement" ;
+    rdfs:comment "A class representing a triple statement in RDF." .
+
+schema1:triples a rdfs:Property ;
+    rdfs:label "triples" ;
+    rdfs:comment "The triples representing the pattern attributes in turtle syntax." ;
+    rdfs:domain schema1:Attributes ;
+    rdfs:range schema1:turtleFormat .
+
+schema1:truthRatingSystemUsed a rdf:Property ;
+    rdfs:label "truth rating system used" ;
+    rdfs:comment "The truth rating system used to evaluate the claim." ;
+    rdfs:domain schema1:ClaimReview ;
+    rdfs:range schema1:TruthRatingSystem .
+
+schema1:underwriter a rdf:Property ;
+    rdfs:label "underwriter" ;
+    rdfs:comment "The individual or entity responsible for assessing and accepting risks on behalf of an insurance company." ;
+    rdfs:domain schema1:InsuranceCompany ;
+    rdfs:range rdfs:Resource .
+
+schema1:uniqueIdentifier a rdf:Property,
+        rdfs:Property ;
+    rdfs:label "unique identifier",
+        "uniqueIdentifier" ;
+    rdfs:comment "A property used to represent a unique identifier for an entity",
+        "An alphanumeric string that serves as a unique identifier for a doctor.",
+        "Represents the unique identifier for a treatment.",
+        "The unique identifier for an entity." ;
+    rdfs:domain schema1:AllergyID,
+        schema1:DoctorID,
+        schema1:MedicationID,
+        schema1:TreatmentID ;
+    rdfs:range xsd:string .
+
+schema1:upheld a schema1:AppealOutcome ;
+    rdfs:label "Upheld" ;
+    rdfs:comment "The appeal was upheld." .
+
+schema1:usage1 a schema1:Usage ;
+    rdfs:label "Usage 1" ;
+    rdfs:comment "The first usage of the pattern." ;
+    schema1:description "This is usage 1." ;
+    schema1:usageExample "Example of usage 1." .
+
+schema1:usage2 a schema1:Usage ;
+    rdfs:label "Usage 2" ;
+    rdfs:comment "The second usage of the pattern." ;
+    schema1:description "This is usage 2." ;
+    schema1:usageExample "Example of usage 2." .
+
+schema1:usageExample a rdf:Property ;
+    rdfs:label "usageExample" ;
+    rdfs:comment "An example of the usage." ;
+    rdfs:domain schema1:Usage ;
+    rdfs:range xsd:string .
+
+schema1:usedFor a rdf:Property ;
+    rdfs:label "usedFor" ;
+    rdfs:comment "The property indicating the treatment for which a medication is used." ;
+    rdfs:domain schema1:UsedFor_Treatment ;
+    rdfs:range schema1:Treatment .
+
+schema1:usesOWL a rdfs:Property ;
+    rdfs:label "usesOWL"@en ;
+    rdfs:comment "Indicates whether the schema uses OWL."@en ;
+    rdfs:domain schema1:Attributes ;
+    rdfs:range xsd:boolean .
+
+schema1:usesRDFS a rdfs:Property ;
+    rdfs:label "Uses RDFS" ;
+    rdfs:comment "Specifies whether the schema uses the RDFS vocabulary." ;
+    rdfs:domain schema1:InsuranceProvider ;
+    rdfs:range xsd:boolean .
+
+schema1:validatesWith a rdf:Property ;
+    rdfs:label "validatesWith"@en ;
+    rdfs:comment "Relates a validation process with a pattern."@en ;
+    rdfs:domain schema1:PatternValidation ;
+    rdfs:range schema1:LastNamePattern .
+
+schema1:value a rdf:Property ;
+    rdfs:label "value" ;
+    rdfs:comment "The numerical value of an amount." ;
+    rdfs:domain schema1:Amount ;
+    rdfs:range xsd:float .
+
+schema1:worksIn a rdf:Property ;
+    rdfs:label "worksIn" ;
+    rdfs:comment "The property that specifies the place where a doctor works, such as a hospital or clinic." ;
+    rdfs:domain schema1:Doctor ;
+    rdfs:range xsd:string .
+
+schema1:xsd a schema1:namespace ;
+    rdfs:label "xsd" ;
+    rdfs:comment "The XML Schema namespace." .
+
+schema1:year a rdf:Property ;
+    rdfs:label "year" ;
+    rdfs:comment "The year of the review date in Gregorian calendar.",
+        "The year value of a Date.",
+        "The year value of a Year instance." ;
+    rdfs:domain schema1:Date,
+        schema1:ReviewDate,
+        schema1:Year ;
+    rdfs:range xsd:gYear .
+
+schema1:yearElement a rdf:Property ;
+    rdfs:label "yearElement" ;
+    rdfs:comment "An element in the YearTriple representation of a year." ;
+    rdfs:domain schema1:yearTriple ;
+    rdfs:range schema1:yearTripleItem .
+
+schema1:yearOrder a rdf:Property ;
+    rdfs:label "yearOrder" ;
+    rdfs:comment "The order of a year item in the triple format representation." ;
+    rdfs:domain schema1:yearTripleItem ;
+    rdfs:range xsd:integer .
+
+schema1:yearValue a rdf:Property ;
+    rdfs:label "yearValue" ;
+    rdfs:comment "The value of a year item in the triple format representation." ;
+    rdfs:domain schema1:yearTripleItem ;
+    rdfs:range xsd:integer .
+
+schema1:Allergen a rdf:Class ;
+    rdfs:label "Allergen" ;
+    rdfs:comment "AllergenName is a superclass of Allergen.",
+        "The class representing an allergen." ;
+    rdfs:subClassOf schema1:AllergenName .
+
+schema1:AllergenName a rdf:Class ;
+    rdfs:label "AllergenName" ;
+    rdfs:comment "The class representing the name of an allergen." .
+
+schema1:CityClinic a schema1:ClinicHospital ;
+    rdfs:label "City Clinic" ;
+    rdfs:comment "City Clinic is a fictional healthcare facility providing medical treatment." .
+
+schema1:Details rdfs:label "Details/Description" ;
+    rdfs:comment "A pattern for providing additional details or description of an entity." .
+
+schema1:JohnDoe a schema1:Doctor ;
+    rdfs:label "John Doe" ;
+    rdfs:comment "John Doe is a fictional doctor who practices medicine." .
+
+schema1:LastNameTriple a rdf:Class ;
+    rdfs:label "Last Name Triple" ;
+    rdfs:comment "A triple representing the last name of a person." ;
+    rdfs:subClassOf rdf:Statement .
+
+schema1:MildSeverity a schema1:Severity ;
+    rdfs:label "Mild Severity" ;
+    rdfs:comment "A class representing mild severity of a side effect." .
+
+schema1:ModerateSeverity a schema1:Severity ;
+    rdfs:label "Moderate Severity" ;
+    rdfs:comment "A class representing moderate severity of a side effect." .
+
+schema1:SevereSeverity a schema1:Severity ;
+    rdfs:label "Severe Severity" ;
+    rdfs:comment "A class representing severe severity of a side effect." .
+
+schema1:StartDate1 a schema1:StartDate ;
+    rdfs:label "0101-01-01"^^xsd:date ;
+    rdfs:comment "The start date of Event1." .
+
+schema1:Text a rdfs:Datatype ;
+    rdfs:label "Text" ;
+    rdfs:comment "A datatype representing a text value." ;
+    rdfs:subClassOf xsd:string .
+
+schema1:entity rdfs:label "Entity" ;
+    rdfs:comment "Represents an entity that needs additional details or description." .
+
+schema1:isRelatedTo a rdf:Property ;
+    rdfs:label "isRelatedTo"@en ;
+    rdfs:comment "A property that indicates a relationship between two entities."@en ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range schema1:Entity .
+
+schema1:johnFirstName a schema1:FirstName ;
+    schema1:hasFirstNameProperty "John"^^xsd:string .
+
+schema1:maryFirstName a schema1:FirstName ;
+    schema1:hasFirstNameProperty "Mary"^^xsd:string .
+
+schema1:Currency a rdfs:Datatype ;
+    rdfs:label "Currency" ;
+    rdfs:comment "A datatype representing a currency." .
+
+schema1:DocumentType rdfs:label "Document Type" ;
+    rdfs:comment "The type of a document, such as electronic or paper." .
+
+schema1:yearTriple a rdf:Class ;
+    rdfs:label "YearTriple" ;
+    rdfs:comment "A representation of a year in the triple format." ;
+    rdfs:subClassOf rdf:List .
+
+schema1:yearTripleItem a rdf:Class ;
+    rdfs:label "YearTripleItem" ;
+    rdfs:comment "An item in the triple format representation of a year." ;
+    rdfs:subClassOf rdf:List .
+
+[] a schema1:EndDate ;
+    rdfs:label "EndDate" ;
+    rdfs:comment "The end date of an event or activity." .
+

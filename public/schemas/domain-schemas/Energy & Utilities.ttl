@@ -1,0 +1,2413 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pattern-schema: <https://schemaForge.net/pattern/schema/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <https://schemaForge.net/pattern/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema1:ActiveStatus a rdfs:Class ;
+    rdfs:label "ActiveStatus" ;
+    rdfs:comment "A class representing an active operational status of an entity." ;
+    rdfs:subClassOf schema1:Status .
+
+schema1:AdaptiveLoadManagement a rdfs:Class ;
+    rdfs:label "Adaptive Load Management" ;
+    rdfs:comment "A pattern that enables the capability to adjust demand in real-time." .
+
+schema1:Address a rdfs:Class ;
+    rdfs:label "Address" ;
+    rdfs:comment "A detailed postal address.",
+        "Address of the prosumer.",
+        "The address of the consumer." ;
+    rdfs:subClassOf schema1:Prosumer .
+
+schema1:Agent a rdfs:Class ;
+    rdfs:label "Agent" ;
+    rdfs:comment "An agent is a person or system that acts on behalf of another person or organization." .
+
+schema1:AreaID a rdf:Property,
+        rdfs:Class,
+        rdfs:Datatype ;
+    rdfs:label "Area ID",
+        "AreaID" ;
+    rdfs:comment "A unique identifier for a specific area.",
+        "A unique identifier for each distribution area.",
+        "The ID of the distribution area",
+        "The ID of the distribution area the consumer is in." ;
+    rdfs:domain schema1:DistributionArea ;
+    rdfs:range xsd:string ;
+    rdfs:subClassOf rdf:Property .
+
+schema1:AreaName a rdfs:Class ;
+    rdfs:label "AreaName" ;
+    rdfs:comment "Name of the distribution area." .
+
+schema1:AreaSize a rdfs:Class ;
+    rdfs:label "Area Size"@en ;
+    rdfs:comment "The size of the distribution area in square kilometers."@en .
+
+schema1:AsBefore a rdfs:Class ;
+    rdfs:label "As Before" ;
+    rdfs:comment "A class representing 'as before' status.",
+        "A condition indicating that the location is the same as before.",
+        "Indicates that a consumption pattern remains the same as before."@en .
+
+schema1:Attribute a rdfs:Class ;
+    rdfs:label "Attribute" ;
+    rdfs:comment "A property or characteristic of an entity." .
+
+schema1:Attributes a rdfs:Class ;
+    rdfs:label "Attributes",
+        "Attributes"@en ;
+    rdfs:comment "A class representing attributes in a pattern.",
+        "The class representing the attributes of an entity in a pattern.",
+        "A class representing attributes in a pattern."@en,
+        "A pattern attribute represents a characteristic or property of a pattern."@en,
+        "Attributes refer to the properties, characteristics, or qualities of a pattern."@en .
+
+schema1:Barrel a rdfs:Class ;
+    rdfs:label "Barrel" ;
+    rdfs:comment "A unit of measurement for the volume of oil produced." .
+
+schema1:Barrels a rdfs:Class ;
+    rdfs:label "Barrels" ;
+    rdfs:comment "The unit of measurement for the processing capacity, specifically for oil and other liquid substances." .
+
+schema1:BarrelsPerDay a rdfs:Class ;
+    rdfs:label "Barrels Per Day" ;
+    rdfs:comment "The processing capacity dimension measured in barrels per day." ;
+    rdfs:subClassOf schema1:ProcessingCapacityDimension ;
+    schema1:unit schema1:Barrels .
+
+schema1:Biomass a rdfs:Class ;
+    rdfs:label "Biomass" ;
+    rdfs:comment "Energy derived from organic materials such as plants and animals, which can be used for heating, electricity generation, or fuel." ;
+    rdfs:subClassOf schema1:RenewableEnergy .
+
+schema1:BrokenStatus a rdfs:Class ;
+    rdfs:label "BrokenStatus" ;
+    rdfs:comment "A class representing a broken operational status of an entity." ;
+    rdfs:subClassOf schema1:Status .
+
+schema1:Capability a rdfs:Class ;
+    rdfs:label "Capability" ;
+    rdfs:comment "The ability or potential to adjust demand in real-time." .
+
+schema1:Capacity a rdfs:Class ;
+    rdfs:label "Capacity" ;
+    rdfs:comment "A class representing the capacity of an object.",
+        "The maximum amount of power the station can produce (in Megawatts, MW)" .
+
+schema1:ChargeDischargeRate a rdfs:Class ;
+    rdfs:label "Charge/Discharge Rate"@en ;
+    rdfs:comment "The speed at which energy can be stored or released, measured in MW."^^xsd:string .
+
+schema1:ChargesAt a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "ChargesAt" ;
+    rdfs:comment "A pattern representing charges at a specific location.",
+        "Defines a charging relationship between a renewable energy station and an energy storage facility." ;
+    rdfs:domain schema1:RenewableEnergyStation ;
+    rdfs:range schema1:EnergyStorageFacility .
+
+schema1:City a rdfs:Class ;
+    rdfs:label "City" ;
+    rdfs:comment "A city where the station is located.",
+        "A large human settlement." ;
+    rdfs:subClassOf schema1:Location,
+        pattern-schema:CityStationPattern .
+
+schema1:ConnectedTo a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "ConnectedTo" ;
+    rdfs:comment "A relation indicating a connection between two entities.",
+        "Indicates a connection between two pipelines." ;
+    rdfs:domain schema1:Pipeline ;
+    rdfs:range schema1:Pipeline .
+
+schema1:Consumer a rdfs:Class ;
+    rdfs:label "Consumer" ;
+    rdfs:comment "A class representing a consumer.",
+        "A consumer is an entity that consumes or uses a product or service.",
+        "A person or organization that consumes or uses products or services.",
+        "Represents a consumer." ;
+    rdfs:subClassOf schema1:ConsumerID .
+
+schema1:ConsumerID a rdfs:Class ;
+    rdfs:comment "A unique identifier for each consumer." .
+
+schema1:Consumption a rdfs:Class ;
+    rdfs:label "Consumption" ;
+    rdfs:comment "Average monthly power consumption in Kilowatt-hours (kWh).",
+        "Represents a consumption pattern."@en .
+
+schema1:Country a rdfs:Class ;
+    rdfs:label "Country" ;
+    rdfs:comment "A country.",
+        "A sovereign state or nation." ;
+    rdfs:subClassOf schema1:Location .
+
+schema1:Crude a rdfs:Class ;
+    rdfs:label "Crude" ;
+    rdfs:comment "A type of pattern that represents Crude oil." .
+
+schema1:CubicMeter a rdfs:Class ;
+    rdfs:label "Cubic Meter" ;
+    rdfs:comment "A unit of measurement for the volume of oil produced." .
+
+schema1:CubicMeters a rdfs:Class ;
+    rdfs:label "Cubic Meters" ;
+    rdfs:comment "The unit of measurement for the processing capacity, specifically for gases and other substances in gaseous form." .
+
+schema1:CubicMetersPerDay a rdfs:Class ;
+    rdfs:label "Cubic Meters Per Day" ;
+    rdfs:comment "The processing capacity dimension measured in cubic meters per day." ;
+    rdfs:subClassOf schema1:ProcessingCapacityDimension ;
+    schema1:unit schema1:CubicMeters .
+
+schema1:CurrentVolume a rdfs:Class ;
+    rdfs:comment "Represents the current volume of a stored item." .
+
+schema1:Day a rdfs:Class ;
+    rdfs:label "Day" ;
+    rdfs:comment "A unit of time representing a single day." .
+
+schema1:Demand a rdfs:Class ;
+    rdfs:label "Demand" ;
+    rdfs:comment "A measurement of average power demand of an area, expressed in Megawatts (MW)." .
+
+schema1:Depth a rdfs:Class ;
+    rdfs:label "Depth" ;
+    rdfs:comment "The depth of offshore sites."@en .
+
+schema1:Description a rdfs:Class ;
+    rdfs:label "Description" ;
+    rdfs:comment "A class representing a description entity.",
+        "Represents the description of a pipeline's transport destination.",
+        "Denotes which refinery supplies products to retail stations."@en ;
+    rdfs:subClassOf rdfs:Class .
+
+schema1:Destination a rdfs:Class ;
+    rdfs:label "Destination" ;
+    rdfs:comment "The destination point of the transportation." .
+
+schema1:Diameter a rdfs:Class ;
+    rdfs:comment "The diameter of a pipeline." .
+
+schema1:DistributionArea a rdf:Class,
+        rdfs:Class ;
+    rdfs:label "Distribution Area",
+        "DistributionArea",
+        "Distribution Area"@en ;
+    rdfs:comment "A distribution area is a geographical region where electrical power is distributed to consumers.",
+        "A distribution area, also called a distribution network or a power grid, is an interconnected system of power lines and equipment used to distribute electricity to consumers.",
+        "A distribution area.",
+        "A particular area where something is distributed.",
+        "A physical region or territory where products or services are distributed.",
+        "An area where energy is distributed to consumers.",
+        "The area where the prosumer is located",
+        "A region or area where something is distributed or made available."@en,
+        "The geographic area where something is distributed."@en ;
+    rdfs:subClassOf schema1:Entity ;
+    schema1:Serves schema1:Consumer ;
+    schema1:hasTriple schema1:1.2 .
+
+schema1:EfficiencyPattern a rdfs:Class ;
+    rdfs:label "Efficiency Pattern" ;
+    rdfs:comment "A pattern for defining efficiency." .
+
+schema1:Electricity a rdfs:Class ;
+    rdfs:label "Electricity" ;
+    rdfs:comment "The concept of electricity as a utility/service." .
+
+schema1:EndLocation a rdfs:Class ;
+    rdfs:label "End Location" ;
+    rdfs:comment "The ending location of a geographical journey." .
+
+schema1:EndStationID a rdfs:Class ;
+    rdfs:label "EndStationID" ;
+    rdfs:comment "The ID of the ending power station" .
+
+schema1:Energy a rdfs:Class ;
+    rdfs:label "Energy"@en ;
+    rdfs:comment "The capacity to do work or the ability to cause change."^^xsd:string .
+
+schema1:EnergyAndUtilities a rdfs:Class ;
+    rdfs:label "Energy & Utilities" ;
+    rdfs:comment "The Energy & Utilities pattern represents entities and concepts related to the energy and utilities industry." .
+
+schema1:EnergyStorageFacility a rdfs:Class ;
+    rdfs:label "Energy Storage Facility" ;
+    rdfs:comment "A facility that is capable of storing energy for later use.",
+        "A facility that stores energy for later use.",
+        "A facility used for storing energy.",
+        "An energy storage facility is a system capable of storing excess electrical energy for later use." ;
+    schema1:suppliesTo schema1:DistributionArea .
+
+schema1:Entity a rdfs:Class ;
+    rdfs:label "Entity" ;
+    rdfs:comment "A class representing an entity.",
+        "A generic class to represent an entity.",
+        "An abstract class representing an entity.",
+        "An abstract concept representing a distinct item or concept, such as a person, place, thing, or idea.",
+        "An abstract entity.",
+        "An entity in a FeedsInto relationship.",
+        "An entity in a relationship.",
+        "An entity representing something in a grid structure.",
+        "The class represents an entity." ;
+    rdfs:subClassOf rdfs:Resource .
+
+schema1:Entity1 a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:label "Entity 1",
+        "Entity1" ;
+    rdfs:comment "An entity representing something in a domain.",
+        "An entity.",
+        "Description of Entity1" ;
+    rdfs:subClassOf schema1:Entity1 ;
+    schema1:attribute1 "Value 1" .
+
+schema1:Entity2 a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:label "Entity 2",
+        "Entity2" ;
+    rdfs:comment "An entity.",
+        "Another entity representing something in a domain.",
+        "Description of Entity2" ;
+    rdfs:subClassOf schema1:Entity2 ;
+    schema1:Attribute1 "Value1"^^xsd:string ;
+    schema1:Attribute3 "Value2"^^xsd:string ;
+    schema1:attribute2 42 ;
+    schema1:attribute3 true .
+
+schema1:Entity3 a rdfs:Class ;
+    rdfs:label "Entity3" ;
+    rdfs:comment "Description of Entity3" .
+
+schema1:EstimatedReserves a rdfs:Class ;
+    rdfs:label "Estimated Reserves" ;
+    rdfs:comment "The amount of oil or gas estimated." .
+
+schema1:ExplorationSite a rdfs:Class ;
+    rdfs:label "Exploration Site" ;
+    rdfs:comment "A location or area that is being explored.",
+        "An exploration site is a location where potential oil or gas reserves are investigated." .
+
+schema1:ExplorationStatus a rdfs:Class ;
+    rdfs:label "Exploration Status" ;
+    rdfs:comment "The status of an exploration process." .
+
+schema1:Extended a rdfs:Class ;
+    rdfs:label "Extended" ;
+    rdfs:comment "A pattern that extends another pattern." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:Facility a rdfs:Class ;
+    rdfs:label "Facility" ;
+    rdfs:comment "A facility for storage." ;
+    rdfs:subClassOf schema1:Storage .
+
+schema1:FacilityID a rdfs:Class ;
+    rdfs:label "Facility ID" ;
+    rdfs:comment "A unique identifier for a facility." .
+
+schema1:FeedsInto a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Feeds Into" ;
+    rdfs:comment "A pattern where one entity feeds into another.",
+        "Denotes the flow of electricity from a prosumer to a smart grid" ;
+    rdfs:domain schema1:Prosumer ;
+    rdfs:range schema1:SmartGrid .
+
+schema1:FuelTypesAvailable a rdfs:Class ;
+    rdfs:label "Fuel Types Available" ;
+    rdfs:comment "A class representing the available fuel types." .
+
+schema1:Gas a rdfs:Class,
+        schema1:WellType ;
+    rdfs:label "Gas" ;
+    rdfs:comment "A type of well that produces natural gas.",
+        "The concept of gas as a utility/service." .
+
+schema1:GenerationVariabilityIndicator a rdfs:Class ;
+    rdfs:label "Generation Variability Indicator" ;
+    rdfs:comment "An indicator of the generation variability of a system." .
+
+schema1:GeographicalDetails a rdfs:Class ;
+    rdfs:label "GeographicalDetails" ;
+    rdfs:comment "A class representing the geographical details of a location.",
+        "The class representing the geographical details of a location." .
+
+schema1:Geothermal a rdfs:Class ;
+    rdfs:label "Geothermal" ;
+    rdfs:comment "Exploitation of the natural heat of the earth's interior to generate power or heat by tapping into geothermal reservoirs." ;
+    rdfs:subClassOf schema1:RenewableEnergy .
+
+schema1:GridID a rdfs:Class ;
+    rdfs:label "Grid ID" ;
+    rdfs:comment "A unique identifier for the grid." .
+
+schema1:IdentifierProperty a rdfs:Class ;
+    rdfs:label "Identifier Property" ;
+    rdfs:comment "A property that provides a unique identifier for an instance of a class." .
+
+schema1:IntegratedWith a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "IntegratedWith",
+        "integratedWith" ;
+    rdfs:comment "Specifies that a Smart Grid is integrated with a Renewable Energy Station.",
+        "The class representing the integration relationship.",
+        "The integratedWith property connects a smart grid with an energy storage facility." ;
+    rdfs:domain schema1:SmartGrid ;
+    rdfs:range schema1:EnergyStorageFacility,
+        schema1:RenewableEnergyStation .
+
+schema1:Interconnections a rdfs:Class ;
+    rdfs:label "Interconnections" ;
+    rdfs:comment "A class representing the interconnections between pipelines." .
+
+schema1:Intermittency a rdfs:Class ;
+    rdfs:label "Intermittency" ;
+    rdfs:comment "A pattern indicating the generation variability of a system." .
+
+schema1:IsLocatedAt a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Is Located At" ;
+    rdfs:comment "A pattern representing the location relationship between two entities.",
+        "The property indicates the location of a production well at an exploration site." ;
+    rdfs:domain schema1:ProductionWell ;
+    rdfs:range schema1:ExplorationSite .
+
+schema1:Latitude a rdfs:Class,
+        rdfs:Datatype ;
+    rdfs:label "Latitude" ;
+    rdfs:comment "The angular distance of a location on the Earth's surface north or south of the equator, measured in degrees",
+        "The latitude of a station." ;
+    rdfs:subClassOf xsd:float .
+
+schema1:Length a rdfs:Class ;
+    rdfs:label "Length" ;
+    rdfs:comment "The length of the pipeline in kilometers or miles." .
+
+schema1:Line a rdfs:Class ;
+    rdfs:label "Line" ;
+    rdfs:comment "A transmission line." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:LineID a rdfs:Class ;
+    rdfs:label "LineID" ;
+    rdfs:comment "A unique identifier for each transmission line." .
+
+schema1:LineLength a rdfs:Class ;
+    rdfs:label "Line Length" ;
+    rdfs:comment "Length of the transmission line (in kilometers)." .
+
+schema1:Location a rdfs:Class ;
+    rdfs:label "Location" ;
+    rdfs:comment "A class representing a location.",
+        "A class representing the geographical details of a location.",
+        "A location entity.",
+        "A location refers to a specific point or area on the Earth's surface.",
+        "A location with its associated geographical details.",
+        "A pattern representing a physical location.",
+        "A point or area on the Earth's surface.",
+        "A specific place or area.",
+        "Geographical details.",
+        "The class representing a geographical location." ;
+    schema1:hasGeographicalDetails schema1:GeographicalDetails .
+
+schema1:Longitude a rdfs:Class ;
+    rdfs:label "Longitude" ;
+    rdfs:comment "A pattern representing a geographic longitude value.",
+        "The longitude of the station." .
+
+schema1:MW a rdfs:Class ;
+    rdfs:label "MW"@en ;
+    rdfs:comment "Megawatt (MW) is a unit of power equal to one million watts."^^xsd:string .
+
+schema1:MaximumStorageCapacity a rdfs:Class ;
+    rdfs:label "Maximum Storage Capacity" ;
+    rdfs:comment "The maximum storage capacity of a device or resource." .
+
+schema1:Name a rdfs:Class ;
+    rdfs:label "Name" ;
+    rdfs:comment "A generic name or label.",
+        "Name of a pipeline.",
+        "The name of an entity.",
+        "The pattern describes the name of a prosumer." .
+
+schema1:Namespace a rdfs:Class ;
+    rdfs:label "Namespace" ;
+    rdfs:comment "A namespace for entities." .
+
+schema1:NaturalGas a rdfs:Class ;
+    rdfs:label "Natural Gas" ;
+    rdfs:comment "A type of pattern that represents Natural Gas." .
+
+schema1:NetMetering a rdfs:Class ;
+    rdfs:label "NetMetering" ;
+    rdfs:comment "A pattern that represents the capability to sell back excess power to the grid." .
+
+schema1:OWL a rdfs:Class,
+        rdfs:Namespace,
+        schema1:schemaLanguage ;
+    rdfs:label "OWL" ;
+    rdfs:comment "A class representing the OWL schema language.",
+        "The OWL language for defining ontologies.",
+        "The namespace for OWL." ;
+    rdfs:subClassOf schema1:schemaLanguage ;
+    schema1:hasURI owl: .
+
+schema1:OffshoreSite a rdfs:Class ;
+    rdfs:label "OffshoreSite" ;
+    rdfs:comment "An offshore site."@en .
+
+schema1:OffshoreWind a rdfs:Class ;
+    rdfs:label "Offshore Wind" ;
+    rdfs:comment "Wind turbines that are located in bodies of water such as oceans or lakes to harness the wind energy and generate electricity." ;
+    rdfs:subClassOf schema1:RenewableEnergy .
+
+schema1:OilAndGas a rdfs:Class ;
+    rdfs:label "Oil and Gas" ;
+    rdfs:comment "A type of natural resources that consists of oil and gas." .
+
+schema1:OnshoreWind a rdfs:Class ;
+    rdfs:label "Onshore Wind" ;
+    rdfs:comment "Wind turbines that convert the kinetic energy of wind into electricity using a rotor." ;
+    rdfs:subClassOf schema1:RenewableEnergy .
+
+schema1:OperationalHours a rdfs:Class ;
+    rdfs:label "OperationalHours" ;
+    rdfs:comment "A class representing the expected operating hours for a system or device." .
+
+schema1:OperationalStatus a rdfs:Class ;
+    rdfs:label "Operational Status" ;
+    rdfs:comment "A class representing the operational status of a system.",
+        "The operational status of a resource.",
+        "The operational status of a system, e.g., Open, Closed for Maintenance." .
+
+schema1:Pattern a rdfs:Class ;
+    rdfs:comment "A pattern is a recurring, recognizable arrangement of attributes or features."@en,
+        "A pattern represents a recurring theme or design."@en .
+
+schema1:PerDay a rdfs:Class ;
+    rdfs:label "Per Day" ;
+    rdfs:comment "Indicates that the processing capacity is measured over the span of a day." .
+
+schema1:Pipeline a rdfs:Class ;
+    rdfs:label "Pipeline" ;
+    rdfs:comment "A pipeline in a system.",
+        "A pipeline in the system.",
+        "A pipeline is a sequence of stages for processing data.",
+        "A pipeline is a transportation infrastructure that transports resources from one location to another.",
+        "A sequence of connected components that process data." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:PopulationServed a rdfs:Class ;
+    rdfs:label "PopulationServed" ;
+    rdfs:comment "A class representing the number of people being served in a certain area." .
+
+schema1:PowerGeneration a rdfs:Class ;
+    rdfs:label "Power Generation" ;
+    rdfs:comment "Average monthly power generation (e.g., from rooftop solar)" .
+
+schema1:PowerStation a rdf:Class,
+        rdfs:Class ;
+    rdfs:label "Power Station" ;
+    rdfs:comment "A facility that generates electrical power.",
+        "A power station is a facility for the generation of electrical power.",
+        "A power station is a facility that generates electrical power.",
+        "A power station, also known as a power plant, is an industrial facility for the generation of electric power.",
+        "A station that generates power" ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:Process a rdfs:Class ;
+    rdfs:comment "A process that can be derived from or based on another process." .
+
+schema1:ProcessesFrom a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "ProcessesFrom" ;
+    rdfs:comment "Indicates the process flow from one entity to another.",
+        "The relationship between two processes, where one process is derived from or based on another process." ;
+    rdfs:domain schema1:Refinery ;
+    rdfs:range schema1:StorageFacility ;
+    rdfs:subClassOf rdf:Property .
+
+schema1:ProcessingCapacity a rdfs:Class ;
+    rdfs:label "Processing Capacity" ;
+    rdfs:comment "The maximum amount of barrels (or cubic meters) processed per day." .
+
+schema1:ProcessingCapacityDimension a rdfs:Class ;
+    rdfs:label "Processing Capacity Dimension" ;
+    rdfs:comment "A specific dimension corresponding to the processing capacity." ;
+    rdfs:subClassOf schema1:ProcessingCapacity ;
+    schema1:dimension "value" ;
+    schema1:unit schema1:BarrelsPerDay .
+
+schema1:Product a rdfs:Class ;
+    rdfs:comment "Represents a product supplied by a refinery."@en .
+
+schema1:ProductOrService a rdfs:Class ;
+    rdfs:label "Product or Service" ;
+    rdfs:comment "A product or service is something that is produced or provided to be used or consumed." .
+
+schema1:ProductionWell a rdfs:Class ;
+    rdfs:label "Production Well"@en ;
+    rdfs:comment "A production well is a location where oil or gas is extracted from underground.",
+        "A production well is a well designed to extract petroleum or natural gas from underground reserves."@en .
+
+schema1:Prosumer a rdfs:Class ;
+    rdfs:label "Prosumer" ;
+    rdfs:comment "A person or entity that both produces and consumes energy.",
+        "A prosumer is an entity that is both a producer and a consumer of a resource.",
+        "An entity representing a prosumer in the context of the system.",
+        "Represents an entity that consumes and produces electricity",
+        "A prosumer is a user who both consumes and produces goods or services, typically in the context of energy."@en ;
+    rdfs:subClassOf schema1:Agent,
+        schema1:ProsumerID,
+        schema1:User .
+
+schema1:ProsumerID a rdfs:Class ;
+    rdfs:label "ProsumerID" ;
+    rdfs:comment "A unique identifier for each prosumer." .
+
+schema1:RDFS a rdfs:Class,
+        rdfs:Namespace,
+        schema1:schemaLanguage ;
+    rdfs:label "RDFS" ;
+    rdfs:comment "A class representing the RDFS schema language.",
+        "The RDF Schema (RDFS) language.",
+        "The namespace for RDFS." ;
+    rdfs:subClassOf schema1:schemaLanguage ;
+    schema1:hasURI rdfs: .
+
+schema1:Recipe a rdfs:Class ;
+    rdfs:label "Recipe" ;
+    rdfs:comment "A class representing a recipe." .
+
+schema1:Recipient a rdfs:Class ;
+    rdfs:label "Recipient"@en ;
+    rdfs:comment "An entity that receives resources from another entity."@en .
+
+schema1:RefinedProduct a rdfs:Class ;
+    rdfs:label "Refined Product" ;
+    rdfs:comment "A type of pattern that represents Refined Products like gasoline, diesel, etc." .
+
+schema1:Refinery a rdfs:Class ;
+    rdfs:label "Refinery" ;
+    rdfs:comment "A facility that processes crude oil to produce petroleum products.",
+        "A facility used for refining raw materials, such as petroleum, into more desired products.",
+        "A facility where raw materials are processed to produce usable products, typically involving chemical or industrial processes.",
+        "A facility where raw materials are processed to produce useful products.",
+        "A refinery that produces a specific product or range of products.",
+        "Represents a refinery that supplies products to retail stations."@en ;
+    rdfs:subClassOf schema1:Entity,
+        schema1:Pattern .
+
+schema1:RefineryID a rdfs:Class ;
+    rdfs:label "RefineryID" ;
+    rdfs:comment "A unique identifier for a refinery." .
+
+schema1:Related a rdfs:Class ;
+    rdfs:label "Related" ;
+    rdfs:comment "A relationship between two entities." .
+
+schema1:Relationship a rdfs:Class ;
+    rdfs:label "Relationship",
+        "Relationship"@en ;
+    rdfs:comment "A relationship between two entities.",
+        "A connection or association between entities."@en ;
+    rdfs:subClassOf rdfs:Resource .
+
+schema1:Relationships a rdfs:Class ;
+    rdfs:label "Relationships" ;
+    rdfs:comment "A class representing relationships between entities." .
+
+schema1:ReleasedEnergy a rdfs:Class ;
+    rdfs:label "Released Energy"@en ;
+    rdfs:comment "Energy that is being released from a system."^^xsd:string .
+
+schema1:RenewableEnergy a rdfs:Class ;
+    rdfs:label "Renewable Energy",
+        "Renewable Energy"@en ;
+    rdfs:comment "A type of energy that can be replenished naturally and is considered to have a lower environmental impact compared to non-renewable energy sources.",
+        "A type of energy derived from renewable sources."@en .
+
+schema1:RenewableEnergyStation a rdfs:Class ;
+    rdfs:label "Renewable Energy Station",
+        "RenewableEnergyStation" ;
+    rdfs:comment "A facility that generates electricity using renewable energy sources such as solar, wind, or hydro power.",
+        "A location where renewable energy is generated or converted for various uses.",
+        "A station that generates energy from renewable sources.",
+        "A station that generates renewable energy." .
+
+schema1:RenewableIntegration a rdfs:Class ;
+    rdfs:label "Renewable Integration" ;
+    rdfs:comment "A pattern representing the percentage of renewable sources feeding the grid." .
+
+schema1:RetailStation a rdfs:Class ;
+    rdfs:label "Retail Station" ;
+    rdfs:comment "A location where fuel, along with other products, is sold to customers.",
+        "A retail station for downstream operations",
+        "Represents a retail station that receives products from a refinery."@en .
+
+schema1:RetailStation1_6Type a rdfs:Class ;
+    rdfs:label "Retail Station 1.6 Type" ;
+    rdfs:comment "The type of a Retail Station 1.6" .
+
+schema1:Serves a rdfs:Class,
+        rdfs:Property ;
+    rdfs:label "Serves" ;
+    rdfs:comment "A class representing a serving relationship between two entities.",
+        "Indicates that a distribution area serves a consumer." ;
+    rdfs:domain schema1:DistributionArea ;
+    rdfs:range schema1:Consumer .
+
+schema1:SiteID a rdfs:Class ;
+    rdfs:label "SiteID" ;
+    rdfs:comment "A unique identifier for a site." .
+
+schema1:SiteName a rdfs:Class ;
+    rdfs:label "Site Name" ;
+    rdfs:comment "The name of an exploration site." .
+
+schema1:SmartGrid a rdfs:Class ;
+    rdfs:label "Smart Grid" ;
+    rdfs:comment "A complex electrical grid that uses digital technology to monitor and manage the distribution of electricity.",
+        "A smart grid is an electrical grid that includes a variety of operation and energy measures including smart meters, smart appliances, renewable energy resources, and energy efficient resources.",
+        "A smart grid is an electricity network enabling a two-way flow of electricity and information to better manage electricity generation, transmission, distribution, and consumption.",
+        "Represents an intelligent electrical grid that uses digital technology for monitoring, control, and management of energy flows" .
+
+schema1:SolarPV a rdfs:Class ;
+    rdfs:label "Solar PV" ;
+    rdfs:comment "Photovoltaic systems that convert sunlight into electricity using semiconductor technology." ;
+    rdfs:subClassOf schema1:RenewableEnergy .
+
+schema1:SolarThermal a rdfs:Class ;
+    rdfs:label "Solar Thermal" ;
+    rdfs:comment "Systems that harness solar energy to produce heat or power using various techniques such as solar water heating, solar air heating, or solar concentrators." ;
+    rdfs:subClassOf schema1:RenewableEnergy .
+
+schema1:Source a rdfs:Class ;
+    rdfs:label "Source" ;
+    rdfs:comment "The starting point of the transportation." .
+
+schema1:Speed a rdfs:Class ;
+    rdfs:label "Speed"@en ;
+    rdfs:comment "The rate at which something moves or operates."^^xsd:string .
+
+schema1:StartLocation a rdfs:Class ;
+    rdfs:label "Start Location" ;
+    rdfs:comment "The starting location of a geographical journey." .
+
+schema1:StateOrProvince a rdfs:Class ;
+    rdfs:comment "A state or province." .
+
+schema1:Station a rdfs:Class ;
+    rdfs:label "Power Station",
+        "Station" ;
+    rdfs:comment "A power station for generating electricity",
+        "A station entity represents a specific station.",
+        "A station located in a city.",
+        "A station." ;
+    rdfs:subClassOf pattern-schema:CityStationPattern .
+
+schema1:StationID a rdf:Property,
+        rdfs:Class,
+        rdfs:Datatype ;
+    rdfs:label "StationID" ;
+    rdfs:comment "A unique identifier for each power station.",
+        "A unique identifier for each renewable energy station.",
+        "Primary Key: Unique identifier." ;
+    rdfs:isDefinedBy schema1: ;
+    rdfs:range xsd:string .
+
+schema1:Status a rdfs:Class ;
+    rdfs:label "Status" ;
+    rdfs:comment "A class representing the operational status of an entity.",
+        "A class representing the status of something.",
+        "The class representing the status of a pattern." ;
+    rdfs:subClassOf rdfs:Class .
+
+schema1:StorageCapacity a rdfs:Class ;
+    rdfs:comment "A class representing the storage capacity of an object." ;
+    rdfs:subClassOf schema1:Capacity .
+
+schema1:StorageFacility a rdfs:Class ;
+    rdfs:label "Storage Facility" ;
+    rdfs:comment "A facility for storing energy.",
+        "A facility for storing raw materials or finished products.",
+        "A storage facility used for storing various goods or items." .
+
+schema1:StorageFacilityOrRefinery a rdfs:Class ;
+    rdfs:label "Storage Facility or Refinery" ;
+    rdfs:comment "A storage facility or refinery is a location where stored resources or processed materials are stored or refined." .
+
+schema1:StorageID a rdfs:Class ;
+    rdfs:label "Storage ID" ;
+    rdfs:comment "A unique identifier for the storage facility.",
+        "The ID of the storage facility the prosumer has, if any." .
+
+schema1:StorageIntegration a rdfs:Class ;
+    rdfs:label "StorageIntegration" ;
+    rdfs:comment "A pattern representing the integration of storage solutions." .
+
+schema1:StorageName a rdfs:Class ;
+    rdfs:comment "The name of a storage facility."@en .
+
+schema1:StoredEnergy a rdfs:Class ;
+    rdfs:label "Stored Energy"@en ;
+    rdfs:comment "Energy that is stored in a system, ready to be released when needed."^^xsd:string .
+
+schema1:Supplier a rdfs:Class ;
+    rdfs:label "Supplier"@en ;
+    rdfs:comment "An entity that supplies resources to another entity."@en ;
+    schema1:suppliesTo schema1:Recipient .
+
+schema1:SuppliesTo a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Supplies To",
+        "SuppliesTo",
+        "SuppliesTo"@en ;
+    rdfs:comment "A relationship indicating that one entity supplies to another entity.",
+        "Indicates that a power station supplies electricity to a distribution area.",
+        "Specifies the flow of energy from one entity to another.",
+        "The class represents the relationship between two entities where one entity supplies something to another entity.",
+        "A relationship indicating that an entity supplies resources to another entity."@en ;
+    rdfs:domain schema1:PowerStation ;
+    rdfs:range schema1:DistributionArea ;
+    rdfs:subClassOf schema1:Extended .
+
+schema1:TerrainType a rdfs:Class ;
+    rdfs:comment "A type of terrain, such as desert or arctic." .
+
+schema1:Tidal a rdfs:Class ;
+    rdfs:label "Tidal" ;
+    rdfs:comment "Systems that capture the energy from ocean tides and convert it into electricity." ;
+    rdfs:subClassOf schema1:RenewableEnergy .
+
+schema1:TransmissionLine a rdfs:Class ;
+    rdfs:label "Transmission Line" ;
+    rdfs:comment "A transmission line is a high-voltage overhead power line used for the movement of electricity from a power station to a distribution area or another power station.",
+        "A transmission line is a specialized cable or other structure designed to conduct alternating current of radio frequency, that is, currents with a frequency high enough that their wave nature must be taken into account." .
+
+schema1:TransmissionLineType a rdfs:Class ;
+    rdfs:label "Transmission Line Type" ;
+    rdfs:comment "The type of a transmission line." .
+
+schema1:TransportsTo a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Transports To" ;
+    rdfs:comment "A pattern to represent transportation relationships between entities.",
+        "A property that indicates the transportation path between two entities." ;
+    rdfs:domain schema1:Pipeline ;
+    rdfs:range schema1:StorageFacilityOrRefinery .
+
+schema1:Triple a rdfs:Class ;
+    rdfs:label "Triple",
+        "Triple"@en ;
+    rdfs:comment "A set of three values in a specific order.",
+        "A statement consisting of a subject, predicate, and object.",
+        "A triple in the turtle format."@en .
+
+schema1:TurtleFormat a rdfs:Class ;
+    rdfs:label "Turtle Format" ;
+    rdfs:comment "A class representing the RDF Turtle format.",
+        "A format for representing RDF triples in the turtle syntax." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:Type a rdf:Class,
+        rdfs:Class ;
+    rdfs:label "Pattern Type",
+        "Type",
+        "Type of the power station"@en ;
+    rdfs:comment "A categorization of patterns based on their characteristics.",
+        "A type of consumer (e.g., Residential, Commercial, Industrial)",
+        "A type of storage for energy.",
+        "A class representing the various types of power stations."@en .
+
+schema1:UnderMaintenanceStatus a rdfs:Class ;
+    rdfs:label "UnderMaintenanceStatus" ;
+    rdfs:comment "A class representing an under maintenance operational status of an entity." ;
+    rdfs:subClassOf schema1:Status .
+
+schema1:UniqueIdentifier a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Unique identifier",
+        "unique identifier" ;
+    rdfs:comment "A unique identifier for an entity.",
+        "Indicates that a property represents a unique identifier." ;
+    rdfs:domain rdfs:Property ;
+    rdfs:range schema1:GridID ;
+    rdfs:subClassOf schema1:RefineryID .
+
+schema1:Water a rdfs:Class ;
+    rdfs:label "Water" ;
+    rdfs:comment "The concept of water as a utility/service." .
+
+schema1:WellID a rdfs:Class ;
+    rdfs:label "WellID" ;
+    rdfs:comment "Unique identifier for the well." .
+
+schema1:WellLocation a rdfs:Class ;
+    rdfs:label "Well Location"@en ;
+    rdfs:comment "A well location is a specific geographical point where a production well is located."@en .
+
+schema1:WellName a rdfs:Class ;
+    rdfs:label "WellName" ;
+    rdfs:comment "The class representing the name of a well." .
+
+schema1:WellType a rdfs:Class ;
+    rdfs:label "Well Type" ;
+    rdfs:comment "A classification for the type of well, such as Oil, Gas, or Condensate." .
+
+schema1:defHeader a rdfs:Class ;
+    rdfs:label "Def Header" ;
+    rdfs:comment "A class representing the definition header." ;
+    rdfs:subClassOf schema1:header .
+
+schema1:definesPrefix a rdfs:Class ;
+    rdfs:label "Defines Prefix" ;
+    rdfs:comment "A class representing the relation between a namespace and a prefix." ;
+    rdfs:domain schema1:namespace ;
+    rdfs:range schema1:prefix .
+
+schema1:energy a rdfs:Class ;
+    rdfs:label "Energy" ;
+    rdfs:comment "A measure of the amount of work that can be extracted from a system." ;
+    rdfs:subClassOf schema1:EfficiencyPattern .
+
+schema1:header a rdfs:Class ;
+    rdfs:label "Header" ;
+    rdfs:comment "A class representing the namespace definition header." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:includesSchemaLanguage a rdfs:Class ;
+    rdfs:label "Includes Schema Language" ;
+    rdfs:comment "A class representing the relation between an entity and a schema language." ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range schema1:schemaLanguage .
+
+schema1:ingredient a rdfs:Class ;
+    rdfs:label "Ingredient" ;
+    rdfs:comment "A class representing an ingredient used in a recipe." .
+
+schema1:namespace a rdfs:Class ;
+    rdfs:label "Namespace" ;
+    rdfs:comment "A class representing a namespace.",
+        "A class representing namespaces." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:namespaceDefinition a rdfs:Class ;
+    rdfs:label "Namespace Definition" ;
+    rdfs:comment "A class representing the namespace definition." ;
+    rdfs:domain schema1:header ;
+    rdfs:range schema1:xmlNamespace .
+
+schema1:namespaceDefinitionHeader a rdfs:Class ;
+    rdfs:label "Namespace Definition Header" ;
+    rdfs:comment "A class representing the namespace definition header." ;
+    rdfs:subClassOf schema1:header .
+
+schema1:namespaceDefinitionHeaderIncludes a rdfs:Class ;
+    rdfs:label "Namespace Definition Header Includes" ;
+    rdfs:comment "A class representing the relation between a header and a namespace definition." ;
+    rdfs:domain schema1:header ;
+    rdfs:range schema1:namespaceDefinition .
+
+schema1:pipeline a rdfs:Class ;
+    rdfs:comment "A pipeline." .
+
+schema1:prefix a rdfs:Class ;
+    rdfs:label "Prefix" ;
+    rdfs:comment "A class representing a prefix used in namespace definition." ;
+    rdfs:subClassOf schema1:Entity .
+
+pattern-schema:CityStationPattern a rdfs:Class ;
+    rdfs:label "City: City where the station is located pattern" ;
+    rdfs:comment "A pattern representing the relationship between a city and the station located in that city." .
+
+schema1:schemaLanguage a rdfs:Class ;
+    rdfs:label "Schema Language" ;
+    rdfs:comment "A class representing a schema language.",
+        "A class representing schema languages used for defining schemas." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:station a rdfs:Class ;
+    rdfs:label "Station" ;
+    rdfs:comment "A specific location for data collection." .
+
+schema1:stored a rdfs:Class ;
+    rdfs:label "Stored" ;
+    rdfs:comment "Energy that is retained and not lost during storage." ;
+    rdfs:subClassOf schema1:EfficiencyPattern .
+
+schema1:triple a rdfs:Class ;
+    rdfs:label "Triple" ;
+    rdfs:comment "A class representing an RDF triple." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:usesNamespace a rdfs:Class ;
+    rdfs:label "Uses Namespace" ;
+    rdfs:comment "A class representing the relation between an entity and a namespace." ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range schema1:namespace .
+
+schema1:xmlNamespace a rdfs:Class ;
+    rdfs:label "XML Namespace" ;
+    rdfs:comment "A class representing an XML namespace." ;
+    rdfs:subClassOf schema1:namespace .
+
+<file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/#storage1> a schema1:Facility ;
+    schema1:NameOfStorage "Name of the storage" .
+
+<file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/sample_station> a schema1:station ;
+    schema1:hasLongitude <file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/sample_longitude> .
+
+schema1:Active a schema1:OperationalStatus ;
+    rdfs:label "Active" ;
+    rdfs:comment "The resource is actively in use.",
+        "The system is currently active and operational." .
+
+schema1:AreaIDProperty a rdf:Property ;
+    rdfs:label "AreaID Property" ;
+    rdfs:comment "The property that links a prosumer location to a distribution area" ;
+    rdfs:domain schema1:ProsumerLocation ;
+    rdfs:range schema1:DistributionArea .
+
+schema1:Attribute1 a rdf:Property ;
+    rdfs:label "Attribute1" ;
+    rdfs:comment "Description of Attribute1" ;
+    rdfs:domain schema1:Entity1 ;
+    rdfs:range xsd:string .
+
+schema1:Attribute2 a rdf:Property ;
+    rdfs:label "Attribute2" ;
+    rdfs:comment "Description of Attribute2" ;
+    rdfs:domain schema1:Entity2 ;
+    rdfs:range xsd:string .
+
+schema1:Attribute3 a rdf:Property ;
+    rdfs:label "Attribute3" ;
+    rdfs:comment "Description of Attribute3" ;
+    rdfs:domain schema1:Entity3 ;
+    rdfs:range xsd:string .
+
+schema1:AverageMonthlyPowerConsumption a rdf:Property ;
+    rdfs:label "Average monthly power consumption" ;
+    rdfs:comment "The average power consumption in Kilowatt-hours (kWh) per month." ;
+    rdfs:domain schema1:Consumption ;
+    rdfs:range xsd:float .
+
+schema1:AveragePowerDemand a rdf:Property ;
+    rdfs:label "Average Power Demand" ;
+    rdfs:comment "The average power demand of the area, measured in Megawatts (MW)." ;
+    rdfs:domain schema1:Demand ;
+    rdfs:range xsd:float .
+
+schema1:Battery a schema1:Type ;
+    rdfs:comment "A type of storage that uses a chemical reaction to store and release energy." .
+
+schema1:CapacityProperty a rdf:Property ;
+    rdfs:label "Capacity" ;
+    rdfs:comment "The capacity property denotes the storage capacity of a device." ;
+    rdfs:domain schema1:MaximumStorageCapacity ;
+    rdfs:range xsd:integer .
+
+schema1:ClosedForMaintenance a schema1:OperationalStatus ;
+    rdfs:comment "The system is currently closed for maintenance." .
+
+schema1:Completed a schema1:ExplorationStatus ;
+    rdfs:label "Completed" ;
+    rdfs:comment "The exploration process is finished or terminated." .
+
+schema1:Condensate a schema1:WellType ;
+    rdfs:label "Condensate" ;
+    rdfs:comment "A type of well that produces a mixture of light hydrocarbons which are gaseous at reservoir temperature and pressure, but liquid when extracted and cooled." .
+
+schema1:CurrentVolumeStoredProperty a rdf:Property ;
+    rdfs:comment "Indicates the current amount stored for a particular item." ;
+    rdfs:domain schema1:CurrentVolume ;
+    rdfs:range xsd:float .
+
+schema1:Decommissioned a schema1:Status ;
+    rdfs:comment "The subclass of Status representing a decommissioned status." .
+
+schema1:Diesel a rdf:Property ;
+    rdfs:label "Diesel" ;
+    rdfs:comment "A fuel type representing diesel." ;
+    rdfs:domain schema1:FuelTypesAvailable ;
+    rdfs:range xsd:string .
+
+schema1:DistributionArea1 a schema1:DistributionArea ;
+    schema1:hasAreaID "Area123" ;
+    schema1:relatesTo schema1:DistributionArea2 .
+
+schema1:Drilling a schema1:ExplorationStatus ;
+    rdfs:label "Drilling" ;
+    rdfs:comment "The process of drilling into the ground to extract core samples or other geological information." .
+
+schema1:EndsAt a rdf:Property ;
+    rdfs:label "Ends At" ;
+    rdfs:comment "Defines the relationship between a transmission line and the distribution area or power station where it ends." ;
+    rdfs:domain schema1:TransmissionLine ;
+    rdfs:range schema1:DistributionArea .
+
+schema1:ExampleSuppliesTo a schema1:SuppliesTo ;
+    schema1:receiver schema1:ExampleReceiver ;
+    schema1:supplier schema1:ExampleSupplier .
+
+schema1:Flywheel a schema1:Type ;
+    rdfs:comment "A type of storage that uses rotational motion to store and release energy." .
+
+schema1:Gasoline a rdf:Property ;
+    rdfs:label "Gasoline" ;
+    rdfs:comment "A fuel type representing gasoline." ;
+    rdfs:domain schema1:FuelTypesAvailable ;
+    rdfs:range xsd:string .
+
+schema1:GovernmentBody rdfs:comment "A governmental or regulatory organization." ;
+    rdfs:subClassOf rdfs:Class .
+
+schema1:High a schema1:GenerationVariabilityIndicator ;
+    rdfs:label "High" ;
+    rdfs:comment "Indicates high generation variability." .
+
+schema1:Hydro a schema1:Type ;
+    rdfs:label "Hydro" ;
+    rdfs:comment "A power station that generates electricity using the kinetic energy of water."@en .
+
+schema1:HydroPower a schema1:RenewableEnergy ;
+    rdfs:label "Hydropower"@en ;
+    rdfs:comment "Energy derived from flowing or falling water through the use of hydroelectric turbines."@en .
+
+schema1:Inactive a schema1:OperationalStatus ;
+    rdfs:label "Inactive" ;
+    rdfs:comment "The resource is not currently in use." .
+
+schema1:JohnDoe a schema1:Consumer ;
+    schema1:name "John Doe" .
+
+schema1:LPG a rdf:Property ;
+    rdfs:label "LPG" ;
+    rdfs:comment "A fuel type representing LPG (liquefied petroleum gas)." ;
+    rdfs:domain schema1:FuelTypesAvailable ;
+    rdfs:range xsd:string .
+
+schema1:Length_in_Kilometers a rdfs:Datatype ;
+    rdfs:label "Length in Kilometers" ;
+    rdfs:comment "The length of the pipeline in kilometers" ;
+    rdfs:subClassOf xsd:decimal .
+
+schema1:Length_in_Miles a rdfs:Datatype ;
+    rdfs:label "Length in Miles" ;
+    rdfs:comment "The length of the pipeline in miles" ;
+    rdfs:subClassOf xsd:decimal .
+
+schema1:LineCapacity a rdf:Property ;
+    rdfs:label "LineCapacity" ;
+    rdfs:comment "Maximum power capacity the line can transmit (in Megawatts, MW)" ;
+    rdfs:range xsd:decimal .
+
+schema1:Low a schema1:GenerationVariabilityIndicator ;
+    rdfs:label "Low" ;
+    rdfs:comment "Indicates low generation variability." .
+
+schema1:Maintenance a schema1:OperationalStatus ;
+    rdfs:label "Maintenance" ;
+    rdfs:comment "The resource is undergoing maintenance.",
+        "The system is currently undergoing maintenance and not operational." .
+
+schema1:Medium a schema1:GenerationVariabilityIndicator ;
+    rdfs:label "Medium" ;
+    rdfs:comment "Indicates medium generation variability." .
+
+schema1:NameOfStorage a rdf:Property ;
+    rdfs:label "Name of the storage" ;
+    rdfs:comment "The name of the storage facility." ;
+    rdfs:domain schema1:Facility ;
+    rdfs:range xsd:string .
+
+schema1:NetMetering_capability a rdf:Property ;
+    rdfs:label "capability" ;
+    rdfs:comment "Property to denote the capability of a system or device." ;
+    rdfs:domain schema1:NetMetering ;
+    rdfs:range rdfs:Literal .
+
+schema1:NetMetering_description a rdf:Statement ;
+    rdf:object "A pattern that represents the capability to sell back excess power to the grid."^^xsd:string ;
+    rdf:predicate schema1:description ;
+    rdf:subject schema1:NetMetering .
+
+schema1:NetMetering_sellBackPower a rdf:Property ;
+    rdfs:label "sellBackPower" ;
+    rdfs:comment "Property to denote the action of selling back excess power to the grid." ;
+    rdfs:domain schema1:NetMetering ;
+    rdfs:range rdfs:Literal .
+
+schema1:Nuclear a schema1:Type ;
+    rdfs:label "Nuclear" ;
+    rdfs:comment "A power station that generates electricity through nuclear reactions."@en .
+
+schema1:Oil a schema1:WellType ;
+    rdfs:label "Oil" ;
+    rdfs:comment "A type of well that produces crude oil." .
+
+schema1:OilAndGasInstance a schema1:OilAndGas ;
+    schema1:hasName "Oil and Gaz" ;
+    schema1:hasNamespace "https://schemaForge.net/pattern/" ;
+    schema1:hasType "Triple" .
+
+schema1:Open a schema1:OperationalStatus ;
+    rdfs:comment "The system is currently open." .
+
+schema1:Operational a schema1:Status ;
+    rdfs:comment "The subclass of Status representing an active operational status." .
+
+schema1:OverheadTransmissionLineType a schema1:TransmissionLineType ;
+    rdfs:label "Overhead Transmission Line Type" ;
+    rdfs:comment "An overhead type of transmission line." .
+
+schema1:PipelineID a rdf:Property ;
+    rdfs:label "PipelineID (Primary Key)" ;
+    rdfs:comment "Unique identifier for a pipeline." ;
+    rdfs:domain schema1:Pipeline ;
+    rdfs:range xsd:integer .
+
+schema1:PipelineName a schema1:Pipeline ;
+    rdfs:label "PipelineName" ;
+    rdfs:comment "Name of the pipeline." ;
+    rdfs:subClassOf schema1:Name .
+
+schema1:ProcessesFrom1 a schema1:ProcessesFrom ;
+    rdfs:comment "The relationship where Process2 is derived from or based on Process1." ;
+    schema1:derivedProcess schema1:Process2 ;
+    schema1:sourceProcess schema1:Process1 .
+
+schema1:ProductionRate a rdf:Property ;
+    rdfs:label "Production rate" ;
+    rdfs:comment "The rate at which barrels (or cubic meters) are produced per day." ;
+    rdfs:range xsd:decimal .
+
+schema1:Pumped_Hydro a schema1:Type ;
+    rdfs:comment "A type of storage that uses water to store and release energy." .
+
+schema1:RDF a rdfs:Namespace ;
+    rdfs:label "RDF" ;
+    rdfs:comment "The namespace for RDF." ;
+    schema1:hasURI rdf: .
+
+schema1:RetailStation1_6 a schema1:RetailStation ;
+    schema1:downstream true ;
+    schema1:hasParent schema1:RetailStationParent ;
+    schema1:hasType schema1:RetailStation1_6Type ;
+    schema1:hasVersion schema1:RetailStation1_6Version .
+
+schema1:Shows a rdf:Property ;
+    rdfs:label "Shows" ;
+    rdfs:domain schema1:Description ;
+    rdfs:range schema1:Interconnections .
+
+schema1:Site1 a schema1:OffshoreSite ;
+    rdfs:label "Site1" ;
+    rdfs:comment "The first offshore site with a depth of 100.0 meters."@en ;
+    schema1:hasDepth "100.0"^^xsd:float .
+
+schema1:SizeOfDistributionArea a rdf:Property ;
+    rdfs:label "Size of Distribution Area"@en ;
+    rdfs:comment "Indicates the size of the distribution area in square kilometers."@en ;
+    rdfs:domain schema1:AreaSize ;
+    rdfs:range xsd:decimal .
+
+schema1:SmartGridVersion1_3 a schema1:SmartGrid ;
+    rdfs:label "Smart Grid Version 1.3" ;
+    rdfs:comment "Smart Grid version 1.3." ;
+    schema1:hasVersion "1.3" .
+
+schema1:Solar a schema1:Type ;
+    rdfs:label "Solar" ;
+    rdfs:comment "A power station that generates electricity using solar energy."@en .
+
+schema1:SolarEnergy a schema1:RenewableEnergy ;
+    rdfs:label "Solar Energy"@en ;
+    rdfs:comment "Energy derived from the sun through the use of solar panels or solar thermal systems."@en .
+
+schema1:StartStationID a rdf:Property ;
+    rdfs:label "Start station ID" ;
+    rdfs:comment "The ID of the starting power station" ;
+    rdfs:domain schema1:PowerStation ;
+    rdfs:range xsd:string .
+
+schema1:Station1 a schema1:Station ;
+    rdfs:label "Station1" ;
+    rdfs:comment "An example station located in a city." ;
+    schema1:hasCity schema1:City1 .
+
+schema1:StorageFacility1-3 a schema1:StorageFacility ;
+    schema1:hasAccessControl "Yes" ;
+    schema1:hasCapacity 3 ;
+    schema1:hasCapacityUnit "Items" ;
+    schema1:hasLocation "Unknown" ;
+    schema1:hasSecurityLevel "Standard" ;
+    schema1:hasTemperatureControl "No" .
+
+schema1:Surveying a schema1:ExplorationStatus ;
+    rdfs:label "Surveying" ;
+    rdfs:comment "The process of conducting a survey to gather information for exploration purposes." .
+
+schema1:Tank a schema1:Type ;
+    rdfs:label "Tank" ;
+    rdfs:comment "A pattern characterized by its large enclosed space, typically used for holding liquids or gases." .
+
+schema1:Thermal a schema1:Type ;
+    rdfs:label "Thermal" ;
+    rdfs:comment "A type of storage that uses heat to store and release energy.",
+        "A power station that generates electricity through the use of heat energy."@en .
+
+schema1:TransmissionDistance rdfs:label "Transmission Distance" ;
+    rdfs:comment "Specifies the distance of the transmission in meters." ;
+    rdfs:domain schema1:TransmitsThroughPattern ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf schema1:hasAttribute .
+
+schema1:TransmitsThrough a rdf:Property ;
+    rdfs:label "Transmits Through",
+        "Transmits Through Pattern" ;
+    rdfs:comment "A pattern of transmits-through relationship between two entities.",
+        "Defines the relationship between a power station and the transmission line through which it transmits electricity." ;
+    rdfs:domain schema1:PowerStation ;
+    rdfs:range schema1:TransmissionLine ;
+    rdfs:subClassOf schema1:Pattern .
+
+schema1:UnderMaintenance a schema1:Status ;
+    rdfs:comment "The subclass of Status representing a status of being under maintenance." .
+
+schema1:UndergroundCavern a schema1:Type ;
+    rdfs:label "Underground Cavern" ;
+    rdfs:comment "A pattern characterized by its large underground hollow space, typically formed naturally." .
+
+schema1:UndergroundTransmissionLineType a schema1:TransmissionLineType ;
+    rdfs:label "Underground Transmission Line Type" ;
+    rdfs:comment "An underground type of transmission line." .
+
+schema1:Well1 a schema1:WellName ;
+    schema1:hasName "Name of the well" .
+
+<https://schemaForge.net/pattern/WellID/identifier> a rdf:Property ;
+    rdfs:label "identifier" ;
+    rdfs:comment "The unique identifier for the well." ;
+    rdfs:domain schema1:WellID ;
+    rdfs:range xsd:string .
+
+schema1:Wind a schema1:Type ;
+    rdfs:label "Wind" ;
+    rdfs:comment "A power station that generates electricity using wind energy."@en .
+
+schema1:WindEnergy a schema1:RenewableEnergy ;
+    rdfs:label "Wind Energy"@en ;
+    rdfs:comment "Energy derived from the wind through the use of wind turbines."@en .
+
+schema1:XSD a rdfs:Namespace ;
+    rdfs:label "XSD" ;
+    rdfs:comment "The namespace for XML Schema." ;
+    schema1:hasURI xsd: .
+
+schema1:about a rdf:Property ;
+    rdfs:comment "Provides information about what the prosumer is about."@en ;
+    rdfs:domain schema1:Prosumer ;
+    rdfs:range rdfs:Resource .
+
+schema1:adjustDemand a rdf:Property ;
+    rdfs:label "adjustDemand" ;
+    rdfs:comment "A property that represents the act of adjusting demand." .
+
+schema1:amountEstimated a rdf:Property ;
+    rdfs:label "Amount Estimated" ;
+    rdfs:comment "The estimated amount of oil or gas." ;
+    rdfs:domain schema1:EstimatedReserves ;
+    rdfs:range xsd:float .
+
+schema1:arctic a schema1:TerrainType ;
+    rdfs:comment "A type of terrain found in the polar regions, characterized by its extremely cold temperatures, snow and ice coverings, and limited vegetation." .
+
+schema1:asBefore a rdf:Property ;
+    rdfs:label "asBefore" ;
+    rdfs:comment "Relates a location to a previous location." ;
+    rdfs:domain schema1:Location ;
+    rdfs:range xsd:string .
+
+schema1:attribute1 a rdf:Property ;
+    rdfs:label "Attribute 1" ;
+    rdfs:comment "An attribute associated with Entity 1." ;
+    rdfs:domain schema1:Entity1 ;
+    rdfs:range xsd:string .
+
+schema1:attribute2 a rdf:Property ;
+    rdfs:label "Attribute 2" ;
+    rdfs:comment "An attribute associated with Entity 2." ;
+    rdfs:domain schema1:Entity2 ;
+    rdfs:range xsd:int .
+
+schema1:attribute3 a rdf:Property ;
+    rdfs:label "Attribute 3" ;
+    rdfs:comment "Another attribute associated with Entity 2." ;
+    rdfs:domain schema1:Entity2 ;
+    rdfs:range xsd:boolean .
+
+schema1:consumerAddress a rdf:Property ;
+    rdfs:label "consumerAddress" ;
+    rdfs:comment "Relates a consumer to their address." ;
+    rdfs:domain schema1:consumer ;
+    rdfs:range schema1:Address .
+
+schema1:consumptionAsBefore a rdf:Statement ;
+    rdf:object schema1:AsBefore ;
+    rdf:predicate rdfs:subClassOf ;
+    rdf:subject schema1:Consumption .
+
+schema1:derivedProcess a rdf:Property ;
+    rdfs:comment "The process that is derived from or based on another process." ;
+    rdfs:domain schema1:ProcessesFrom ;
+    rdfs:range schema1:Process .
+
+schema1:desert a schema1:TerrainType ;
+    rdfs:comment "A type of terrain characterized by its dry and arid climate, minimal vegetation, and sand or rocky landscape." .
+
+schema1:destination a rdf:Property ;
+    rdfs:label "destination" ;
+    rdfs:comment "The entity that is the destination of the FeedsInto relationship." ;
+    rdfs:domain schema1:FeedsInto ;
+    rdfs:range schema1:Entity .
+
+schema1:detailedPostalAddress a rdfs:DatatypeProperty ;
+    rdfs:comment "The detailed postal address." ;
+    rdfs:domain schema1:Address ;
+    rdfs:range xsd:string .
+
+schema1:dimension a rdf:Property ;
+    rdfs:label "dimension" ;
+    rdfs:comment "Specifies the dimension value of the processing capacity in barrels (or cubic meters) per day." ;
+    rdfs:domain schema1:ProcessingCapacityDimension ;
+    rdfs:range xsd:float .
+
+schema1:distributionArea a schema1:AreaName ;
+    rdfs:label "Distribution Area" ;
+    rdfs:comment "An area where the distribution takes place." .
+
+schema1:downstream a rdf:Property ;
+    rdfs:label "downstream" ;
+    rdfs:comment "Indicates the retail station is for downstream operations" ;
+    rdfs:domain schema1:RetailStation ;
+    rdfs:range xsd:boolean .
+
+schema1:endLocation a rdf:Property ;
+    rdfs:label "endLocation" ;
+    rdfs:comment "Defines the ending location of a geographical journey." ;
+    rdfs:domain schema1:Trip ;
+    rdfs:range schema1:EndLocation .
+
+schema1:energyRetained a rdf:Property ;
+    rdfs:label "Energy Retained" ;
+    rdfs:comment "The amount of energy that is retained when stored." ;
+    rdfs:domain schema1:EfficiencyPattern ;
+    rdfs:range schema1:Percent .
+
+schema1:entity1ConnectedToEntity2 a schema1:ConnectedTo ;
+    schema1:hasSource schema1:Entity1 ;
+    schema1:hasTarget schema1:Entity2 .
+
+schema1:entityName a schema1:Name ;
+    rdfs:label "Entity Name" ;
+    rdfs:comment "The name of a specific entity." .
+
+schema1:exampleStation a schema1:Station ;
+    rdfs:comment "An example station." ;
+    schema1:stateOrProvinceOfStation schema1:exampleStateOrProvince .
+
+schema1:expectedOperatingHours a rdf:Property ;
+    rdfs:label "expectedOperatingHours" ;
+    rdfs:comment "A property representing the expected operating hours for a system or device." ;
+    rdfs:domain schema1:OperationalHours ;
+    rdfs:range xsd:string .
+
+schema1:explorationSite a rdf:Property ;
+    rdfs:label "Exploration Site" ;
+    rdfs:domain schema1:SiteName ;
+    rdfs:range schema1:Name .
+
+schema1:firstValue a rdf:Property ;
+    rdfs:label "firstValue" ;
+    rdfs:comment "Represents the first value in a triple." ;
+    rdfs:domain schema1:Triple ;
+    rdfs:range xsd:float .
+
+schema1:gasReserves a rdf:Property ;
+    rdfs:label "Gas Reserves" ;
+    rdfs:comment "The estimated amount of gas reserves." ;
+    rdfs:domain schema1:EstimatedReserves ;
+    rdfs:range xsd:float .
+
+schema1:generationVariability a rdf:Property ;
+    rdfs:label "generationVariability" ;
+    rdfs:domain schema1:Intermittency ;
+    rdfs:range schema1:GenerationVariabilityIndicator .
+
+schema1:geographicalDetails a rdf:Property ;
+    rdfs:label "geographicalDetails" ;
+    rdfs:comment "A property representing the geographical details of a location." ;
+    rdfs:domain schema1:Location ;
+    rdfs:range schema1:GeographicalDetails .
+
+schema1:hasAccessControl a rdf:Property ;
+    rdfs:comment "Indicates whether a storage facility has access control measures, such as keycards or biometric authentication." ;
+    rdfs:domain schema1:StorageFacility ;
+    rdfs:range rdfs:Literal .
+
+schema1:hasAreaID a rdf:Property ;
+    rdfs:label "hasAreaID" ;
+    rdfs:comment "Relates a DistributionArea to its unique AreaID.",
+        "Relates an entity to its distribution area ID" ;
+    rdfs:domain schema1:DistributionArea,
+        schema1:Entity ;
+    rdfs:range schema1:AreaID .
+
+schema1:hasAsBeforeStatus a rdf:Property ;
+    rdfs:label "hasAsBeforeStatus" ;
+    rdfs:comment "A property indicating the 'as before' status of something." ;
+    rdfs:domain [ ] ;
+    rdfs:range schema1:AsBefore .
+
+schema1:hasCapacity a rdf:Property ;
+    rdfs:label "has capacity" ;
+    rdfs:comment "Indicates the maximum capacity of a storage facility in terms of the number of items it can hold.",
+        "Relates a power station to its maximum capacity.",
+        "Relates an object to its capacity." ;
+    rdfs:domain schema1:Capacity,
+        schema1:PowerStation,
+        schema1:StorageFacility ;
+    rdfs:range xsd:float,
+        xsd:integer,
+        schema1:CapacityTriple .
+
+schema1:hasCapacityUnit a rdf:Property ;
+    rdfs:comment "Indicates the unit of measurement for the capacity of a storage facility, e.g., 'cubic meters'." ;
+    rdfs:domain schema1:StorageFacility ;
+    rdfs:range rdfs:Literal .
+
+schema1:hasCity a rdf:Property ;
+    rdfs:label "hasCity" ;
+    rdfs:comment "Indicates the city where a location is situated.",
+        "Relates a station to the city where it is located." ;
+    rdfs:domain schema1:Location,
+        schema1:Station ;
+    rdfs:range schema1:City .
+
+schema1:hasConsumer a rdf:Property ;
+    rdfs:label "hasConsumer" ;
+    rdfs:comment "Relates a product or service to its consumer." ;
+    rdfs:domain schema1:ProductOrService ;
+    rdfs:range schema1:Consumer .
+
+schema1:hasConsumerIDProperty a rdf:Property ;
+    rdfs:comment "Specifies the unique identifier of a consumer." ;
+    rdfs:domain schema1:Consumer ;
+    rdfs:range xsd:string .
+
+schema1:hasConsumerVersion a rdf:Property ;
+    rdfs:label "hasConsumerVersion" ;
+    rdfs:comment "Relates a consumer to the specific version of a product or service they use." ;
+    rdfs:domain schema1:Consumer ;
+    rdfs:range schema1:ProductOrService .
+
+schema1:hasCountry a rdf:Property ;
+    rdfs:label "hasCountry" ;
+    rdfs:comment "Indicates the country where a location is situated." ;
+    rdfs:domain schema1:Location ;
+    rdfs:range schema1:Country .
+
+schema1:hasCrudeOilSource rdfs:label "has crude oil source" ;
+    rdfs:comment "Relates a refinery to its source of crude oil." ;
+    rdfs:domain schema1:Refinery ;
+    rdfs:range schema1:CrudeOilSource .
+
+schema1:hasDataType a rdf:Property ;
+    rdfs:label "has data type" ;
+    rdfs:comment "Relates a property to its data type." ;
+    rdfs:domain rdfs:Property ;
+    rdfs:range rdfs:Class .
+
+schema1:hasDepth a rdf:Property ;
+    rdfs:label "hasDepth" ;
+    rdfs:comment "Specifies the depth of an offshore site."@en ;
+    rdfs:domain schema1:OffshoreSite ;
+    rdfs:range xsd:float .
+
+schema1:hasDescription a rdf:Property ;
+    rdfs:label "has description" ;
+    rdfs:comment "Relates a class or property to its description." ;
+    rdfs:domain rdfs:Class ;
+    rdfs:range xsd:string .
+
+schema1:hasDiameter a rdf:Property,
+        rdfs:Resource ;
+    rdfs:comment "Relates a pipeline to its diameter." ;
+    rdfs:domain schema1:pipeline ;
+    rdfs:range xsd:float .
+
+schema1:hasDistributionArea a rdf:Property ;
+    rdfs:label "has Distribution Area"@en,
+        "has distribution area"@en ;
+    rdfs:comment "Relates a resource or entity to its distribution area."@en,
+        "Relates an entity with its distribution area."@en ;
+    rdfs:domain schema1:AreaSize ;
+    rdfs:range schema1:DistributionArea .
+
+schema1:hasElectricity a rdf:Property ;
+    rdfs:label "has electricity" ;
+    rdfs:comment "The property indicating that an entity has electricity as a utility/service." ;
+    rdfs:domain schema1:EnergyAndUtilities ;
+    rdfs:range xsd:boolean .
+
+schema1:hasEndStationID a rdf:Property ;
+    rdfs:label "hasEndStationID" ;
+    rdfs:comment "Relates an entity to its ending power station ID" ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range schema1:EndStationID .
+
+schema1:hasEnergyGeneration a rdf:Property ;
+    rdfs:label "hasEnergyGeneration" ;
+    rdfs:comment "Specifies the type of energy generation present at the renewable energy station." ;
+    rdfs:domain schema1:RenewableEnergyStation ;
+    rdfs:range xsd:string .
+
+schema1:hasGas a rdf:Property ;
+    rdfs:label "has gas" ;
+    rdfs:comment "The property indicating that an entity has gas as a utility/service." ;
+    rdfs:domain schema1:EnergyAndUtilities ;
+    rdfs:range xsd:boolean .
+
+schema1:hasGeographicalDetails a rdf:Property ;
+    rdfs:comment "A property indicating the geographical details of a location." ;
+    rdfs:domain schema1:Location ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:hasGridID a rdf:Property ;
+    rdfs:label "has grid ID" ;
+    rdfs:comment "Relates an entity to its corresponding grid ID." ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range schema1:GridID .
+
+schema1:hasIdentifierProperty a rdf:Property ;
+    rdfs:label "has identifier property" ;
+    rdfs:comment "Relates a class to its identifier property." ;
+    rdfs:domain rdfs:Class ;
+    rdfs:range schema1:IdentifierProperty .
+
+schema1:hasIngredient a rdf:Property ;
+    rdfs:label "hasIngredient" ;
+    rdfs:comment "A property representing the ingredient used in a recipe." ;
+    rdfs:domain schema1:Recipe ;
+    rdfs:range schema1:ingredient .
+
+schema1:hasLabel a rdf:Property ;
+    rdfs:label "has label" ;
+    rdfs:comment "Relates a class or property to its label." ;
+    rdfs:domain rdfs:Class ;
+    rdfs:range xsd:string .
+
+schema1:hasLatitude a rdf:Property ;
+    rdfs:label "hasLatitude",
+        "has latitude"@en ;
+    rdfs:comment "Indicates the latitude coordinate of a location.",
+        "Relates a well location to its latitude coordinate."@en ;
+    rdfs:domain schema1:Location,
+        schema1:WellLocation ;
+    rdfs:range xsd:decimal,
+        xsd:float .
+
+schema1:hasLength a rdf:Property ;
+    rdfs:label "has length",
+        "hasLength" ;
+    rdfs:comment "Relates a transmission line to its length in kilometers.",
+        "Relates an entity to its length in kilometers or miles" ;
+    rdfs:domain [ ],
+        schema1:LineLength,
+        schema1:TransmissionLine ;
+    rdfs:range xsd:decimal,
+        schema1:Length .
+
+schema1:hasLineID a rdf:Property ;
+    rdfs:label "hasLineID" ;
+    rdfs:comment "Relates an entity to its unique identifier" ;
+    rdfs:domain schema1:Line ;
+    rdfs:range xsd:string .
+
+schema1:hasLocation a rdf:Property ;
+    rdfs:label "has Location",
+        "has location",
+        "hasLocation",
+        "has location"@en ;
+    rdfs:comment "A property indicating the location relationship between a subject entity and an object entity.",
+        "Indicates the location of a power station.",
+        "Indicates the location of a storage facility.",
+        "Specifies the location of the renewable energy station.",
+        "Relates a production well to its geographical location."@en ;
+    rdfs:domain rdfs:Resource,
+        schema1:PowerStation,
+        schema1:ProductionWell,
+        schema1:RenewableEnergyStation,
+        schema1:StorageFacility ;
+    rdfs:range rdfs:Literal,
+        rdfs:Resource,
+        schema1:IsLocatedAt,
+        schema1:Location .
+
+schema1:hasLocationID a rdf:Property ;
+    rdfs:label "hasLocationID" ;
+    rdfs:comment "Indicates the unique identifier for a location." ;
+    rdfs:domain schema1:Location ;
+    rdfs:range schema1:LocationID .
+
+schema1:hasLongitude a rdf:Property ;
+    rdfs:label "hasLongitude",
+        "has longitude"@en ;
+    rdfs:comment "Indicates the longitude coordinate of a location.",
+        "Indicates the longitude of a station.",
+        "Relates an entity to its longitude value.",
+        "Relates a well location to its longitude coordinate."@en ;
+    rdfs:domain schema1:Location,
+        schema1:WellLocation,
+        schema1:station ;
+    rdfs:range xsd:decimal,
+        xsd:float,
+        schema1:Longitude .
+
+schema1:hasName a rdf:Property ;
+    rdfs:label "has Name",
+        "hasName" ;
+    rdfs:comment "An attribute used to specify the name of an entity.",
+        "Relates a prosumer entity to its name.",
+        "Relates a well to its name." ;
+    rdfs:domain schema1:Name,
+        schema1:OilAndGas,
+        schema1:WellName ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:hasNamespace a rdf:Property ;
+    rdfs:label "has Namespace",
+        "has namespace" ;
+    rdfs:comment "An attribute used to specify the namespace of an entity.",
+        "Relates an entity to its namespace." ;
+    rdfs:domain rdfs:Resource,
+        schema1:OilAndGas ;
+    rdfs:range rdfs:Namespace,
+        xsd:anyURI .
+
+schema1:hasObject a rdf:Property ;
+    rdfs:label "has object",
+        "hasObject" ;
+    rdfs:comment "Relates a relationship to its object.",
+        "Relates a triple to its object." ;
+    rdfs:domain schema1:Relationships,
+        schema1:Triple ;
+    rdfs:range schema1:Entity,
+        schema1:GridID .
+
+schema1:hasParent a rdf:Property ;
+    rdfs:label "has parent",
+        "hasParent" ;
+    rdfs:comment "Relates a facility to its parent facility.",
+        "Relates a resource to its parent resource" ;
+    rdfs:domain schema1:Refinery,
+        schema1:RetailStation ;
+    rdfs:range schema1:Refinery,
+        schema1:RetailStation .
+
+schema1:hasPowerOutput a rdf:Property ;
+    rdfs:label "has power output" ;
+    rdfs:comment "Indicates the power output of a power station." ;
+    rdfs:domain schema1:PowerStation ;
+    rdfs:range xsd:float .
+
+schema1:hasPredicate a rdf:Property ;
+    rdfs:label "has predicate",
+        "hasPredicate" ;
+    rdfs:comment "Relates a relationship to its predicate.",
+        "Relates a triple to its predicate." ;
+    rdfs:domain schema1:Relationships,
+        schema1:Triple ;
+    rdfs:range rdf:Property,
+        schema1:Entity .
+
+schema1:hasPrefix a rdf:Property ;
+    rdfs:label "has prefix" ;
+    rdfs:comment "Relates a namespace to its prefix." ;
+    rdfs:domain rdfs:Namespace ;
+    rdfs:range xsd:string .
+
+schema1:hasPrimaryKey a rdf:Property ;
+    rdfs:label "hasPrimaryKey" ;
+    rdfs:comment "Relates a RefineryID to its primary key.",
+        "Relates a storage facility to its primary key." ;
+    rdfs:domain schema1:RefineryID,
+        schema1:StorageID ;
+    rdfs:range xsd:string .
+
+schema1:hasProductionRate a rdf:Property ;
+    rdfs:label "has production rate"@en ;
+    rdfs:comment "Relates a production well to its production rate, which is the amount of petroleum or natural gas extracted per unit of time."@en ;
+    rdfs:domain schema1:ProductionWell ;
+    rdfs:range xsd:decimal .
+
+schema1:hasProsumer a rdf:Property ;
+    rdfs:label "hasProsumer" ;
+    rdfs:comment "Relates a ProsumerID with its associated Prosumer entity." ;
+    rdfs:domain schema1:ProsumerID ;
+    rdfs:range schema1:Prosumer .
+
+schema1:hasProsumerID a rdf:Property ;
+    rdfs:label "hasProsumerID" ;
+    rdfs:comment "Relates an entity with its associated ProsumerID." ;
+    rdfs:domain schema1:ProsumerID ;
+    rdfs:range xsd:string .
+
+schema1:hasReceiver rdfs:label "has Receiver" ;
+    rdfs:comment "Relates a transmits-through pattern instance to its receiver." ;
+    rdfs:domain schema1:TransmitsThroughPattern ;
+    rdfs:range schema1:Receiver ;
+    rdfs:subPropertyOf schema1:hasParticipant .
+
+schema1:hasRenewableEnergy a rdf:Property ;
+    rdfs:label "has renewable energy"@en ;
+    rdfs:comment "Relates an entity to a renewable energy source."@en ;
+    rdfs:domain schema1:Entity ;
+    rdfs:range schema1:RenewableEnergy .
+
+schema1:hasSecurityLevel a rdf:Property ;
+    rdfs:comment "Indicates the level of security measures implemented in a storage facility." ;
+    rdfs:domain schema1:StorageFacility ;
+    rdfs:range rdfs:Literal .
+
+schema1:hasSource a rdf:Property ;
+    rdfs:label "hasSource" ;
+    rdfs:comment "Indicates the source entity in a connection." ;
+    rdfs:domain schema1:ConnectedTo ;
+    rdfs:range rdfs:Resource .
+
+schema1:hasStationID a rdf:Property ;
+    rdfs:label "hasStationID" ;
+    rdfs:comment "Relates an entity to its unique identifier for each renewable energy station." ;
+    rdfs:domain schema1:RenewableEnergyStation ;
+    rdfs:range xsd:string .
+
+schema1:hasStatus a rdf:Property ;
+    rdfs:label "hasStatus" ;
+    rdfs:comment "A property indicating the status of something." ;
+    rdfs:domain [ ] ;
+    rdfs:range schema1:Status .
+
+schema1:hasStorageCapacity a rdf:Property ;
+    rdfs:comment "Relates an object to its storage capacity in Megawatt-hours." ;
+    rdfs:domain schema1:StorageCapacity ;
+    rdfs:range schema1:MWh .
+
+schema1:hasSubject a rdf:Property ;
+    rdfs:label "has subject",
+        "hasSubject" ;
+    rdfs:comment "Relates a relationship to its subject.",
+        "Relates a triple to its subject." ;
+    rdfs:domain schema1:Relationships,
+        schema1:Triple ;
+    rdfs:range schema1:Entity .
+
+schema1:hasTarget a rdf:Property ;
+    rdfs:label "hasTarget" ;
+    rdfs:comment "Indicates the target entity in a connection." ;
+    rdfs:domain schema1:ConnectedTo ;
+    rdfs:range rdfs:Resource .
+
+schema1:hasTemperatureControl a rdf:Property ;
+    rdfs:comment "Indicates whether a storage facility has temperature control to maintain suitable conditions for certain items." ;
+    rdfs:domain schema1:StorageFacility ;
+    rdfs:range rdfs:Literal .
+
+schema1:hasTransmitter rdfs:label "has Transmitter" ;
+    rdfs:comment "Relates a transmits-through pattern instance to its transmitter." ;
+    rdfs:domain schema1:TransmitsThroughPattern ;
+    rdfs:range schema1:Transmitter ;
+    rdfs:subPropertyOf schema1:hasParticipant .
+
+schema1:hasTriple a rdf:Property ;
+    rdfs:label "hasTriple",
+        "has triple"@en ;
+    rdfs:comment "Relates an entity to its triple value.",
+        "Relates a resource or entity to a triple in the turtle format."@en ;
+    rdfs:domain schema1:Longitude ;
+    rdfs:range schema1:Triple .
+
+schema1:hasType a rdf:Property ;
+    rdfs:label "has Type",
+        "has type" ;
+    rdfs:comment "An attribute used to specify the type of an entity.",
+        "Relates a resource to its type" ;
+    rdfs:domain schema1:OilAndGas,
+        schema1:RetailStation ;
+    rdfs:range rdfs:Class,
+        xsd:string .
+
+schema1:hasURI a rdf:Property ;
+    rdfs:label "has URI" ;
+    rdfs:comment "Relates an entity to its URI." ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range xsd:anyURI .
+
+schema1:hasUniqueIdentifier a rdf:Property ;
+    rdfs:label "hasUniqueIdentifier" ;
+    rdfs:comment "Relates a RefineryID to its unique identifier.",
+        "Relates a storage facility to its unique identifier." ;
+    rdfs:domain schema1:RefineryID,
+        schema1:StorageID ;
+    rdfs:range xsd:string,
+        schema1:UniqueIdentifier .
+
+schema1:hasVersion a rdf:Property ;
+    rdfs:label "has Version",
+        "has version",
+        "hasVersion" ;
+    rdfs:comment "Relates a resource to its version",
+        "Relates a resource to its version number.",
+        "Specifies the version of the smart grid.",
+        "Specifies the version of the schema or ontology to which the prosumer conforms."@en ;
+    rdfs:domain schema1:Prosumer,
+        schema1:Refinery,
+        schema1:RetailStation,
+        schema1:SmartGrid ;
+    rdfs:range rdfs:Literal,
+        xsd:string,
+        schema1:version .
+
+schema1:hasVersionNumber a rdf:Property ;
+    rdfs:label "hasVersionNumber" ;
+    rdfs:comment "Relates a product or service to its version number." ;
+    rdfs:domain schema1:ProductOrService ;
+    rdfs:range xsd:string .
+
+schema1:hasWater a rdf:Property ;
+    rdfs:label "has water" ;
+    rdfs:comment "The property indicating that an entity has water as a utility/service." ;
+    rdfs:domain schema1:EnergyAndUtilities ;
+    rdfs:range xsd:boolean .
+
+schema1:hasWellNumber a rdf:Property ;
+    rdfs:label "has well number"@en ;
+    rdfs:comment "Relates a production well to its unique well number."@en ;
+    rdfs:domain schema1:ProductionWell ;
+    rdfs:range xsd:string .
+
+schema1:includeNamespaceDefinition a rdf:Property ;
+    rdfs:label "includes namespace definition" ;
+    rdfs:comment "Relates a format to the namespace definition header it includes." ;
+    rdfs:domain schema1:TurtleFormat ;
+    rdfs:range schema1:Namespace .
+
+schema1:integration a schema1:IntegratedWith ;
+    rdfs:label "Integration" ;
+    rdfs:comment "The integration relationship between System 1 and System 2." ;
+    schema1:object schema1:system2 ;
+    schema1:subject schema1:system1 .
+
+schema1:isAttributeOf a rdf:Property ;
+    rdfs:label "isAttributeOf" ;
+    rdfs:comment "Relates an attribute to the entity it belongs to" ;
+    rdfs:domain schema1:Attribute ;
+    rdfs:range schema1:Entity .
+
+schema1:isPrimaryKeyOf a rdf:Property ;
+    rdfs:label "isPrimaryKeyOf" ;
+    rdfs:comment "Relates a primary key to its associated RefineryID." ;
+    rdfs:domain xsd:string ;
+    rdfs:range schema1:RefineryID .
+
+schema1:isServedWith a rdf:Property ;
+    rdfs:label "isServedWith" ;
+    rdfs:comment "A property representing the serving relationship between two entities." ;
+    rdfs:domain schema1:Recipe ;
+    rdfs:range schema1:Serves .
+
+schema1:isUniqueIdentifierOf a rdf:Property ;
+    rdfs:label "isUniqueIdentifierOf" ;
+    rdfs:comment "Relates a unique identifier to its associated RefineryID." ;
+    rdfs:domain schema1:UniqueIdentifier ;
+    rdfs:range schema1:RefineryID .
+
+schema1:latitude a rdf:Property ;
+    rdfs:label "Latitude",
+        "latitude" ;
+    rdfs:comment "The latitude coordinate of a location.",
+        "The latitude coordinates of the exploration site.",
+        "The latitude of the location.",
+        "The latitude value of a specific location on the Earth's surface, measured in degrees" ;
+    rdfs:domain schema1:ExplorationSite,
+        schema1:Location ;
+    rdfs:range xsd:decimal,
+        xsd:double,
+        xsd:float,
+        schema1:Latitude .
+
+schema1:latitudeOfStation a rdf:Property ;
+    rdfs:label "latitudeOfStation" ;
+    rdfs:comment "The latitude of a station." ;
+    rdfs:domain schema1:Latitude ;
+    rdfs:range xsd:float .
+
+schema1:licenseIdentifier rdfs:comment "Identifies a license through a unique identifier." ;
+    rdfs:domain schema1:LicenseNumber ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdf:Property .
+
+schema1:location a rdf:Property ;
+    rdfs:label "location" ;
+    rdfs:comment "The location property indicates the location of an entity.",
+        "The location where the charges occur." ;
+    rdfs:domain schema1:ChargesAt,
+        schema1:Location ;
+    rdfs:range xsd:string,
+        schema1:Location .
+
+schema1:locationCondition a rdf:Property ;
+    rdfs:comment "The locationCondition property indicates that the location is the same as before." ;
+    rdfs:domain schema1:Location ;
+    rdfs:range schema1:AsBefore .
+
+schema1:locationInstance a schema1:Location ;
+    rdfs:label "locationInstance" ;
+    rdfs:comment "An instance of the Location class with specific geographical details." ;
+    schema1:geographicalDetails schema1:geographicalDetailsInstance .
+
+schema1:longitude a rdf:Property ;
+    rdfs:label "Longitude",
+        "longitude" ;
+    rdfs:comment "The longitude coordinate of a location.",
+        "The longitude coordinates of the exploration site.",
+        "The longitude of the location." ;
+    rdfs:domain schema1:ExplorationSite,
+        schema1:Location ;
+    rdfs:range xsd:decimal,
+        xsd:double,
+        xsd:float .
+
+schema1:maximumStorageCapacity a schema1:MaximumStorageCapacity ;
+    schema1:capacity "Maximum storage capacity."^^xsd:string .
+
+schema1:monthlyGeneration a rdfs:Property ;
+    rdfs:label "Monthly Generation" ;
+    rdfs:comment "The average monthly power generation in kilowatt-hours (kWh)" ;
+    rdfs:domain schema1:PowerGeneration ;
+    rdfs:range xsd:float .
+
+schema1:name a rdf:Property ;
+    rdfs:label "Name",
+        "name" ;
+    rdfs:comment "The name of the consumer.",
+        "The name of the exploration site.",
+        "The name of the prosumer."@en ;
+    rdfs:domain schema1:Consumer,
+        schema1:ExplorationSite,
+        schema1:Prosumer ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:nameOfStation a rdf:Property ;
+    rdfs:label "nameOfStation" ;
+    rdfs:comment "The name of a station." ;
+    rdfs:domain schema1:Station ;
+    rdfs:range xsd:string .
+
+schema1:object a rdf:Property ;
+    rdfs:label "object",
+        "object"@en ;
+    rdfs:comment "The object entity involved in the location relationship.",
+        "The object of the integration relationship.",
+        "The entity that the relationship points to or relates to."@en ;
+    rdfs:domain schema1:IsLocatedAt,
+        schema1:Relationship ;
+    rdfs:range rdfs:Resource,
+        schema1:IntegratedWith .
+
+schema1:oilReserves a rdf:Property ;
+    rdfs:label "Oil Reserves" ;
+    rdfs:comment "The estimated amount of oil reserves." ;
+    rdfs:domain schema1:EstimatedReserves ;
+    rdfs:range xsd:float .
+
+schema1:percentage a rdf:Property ;
+    rdfs:label "percentage" ;
+    rdfs:comment "The percentage value of renewable sources feeding the grid." ;
+    rdfs:domain schema1:RenewableIntegration ;
+    rdfs:range xsd:float .
+
+schema1:percentageOfStorageSolutionsIntegrated a rdf:Property ;
+    rdfs:label "percentageOfStorageSolutionsIntegrated" ;
+    rdfs:comment "The percentage of storage solutions integrated in the system." ;
+    rdfs:domain schema1:StorageIntegration ;
+    rdfs:range xsd:float .
+
+schema1:populationServed a rdf:Property ;
+    rdfs:label "populationServed" ;
+    rdfs:comment "A property representing the number of people being served in the area." ;
+    rdfs:domain schema1:PopulationServed ;
+    rdfs:range schema1:Number .
+
+schema1:powerCapacity a rdf:Property ;
+    rdfs:label "powerCapacity" ;
+    rdfs:comment "The property that specifies the maximum amount of power the station can produce" ;
+    rdfs:domain schema1:Capacity ;
+    rdfs:range xsd:decimal .
+
+schema1:predicate a rdf:Property ;
+    rdfs:label "predicate"@en ;
+    rdfs:comment "The property or attribute that describes the relationship between the subject and the object."@en ;
+    rdfs:domain schema1:Relationship ;
+    rdfs:range rdfs:Resource .
+
+schema1:primaryKey a rdf:Property ;
+    rdfs:label "primaryKey" ;
+    rdfs:comment "Indicates that the given attribute is the primary key for a resource." ;
+    rdfs:domain schema1:SiteID ;
+    rdfs:range xsd:string .
+
+schema1:prosumerHasStorage a rdf:Property ;
+    rdfs:label "prosumer has storage" ;
+    rdfs:comment "Relates a prosumer to the storage facility they have, if any." ;
+    rdfs:domain schema1:Prosumer ;
+    rdfs:range schema1:StorageID .
+
+schema1:receiver a rdfs:Property ;
+    rdfs:label "receiver" ;
+    rdfs:comment "The property represents the receiver entity that receives something from a supplier entity." ;
+    rdfs:domain schema1:SuppliesTo ;
+    rdfs:range schema1:Entity .
+
+schema1:refineryName a rdf:Property ;
+    rdfs:label "refineryName" ;
+    rdfs:comment "The name of the refinery." ;
+    rdfs:domain schema1:Refinery ;
+    rdfs:range rdfs:Literal .
+
+schema1:refinery_supplies_to a rdf:Property ;
+    rdfs:comment "Denotes that a product is supplied to a retail station by a refinery."@en,
+        "Denotes that a refinery supplies products to a retail station."@en,
+        "Indicates the relationship between a refinery and the retail stations it supplies products to."@en ;
+    rdfs:domain schema1:Description,
+        schema1:Product,
+        schema1:Refinery ;
+    rdfs:range rdf:Property,
+        schema1:RetailStation .
+
+schema1:relatesTo a rdf:Property ;
+    rdfs:label "relatesTo" ;
+    rdfs:comment "Specifies a relationship between two DistributionAreas." ;
+    rdfs:domain schema1:DistributionArea ;
+    rdfs:range schema1:DistributionArea .
+
+schema1:secondValue a rdf:Property ;
+    rdfs:label "secondValue" ;
+    rdfs:comment "Represents the second value in a triple." ;
+    rdfs:domain schema1:Triple ;
+    rdfs:range xsd:float .
+
+schema1:source a rdf:Property ;
+    rdfs:label "source" ;
+    rdfs:comment "The entity that is the source of the FeedsInto relationship." ;
+    rdfs:domain schema1:FeedsInto ;
+    rdfs:range schema1:Entity .
+
+schema1:sourceOfCrudeOil rdfs:label "source of crude oil" ;
+    rdfs:comment "Relates a crude oil to its source." ;
+    rdfs:domain schema1:CrudeOil ;
+    rdfs:range schema1:CrudeOilSource .
+
+schema1:sourceProcess a rdf:Property ;
+    rdfs:comment "The process from which another process is derived or based on." ;
+    rdfs:domain schema1:ProcessesFrom ;
+    rdfs:range schema1:Process .
+
+schema1:startLocation a rdf:Property ;
+    rdfs:label "startLocation" ;
+    rdfs:comment "Defines the starting location of a geographical journey." ;
+    rdfs:domain schema1:Trip ;
+    rdfs:range schema1:StartLocation .
+
+schema1:stateOrProvinceOfStation a rdf:Property ;
+    rdfs:comment "Relates a station to its state or province." ;
+    rdfs:domain schema1:Station ;
+    rdfs:range schema1:StateOrProvince .
+
+schema1:station1 a schema1:Station ;
+    schema1:CountryOfStation schema1:country1 ;
+    schema1:nameOfStation "Name of the station." .
+
+schema1:station2 a schema1:Station ;
+    schema1:CountryOfStation schema1:country2 .
+
+schema1:station3 a schema1:Station ;
+    schema1:CountryOfStation schema1:country3 .
+
+schema1:stationName a rdf:Property ;
+    rdfs:label "Station Name" ;
+    rdfs:comment "The name of the power station" ;
+    rdfs:domain schema1:Station ;
+    rdfs:range xsd:string .
+
+schema1:storageFacilityID a rdf:Property ;
+    rdfs:label "storage facility ID" ;
+    rdfs:comment "The ID of a storage facility." ;
+    rdfs:domain schema1:StorageFacility ;
+    rdfs:range xsd:integer .
+
+schema1:storageFacilityName a rdf:Property ;
+    rdfs:comment "The name of the storage facility."@en ;
+    rdfs:domain schema1:StorageName ;
+    rdfs:range xsd:string .
+
+schema1:storedEnergy a rdf:Property ;
+    rdfs:label "Stored Energy" ;
+    rdfs:comment "Energy that is retained and not lost during storage." ;
+    rdfs:domain schema1:EfficiencyPattern ;
+    rdfs:range schema1:energy .
+
+schema1:subject a rdf:Property ;
+    rdfs:label "subject",
+        "subject"@en ;
+    rdfs:comment "The subject entity involved in the location relationship.",
+        "The subject of the integration relationship.",
+        "The entity that the relationship originates from."@en ;
+    rdfs:domain schema1:IsLocatedAt,
+        schema1:Relationship ;
+    rdfs:range rdfs:Resource,
+        schema1:IntegratedWith .
+
+schema1:supplier a rdfs:Property ;
+    rdfs:label "supplier" ;
+    rdfs:comment "The property represents the supplier entity that supplies something to another entity." ;
+    rdfs:domain schema1:SuppliesTo ;
+    rdfs:range schema1:Entity .
+
+schema1:suppliesTo a rdf:Property ;
+    rdfs:label "suppliesTo",
+        "suppliesTo"@en ;
+    rdfs:comment "Indicates that a Refinery supplies products to a Retail Station.",
+        "Indicates that an Energy Storage Facility supplies energy to a Distribution Area during peak demand or low generation times.",
+        "Indicates that a supplier entity supplies resources to a recipient entity."@en ;
+    rdfs:domain schema1:EnergyStorageFacility,
+        schema1:Refinery,
+        schema1:Supplier ;
+    rdfs:range schema1:DistributionArea,
+        schema1:Recipient,
+        schema1:RetailStation .
+
+schema1:thirdValue a rdf:Property ;
+    rdfs:label "thirdValue" ;
+    rdfs:comment "Represents the third value in a triple." ;
+    rdfs:domain schema1:Triple ;
+    rdfs:range xsd:float .
+
+schema1:transportsTo a rdf:Property ;
+    rdfs:label "transports to" ;
+    rdfs:comment "Indicates the facility a pipeline is transporting oil or gas to.",
+        "The relationship specifying that a source entity transports to a destination entity." ;
+    rdfs:domain schema1:Description,
+        schema1:Source ;
+    rdfs:range xsd:string,
+        schema1:Destination .
+
+schema1:uniqueIdentifier a rdf:Property ;
+    rdfs:label "uniqueIdentifier" ;
+    rdfs:comment "Indicates that the given attribute is a unique identifier for a resource." ;
+    rdfs:domain schema1:SiteID ;
+    rdfs:range xsd:string .
+
+schema1:unit a rdf:Property ;
+    rdfs:label "unit" ;
+    rdfs:comment "Specifies the unit of measurement for the processing capacity dimension." ;
+    rdfs:domain schema1:ProcessingCapacityDimension ;
+    rdfs:range rdfs:Class ;
+    schema1:BarrelsPerDay rdfs:label .
+
+schema1:versionNumber a rdf:Property ;
+    rdfs:label "version number",
+        "versionNumber" ;
+    rdfs:comment "Specifies the version number of the product or service.",
+        "The version number of a resource" ;
+    rdfs:domain rdfs:Literal,
+        schema1:ProductOrService ;
+    rdfs:range xsd:string .
+
+<file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/sample_longitude> a schema1:Longitude ;
+    rdfs:label "Longitude of the station" ;
+    schema1:label "Longitude of the station" .
+
+schema1:1.2 a schema1:Triple ;
+    rdfs:label "1.2" ;
+    rdfs:comment "A triple representing the value '1.2'." .
+
+schema1:CapacityTriple a rdf:Property ;
+    rdfs:label "Capacity" ;
+    rdfs:comment "The maximum amount of power the station can produce (in Megawatts, MW)." ;
+    rdfs:range xsd:decimal .
+
+schema1:City1 a schema1:City ;
+    rdfs:label "City1" ;
+    rdfs:comment "An example city where the station is located." .
+
+schema1:CountryOfStation a rdf:Property ;
+    rdfs:label "Country of the station" ;
+    rdfs:comment "Indicates the country where a station is located." ;
+    rdfs:domain schema1:Station ;
+    rdfs:range schema1:Country ;
+    rdfs:subPropertyOf schema1:CountryOfStation .
+
+schema1:CrudeOil rdfs:label "Crude Oil" ;
+    rdfs:comment "Unrefined petroleum product." ;
+    rdfs:subClassOf schema1:Pattern .
+
+schema1:DistributionArea2 a schema1:DistributionArea ;
+    schema1:hasAreaID "Area456" .
+
+schema1:ExampleReceiver a schema1:Entity ;
+    rdfs:label "Example Receiver" ;
+    rdfs:comment "An example receiver entity." .
+
+schema1:ExampleSupplier a schema1:Entity ;
+    rdfs:label "Example Supplier" ;
+    rdfs:comment "An example supplier entity." .
+
+schema1:LicenseNumber rdfs:comment "Government or regulatory body license identifier." ;
+    rdfs:subClassOf rdfs:Class .
+
+schema1:LocationID a rdfs:Datatype ;
+    rdfs:label "Location ID" ;
+    rdfs:comment "A unique identifier for a location." ;
+    rdfs:subClassOf xsd:string .
+
+schema1:MWh a rdfs:Datatype ;
+    rdfs:comment "A datatype representing storage capacity in Megawatt-hours." ;
+    rdfs:subClassOf xsd:float .
+
+schema1:Number a rdfs:Datatype ;
+    rdfs:label "Number" ;
+    rdfs:comment "A datatype representing numerical values." .
+
+schema1:Percent a rdfs:Datatype ;
+    rdfs:label "Percentage" ;
+    rdfs:comment "A unit of measurement representing a ratio or a fraction." .
+
+schema1:Process1 a schema1:Process ;
+    rdfs:comment "The source process." .
+
+schema1:Process2 a schema1:Process ;
+    rdfs:comment "The derived process." .
+
+schema1:ProsumerLocation a rdf:Class ;
+    rdfs:label "Prosumer Location" ;
+    rdfs:comment "The location where the prosumer is located" .
+
+schema1:Receiver rdfs:label "Receiver" ;
+    rdfs:comment "An entity that receives a transmitted signal or data." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:RetailStation1_6Version a rdfs:Literal ;
+    rdfs:label "Retail Station 1.6 Version" ;
+    rdfs:comment "The version of a Retail Station 1.6" ;
+    schema1:versionNumber "1.6" .
+
+schema1:Transmitter rdfs:label "Transmitter" ;
+    rdfs:comment "An entity that transmits a signal or data." ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:country1 a schema1:Country ;
+    rdfs:label "Country 1" .
+
+schema1:country2 a schema1:Country ;
+    rdfs:label "Country 2" .
+
+schema1:country3 a schema1:Country ;
+    rdfs:label "Country 3" .
+
+schema1:description a rdf:Property ;
+    rdfs:label "description" ;
+    rdfs:comment "Property to provide a description for an entity.",
+        "Provides a textual description for a resource."@en ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range rdfs:Literal,
+        xsd:string .
+
+schema1:exampleStateOrProvince a schema1:StateOrProvince ;
+    rdfs:comment "An example state or province." .
+
+schema1:geographicalDetailsInstance a schema1:GeographicalDetails ;
+    rdfs:label "geographicalDetailsInstance" ;
+    rdfs:comment "An instance of the GeographicalDetails class representing specific geographical details." .
+
+schema1:hasAttribute a rdf:Property ;
+    rdfs:label "hasAttribute" ;
+    rdfs:comment "A property indicating that an entity has an attribute.",
+        "Relates an entity to its attributes",
+        "Relates a pattern to its attributes."@en ;
+    rdfs:domain schema1:Attributes,
+        schema1:Entity,
+        schema1:Pattern ;
+    rdfs:range rdfs:Literal,
+        schema1:Attribute,
+        schema1:Attributes .
+
+schema1:hasEntity a rdf:Property ;
+    rdfs:label "hasEntity" ;
+    rdfs:comment "Denotes the connected entity in a relationship." ;
+    rdfs:domain schema1:Relationship ;
+    rdfs:range schema1:Entity ;
+    rdfs:subPropertyOf rdf:type,
+        schema1:hasEntity .
+
+schema1:ingredient1 a schema1:ingredient ;
+    rdfs:label "Ingredient 1" ;
+    rdfs:comment "The first ingredient used in a recipe." .
+
+schema1:ingredient2 a schema1:ingredient ;
+    rdfs:label "Ingredient 2" ;
+    rdfs:comment "The second ingredient used in a recipe." .
+
+schema1:recipe1 a schema1:Recipe ;
+    rdfs:label "Recipe 1" ;
+    rdfs:comment "A sample recipe." ;
+    schema1:hasIngredient schema1:ingredient1 ;
+    schema1:isServedWith schema1:recipe2 .
+
+schema1:recipe2 a schema1:Recipe ;
+    rdfs:label "Recipe 2" ;
+    rdfs:comment "Another sample recipe." ;
+    schema1:hasIngredient schema1:ingredient2 ;
+    schema1:isServedWith schema1:recipe1 .
+
+schema1:system1 a schema1:IntegratedWith ;
+    rdfs:label "System 1" ;
+    rdfs:comment "One of the systems involved in the integration relationship." .
+
+schema1:system2 a schema1:IntegratedWith ;
+    rdfs:label "System 2" ;
+    rdfs:comment "One of the systems involved in the integration relationship." .
+
+schema1:version a rdfs:Datatype ;
+    rdfs:comment "The version of a schema or ontology."@en ;
+    rdfs:subClassOf xsd:string .
+
+schema1:CrudeOilSource rdfs:label "Crude Oil Source" ;
+    rdfs:comment "Indicates the source of crude oil for a refinery." ;
+    rdfs:subClassOf schema1:Pattern .
+
+schema1:TransmitsThroughPattern rdfs:label "Transmits Through Pattern Instance" ;
+    rdfs:comment "A specific instance of the transmits-through pattern." ;
+    rdfs:subClassOf schema1:Relation .
+

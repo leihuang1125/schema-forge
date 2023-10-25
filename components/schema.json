@@ -1,0 +1,8 @@
+{
+    "schemaName": "",
+    "classes": ["c1", "c2", "c3"],
+    "properties": ["p1", "p2"],
+    "relations": [{"s", "p1", "c2"}, 
+                  ("c2", "p2", "c3")]
+
+}

@@ -1,0 +1,101 @@
+Finance
+
+Transaction Record
+Attributes:
+TransactionID (Unique Identifier)
+Amount
+Date
+Type (Debit/Credit/Transfer)
+Description
+Currency
+MerchantName (if applicable)
+Category (e.g., Food, Utilities, Entertainment)
+Location
+Relationships:
+BelongsTo -> Customer
+ProcessedBy -> Bank
+OccurredAt -> Branch
+AssociatedWith -> Account
+Customer Profile
+Attributes:
+CustomerID (Unique Identifier)
+FirstName
+LastName
+DOB (Date of Birth)
+NationalID/Social Security Number
+Occupation
+Phone
+Email
+Address
+CreditScore
+Relationships:
+Has_Account -> Account
+Has_Loan -> Loan
+Has_Investment -> Investment
+Account
+Attributes:
+AccountID (Unique Identifier)
+Type (e.g., Savings, Checking, Joint)
+Balance
+AccountNumber
+IBAN (International Bank Account Number, if applicable)
+SWIFT/BIC (Bank Identifier Code, if applicable)
+AccountCreationDate
+InterestRate
+Relationships:
+OwnedBy -> Customer
+HeldBy -> Bank
+Loan
+Attributes:
+LoanID (Unique Identifier)
+Type (e.g., Mortgage, Personal, Auto)
+PrincipalAmount
+InterestRate
+Duration
+MonthlyPayment
+StartDate
+EndDate
+OutstandingAmount
+Relationships:
+TakenBy -> Customer
+IssuedBy -> Bank
+Investment
+Attributes:
+InvestmentID (Unique Identifier)
+Type (e.g., Stocks, Bonds, Mutual Funds)
+Amount
+DateOfInvestment
+Returns
+InvestmentDuration
+Relationships:
+OwnedBy -> Customer
+ManagedBy -> InvestmentFirm
+Bank
+Attributes:
+BankID (Unique Identifier)
+Name
+Headquarters
+FoundedDate
+NumberofBranches
+Relationships:
+Serves -> Customer
+Processes -> TransactionRecord
+Holds -> Account
+Branch
+Attributes:
+BranchID (Unique Identifier)
+Address
+Phone
+BusinessHours
+Relationships:
+PartOf -> Bank
+Processes -> TransactionRecord
+InvestmentFirm
+Attributes:
+FirmID (Unique Identifier)
+Name
+Headquarters
+FoundedDate
+Relationships:
+Manages -> Investment
+Serves -> Customer

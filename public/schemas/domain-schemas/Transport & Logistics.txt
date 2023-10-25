@@ -1,0 +1,84 @@
+Transport & Logistics
+1. Pattern: Shipment Details
+Attributes:
+ShipmentID (Primary Key): A unique identifier for each shipment.
+Origin:
+Address
+City
+State/Province
+Country
+PostalCode
+Destination:
+Address
+City
+State/Province
+Country
+PostalCode
+ETA (Estimated Time of Arrival): Expected delivery date and time.
+ContentsDescription: A brief description of the shipment's contents.
+Weight: Weight of the shipment.
+Volume: Volume of the shipment (e.g., in cubic meters).
+ShipmentStatus: e.g., Scheduled, In Transit, Delivered, Delayed.
+ShippingMethod: e.g., Air, Sea, Rail, Road.
+Relationships:
+HandledBy:
+Shipment -HandledBy-> LogisticsProvider
+
+2. Pattern: Logistics Provider Details
+Attributes:
+ProviderID (Primary Key): A unique identifier for each logistics provider.
+ProviderName: Name of the logistics company.
+ServicesOffered: Types of transportation services offered (e.g., Overnight, International, Heavy Cargo).
+Headquarters:
+Address
+City
+State/Province
+Country
+PostalCode
+Relationships:
+Operates:
+LogisticsProvider -Operates-> VehicleFleet
+
+3. Pattern: Vehicle Fleet Details
+Attributes:
+VehicleID (Primary Key): A unique identifier for each vehicle.
+VehicleType: e.g., Truck, Cargo Plane, Ship, Train.
+Capacity: Maximum weight or volume it can carry.
+OperationalStatus: e.g., Active, Maintenance, Retired.
+CurrentLocation: Current geographical location.
+Relationships:
+Transports:
+Vehicle -Transports-> Shipment
+
+4. Pattern: Tracking Events
+Attributes:
+EventID (Primary Key): A unique identifier for each event.
+Timestamp: Date and time of the event.
+Location:
+Address
+City
+State/Province
+Country
+PostalCode
+EventType: e.g., Picked Up, In Transit, Cleared Customs, Delivered.
+ShipmentID: The associated shipment's identifier.
+Relationships:
+RelatesTo:
+TrackingEvent -RelatesTo-> Shipment
+
+5. Pattern: Customer Details
+Attributes:
+CustomerID (Primary Key): A unique identifier for each customer.
+CustomerName: Name of the customer or business.
+ContactInformation:
+Phone
+Email
+BillingAddress:
+Address
+City
+State/Province
+Country
+PostalCode
+Relationships:
+Orders:
+Customer -Orders-> Shipment

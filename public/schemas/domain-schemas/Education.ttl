@@ -1,0 +1,350 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <https://schemaForge.net/pattern/> .
+@prefix sf-house: <https://schemaForge.net/pattern/house/> .
+@prefix sf-student: <https://schemaForge.net/pattern/student/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema1:Assignment a rdfs:Class ;
+    rdfs:label "Assignment" ;
+    rdfs:comment "An assignment given to students in a course" .
+
+schema1:Club a rdfs:Class ;
+    rdfs:label "Club" ;
+    rdfs:comment "A club or group" .
+
+schema1:College a rdfs:Class ;
+    rdfs:label "College",
+        "College/School" ;
+    rdfs:comment "A College or School within a university.",
+        "A college or institution that contains departments." ;
+    rdfs:subClassOf rdfs:Resource .
+
+schema1:Course a rdfs:Class ;
+    rdfs:label "Course" ;
+    rdfs:comment "A course in which students can enroll",
+        "A course offered by a department." .
+
+schema1:CourseTaken a rdfs:Class ;
+    rdfs:label "Course Taken" ;
+    rdfs:comment "The course taken by a student" .
+
+schema1:Department a rdfs:Class ;
+    rdfs:label "Department" ;
+    rdfs:comment "A department within an organization or institution." .
+
+schema1:Exam a rdfs:Class ;
+    rdfs:label "Exam" ;
+    rdfs:comment "An exam given to students in a course" .
+
+schema1:Faculty a rdfs:Class ;
+    rdfs:label "Faculty" ;
+    rdfs:comment "A faculty member who oversees a club",
+        "A member of the faculty employed by a department." ;
+    rdfs:subClassOf schema1:Person .
+
+schema1:Grade a rdfs:Class ;
+    rdfs:label "Grade" ;
+    rdfs:comment "The grade received for a course" .
+
+schema1:Semester a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Semester" ;
+    rdfs:comment "The semester in which a course was taken" ;
+    rdfs:domain schema1:Course .
+
+schema1:Student a rdfs:Class ;
+    rdfs:label "Student" ;
+    rdfs:comment "A student entity in the system.",
+        "A student member of a club",
+        "A student who has a transcript" ;
+    rdfs:subClassOf schema1:Entity .
+
+schema1:TranscriptID a rdfs:Class ;
+    rdfs:label "Transcript ID" ;
+    rdfs:comment "A unique identifier for a transcript" .
+
+schema1:University a rdfs:Class ;
+    rdfs:label "University"@en ;
+    rdfs:comment "A higher education institution that offers academic programs and degrees."@en .
+
+schema1:Year a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Year" ;
+    rdfs:comment "The year in which a course was taken" ;
+    rdfs:domain schema1:Course ;
+    rdfs:range xsd:gYear .
+
+sf-house:Dormitory a rdfs:Class ;
+    rdfs:label "Dormitory" ;
+    rdfs:comment "A type of residence hall or dormitory for students." .
+
+schema1:Advises a rdf:Property ;
+    rdfs:label "Advises" ;
+    rdfs:domain schema1:Person ;
+    rdfs:range schema1:Student .
+
+schema1:Advisor a rdf:Property ;
+    rdfs:label "Advisor" ;
+    rdfs:comment "The advisor of a club" ;
+    rdfs:domain schema1:Club ;
+    rdfs:range xsd:string .
+
+schema1:AssignmentID a rdf:Property ;
+    rdfs:label "AssignmentID" ;
+    rdfs:comment "Unique identifier for an assignment or exam" ;
+    rdfs:domain schema1:Assignment ;
+    rdfs:range xsd:string .
+
+schema1:AttemptedBy a rdf:Property ;
+    rdfs:label "AttemptedBy" ;
+    rdfs:comment "The student who attempts an assignment or exam" ;
+    rdfs:domain schema1:Assignment ;
+    rdfs:range schema1:Student .
+
+schema1:BelongsTo a rdf:Property ;
+    rdfs:label "Belongs To" ;
+    rdfs:comment "Associates a transcript with a student" ;
+    rdfs:domain schema1:TranscriptID ;
+    rdfs:range schema1:Student .
+
+schema1:ClubID a rdf:Property ;
+    rdfs:label "ClubID" ;
+    rdfs:comment "The unique identifier for a club" ;
+    rdfs:domain schema1:Club ;
+    rdfs:range xsd:string .
+
+schema1:ClubName a rdf:Property ;
+    rdfs:label "ClubName" ;
+    rdfs:comment "The name of a club" ;
+    rdfs:domain schema1:Club ;
+    rdfs:range xsd:string .
+
+schema1:CollegeID a rdf:Property ;
+    rdfs:domain schema1:College .
+
+schema1:CourseDescription a rdf:Property ;
+    rdfs:domain schema1:Course .
+
+schema1:CourseID a rdf:Property ;
+    rdfs:domain schema1:Course .
+
+schema1:CourseName a rdf:Property ;
+    rdfs:domain schema1:Course .
+
+schema1:Credits a rdf:Property ;
+    rdfs:domain schema1:Course ;
+    rdfs:range xsd:integer .
+
+schema1:DepartmentID a rdf:Property ;
+    rdfs:label "Department ID" ;
+    rdfs:comment "The unique identifier for a department." ;
+    rdfs:domain schema1:Department ;
+    rdfs:range xsd:integer .
+
+schema1:DepartmentName a rdf:Property ;
+    rdfs:label "Department Name" ;
+    rdfs:comment "The name of a department." ;
+    rdfs:domain schema1:Department ;
+    rdfs:range xsd:string .
+
+schema1:Description a rdf:Property ;
+    rdfs:label "Description" ;
+    rdfs:comment "A description of a club",
+        "A description of a department.",
+        "Description of an assignment or exam" ;
+    rdfs:domain schema1:Assignment,
+        schema1:Club,
+        schema1:Department ;
+    rdfs:range xsd:string .
+
+schema1:Designation a rdf:Property ;
+    rdfs:label "Designation" ;
+    rdfs:domain schema1:Person ;
+    rdfs:range xsd:string .
+
+schema1:DueDate a rdf:Property ;
+    rdfs:label "DueDate" ;
+    rdfs:comment "Due date of an assignment or exam" ;
+    rdfs:domain schema1:Assignment ;
+    rdfs:range xsd:date .
+
+schema1:Email a rdf:Property ;
+    rdfs:label "Email" ;
+    rdfs:domain schema1:Person ;
+    rdfs:range xsd:string .
+
+schema1:Employs a rdf:Property ;
+    rdfs:label "Employs" ;
+    rdfs:comment "Indicates that a department employs a faculty member." ;
+    rdfs:domain schema1:Department ;
+    rdfs:range schema1:Faculty .
+
+schema1:Enrolls a rdf:Property ;
+    rdfs:domain schema1:Course ;
+    rdfs:range schema1:Student .
+
+schema1:EvaluatedBy a rdf:Property ;
+    rdfs:label "EvaluatedBy" ;
+    rdfs:comment "The faculty member who evaluates an assignment or exam" ;
+    rdfs:domain schema1:Assignment ;
+    rdfs:range schema1:Faculty .
+
+schema1:FacultyID a rdf:Property ;
+    rdfs:label "Faculty ID" ;
+    rdfs:domain schema1:Faculty ;
+    rdfs:range xsd:integer .
+
+schema1:FirstName a rdf:Property ;
+    rdfs:label "First Name" ;
+    rdfs:domain schema1:Person ;
+    rdfs:range xsd:string .
+
+schema1:ForCourse a rdf:Property ;
+    rdfs:label "For Course",
+        "ForCourse" ;
+    rdfs:comment "Associates a transcript with a course",
+        "The course to which an assignment or exam belongs" ;
+    rdfs:domain schema1:Assignment,
+        schema1:TranscriptID ;
+    rdfs:range schema1:Course .
+
+schema1:FoundedDate a rdf:Property ;
+    rdfs:label "FoundedDate" ;
+    rdfs:comment "The date on which a club was founded" ;
+    rdfs:domain schema1:Club ;
+    rdfs:range xsd:date .
+
+schema1:HasMember a rdf:Property ;
+    rdfs:label "HasMember" ;
+    rdfs:comment "Relates a club to a student member" ;
+    rdfs:domain schema1:Club ;
+    rdfs:range schema1:Student .
+
+schema1:Instructor rdfs:label "Instructor" ;
+    rdfs:subClassOf schema1:Person .
+
+schema1:LastName a rdf:Property ;
+    rdfs:label "Last Name" ;
+    rdfs:domain schema1:Person ;
+    rdfs:range xsd:string .
+
+schema1:MemberOf a rdf:Property ;
+    rdfs:label "Member Of" ;
+    rdfs:domain schema1:Person ;
+    rdfs:range schema1:Department .
+
+schema1:Offers a rdf:Property ;
+    rdfs:label "Offers" ;
+    rdfs:comment "Indicates that a department offers a course." ;
+    rdfs:domain schema1:Department ;
+    rdfs:range schema1:Course .
+
+schema1:Office a rdf:Property ;
+    rdfs:label "Office" ;
+    rdfs:domain schema1:Person ;
+    rdfs:range xsd:string .
+
+schema1:OfficeLocation a rdf:Property ;
+    rdfs:label "Office Location" ;
+    rdfs:comment "The physical location of a department's office." ;
+    rdfs:domain schema1:Department ;
+    rdfs:range xsd:string .
+
+schema1:OverseenBy a rdf:Property ;
+    rdfs:label "OverseenBy" ;
+    rdfs:comment "Relates a club to a faculty member who oversees it" ;
+    rdfs:domain schema1:Club ;
+    rdfs:range schema1:Faculty .
+
+schema1:PartOf a rdf:Property ;
+    rdfs:label "Part Of" ;
+    rdfs:comment "Indicates that a department is part of a college." ;
+    rdfs:domain schema1:Course,
+        schema1:Department ;
+    rdfs:range schema1:College,
+        schema1:Department .
+
+schema1:Phone a rdf:Property ;
+    rdfs:label "Phone" ;
+    rdfs:comment "The contact phone number for a department." ;
+    rdfs:domain schema1:Department,
+        schema1:Person ;
+    rdfs:range xsd:string .
+
+schema1:Publications a rdf:Property ;
+    rdfs:label "Publications" ;
+    rdfs:domain schema1:Person ;
+    rdfs:range xsd:anyURI .
+
+schema1:RoomNumber a rdf:Property ;
+    rdfs:domain schema1:Course .
+
+schema1:Schedule a rdf:Property ;
+    rdfs:domain schema1:Course .
+
+schema1:Specialty a rdf:Property ;
+    rdfs:label "Specialty" ;
+    rdfs:domain schema1:Person ;
+    rdfs:range xsd:string .
+
+schema1:Syllabus a rdf:Property ;
+    rdfs:domain schema1:Course .
+
+schema1:TaughtBy a rdf:Property ;
+    rdfs:domain schema1:Course ;
+    rdfs:range schema1:Faculty .
+
+schema1:Teaches a rdf:Property ;
+    rdfs:label "Teaches" ;
+    rdfs:domain schema1:Person ;
+    rdfs:range schema1:Course .
+
+schema1:Title a rdf:Property ;
+    rdfs:label "Title" ;
+    rdfs:comment "Title of an assignment or exam" ;
+    rdfs:domain schema1:Assignment ;
+    rdfs:range xsd:string .
+
+schema1:TotalPoints a rdf:Property ;
+    rdfs:label "TotalPoints" ;
+    rdfs:comment "Total points of an assignment or exam" ;
+    rdfs:domain schema1:Assignment ;
+    rdfs:range xsd:integer .
+
+sf-house:Address a rdf:Property ;
+    rdfs:label "Address" ;
+    rdfs:comment "The address of a dormitory or residence hall." ;
+    rdfs:domain sf-house:Dormitory ;
+    rdfs:range xsd:string .
+
+sf-house:Amenities a rdf:Property ;
+    rdfs:label "Amenities" ;
+    rdfs:comment "The amenities available in a dormitory, such as gym or cafeteria." ;
+    rdfs:domain sf-house:Dormitory ;
+    rdfs:range xsd:string .
+
+sf-house:Capacity a rdf:Property ;
+    rdfs:label "Capacity" ;
+    rdfs:comment "The maximum number of students that can live in a dormitory." ;
+    rdfs:domain sf-house:Dormitory ;
+    rdfs:range xsd:int .
+
+sf-house:DormitoryID a rdf:Property ;
+    rdfs:label "Dormitory ID" ;
+    rdfs:comment "The unique identifier for a dormitory." ;
+    rdfs:domain sf-house:Dormitory ;
+    rdfs:range xsd:string .
+
+sf-house:Name a rdf:Property ;
+    rdfs:label "Name" ;
+    rdfs:comment "The name of a dormitory or residence hall." ;
+    rdfs:domain sf-house:Dormitory ;
+    rdfs:range xsd:string .
+
+sf-student:Houses a rdf:Property ;
+    rdfs:label "Houses" ;
+    rdfs:comment "Specifies the dormitory where a student lives." ;
+    rdfs:domain sf-student:Student ;
+    rdfs:range sf-house:Dormitory .
+

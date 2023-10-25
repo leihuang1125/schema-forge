@@ -1,0 +1,94 @@
+Government & Public Services
+Citizen Profile
+Attributes:
+CitizenID (Primary Identifier)
+Name
+Address
+Age
+DateOfBirth
+Gender
+Email
+Phone Number
+Relationships:
+RegisteredAt -> Department
+Department
+Attributes:
+DepartmentID (Primary Identifier)
+DepartmentName
+DepartmentHead
+Location
+ContactNumber
+Email
+Relationships:
+Serves -> Citizens
+Taxation Profile
+Attributes:
+TaxID (Primary Identifier)
+Year
+TaxAmount
+DueDate
+PaidDate
+Relationships:
+OwedBy -> Citizen
+Voter Registration
+Attributes:
+VoterID (Primary Identifier)
+VotingDistrict
+DateOfRegistration
+Relationships:
+RegisteredBy -> Citizen
+ManagedBy -> Department
+Vehicle Registration
+Attributes:
+VehicleID (Primary Identifier)
+Make
+Model
+YearOfManufacture
+RegistrationExpiryDate
+Relationships:
+OwnedBy -> Citizen
+Property Ownership
+Attributes:
+PropertyID (Primary Identifier)
+PropertyAddress
+Size
+AssessedValue
+Relationships:
+OwnedBy -> Citizen
+Employment
+Attributes:
+EmploymentID (Primary Identifier)
+JobTitle
+Department
+StartDate
+EndDate (if applicable)
+Relationships:
+EmployedBy -> Department
+WorksFor -> Citizen
+Criminal Record
+Attributes:
+RecordID (Primary Identifier)
+CrimeDescription
+DateOfOffence
+Outcome
+Sentence (if applicable)
+Relationships:
+CommittedBy -> Citizen
+Healthcare Records
+Attributes:
+MedicalID (Primary Identifier)
+DateOfVisit
+ReasonForVisit
+Prescriptions
+MedicalHistory
+Relationships:
+Patient -> Citizen
+Public Benefits and Welfare
+Attributes:
+BenefitID (Primary Identifier)
+TypeOfBenefit
+StartDate
+EndDate
+AmountGranted
+Relationships:
+GrantedTo -> Citizen

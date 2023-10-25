@@ -1,0 +1,111 @@
+Agriculture & Farming
+
+Crop Data
+Attributes:
+CropID (Primary Identifier)
+Type
+Variety
+HarvestDate
+Quantity
+PlantingDate
+SoilRequirements
+WaterRequirements
+Relationships:
+GrownBy -> Farmer
+Farmer
+Attributes:
+FarmerID (Primary Identifier)
+Name
+Contact
+Location
+TotalLandArea
+Relationships:
+Owns -> FarmLand
+Raises -> Livestock
+FarmLand
+Attributes:
+LandID (Primary Identifier)
+Location
+Size
+SoilType
+IrrigationMethods
+Relationships:
+Contains -> Crop
+OwnedBy -> Farmer
+Livestock Data
+Attributes:
+LivestockID (Primary Identifier)
+Type
+BirthDate
+Quantity
+HealthRecords
+Relationships:
+RaisedBy -> Farmer
+Equipment & Machinery
+Attributes:
+EquipmentID (Primary Identifier)
+Type
+PurchaseDate
+MaintenanceSchedule
+Relationships:
+OperatedBy -> Farmer
+Seed Supplier
+Attributes:
+SupplierID (Primary Identifier)
+Name
+Contact
+SeedVarieties
+Relationships:
+SuppliesTo -> Farmer
+Fertilizer & Pesticides
+Attributes:
+ProductID (Primary Identifier)
+Name
+Type
+ApplicationInstructions
+DateOfUse
+Relationships:
+AppliedTo -> Crop
+Weather Data
+Attributes:
+WeatherID (Primary Identifier)
+Date
+Temperature
+Precipitation
+Humidity
+WindSpeed
+Relationships:
+Affects -> Crop
+Harvest & Sales
+Attributes:
+SaleID (Primary Identifier)
+CropSold
+Quantity
+SaleDate
+Price
+Relationships:
+SoldBy -> Farmer
+Water Resource Management
+Attributes:
+ResourceID (Primary Identifier)
+Type (e.g., Well, Pond, River)
+Capacity
+UsageRate
+Relationships:
+UsedBy -> FarmLand
+Agricultural Research
+Attributes:
+ResearchID (Primary Identifier)
+Focus (e.g., Soil health, Pest resistance)
+DateStarted
+Findings
+Relationships:
+ConductedAt -> Institution
+Studies -> Crop
+Marketplace & Distribution
+Attributes:
+MarketplaceID (Primary Identifier)
+Location
+OpeningHours
+Relationships:
+BuysFrom -> Farmer

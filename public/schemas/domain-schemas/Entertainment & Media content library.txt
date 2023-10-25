@@ -1,0 +1,71 @@
+Entertainment & Media content library
+:
+1. Content Library:
+ContentID (Primary Key)
+Title
+ReleaseDate
+Type (Movie, Song, TV Show, Podcast, Book, etc.)
+Duration (length of the content, e.g., 120 minutes, 3:30 minutes for a song, etc.)
+Genre (Action, Drama, Romance, Pop, Rock, etc.)
+Language (English, Spanish, Hindi, etc.)
+Rating (PG-13, R, etc. or user ratings like 4.5/5)
+Description (Short summary)
+Thumbnail (Image representing the content)
+Source (Streaming service, DVD, CD, etc.)
+URL (Link to the content if available online)
+Relationships:
+CreatedBy -> Artist/Producer
+BelongsTo -> Series (for sequels or TV series)
+FeaturedArtists -> List of Artists (especially for songs or movies with guest appearances)
+2. Artist:
+ArtistID (Primary Key)
+Name
+DateOfBirth
+Nationality
+Biography
+ActiveYears (e.g., 1990-2020)
+ProfilePicture
+Relationships:
+Created -> List of Content (reverse of CreatedBy)
+CollaboratedWith -> List of Artists (for collaborations)
+3. Series:
+SeriesID (Primary Key)
+Title
+StartDate (When the first content in series was released)
+EndDate (When the last content in series was released)
+Type (Movie Sequels, TV Show, etc.)
+Description
+Relationships:
+Contains -> List of Content
+4. Reviews:
+ReviewID (Primary Key)
+ContentID (Foreign Key)
+UserID (Foreign Key - Referring to the user who wrote the review)
+Rating (1-5, 1-10, etc.)
+Comment (Text review)
+DatePosted
+5. Users:
+UserID (Primary Key)
+Username
+Email
+DateJoined
+Preferences (List of genres, artists, etc. they like)
+Relationships:
+Wrote -> List of Reviews
+Favorited -> List of Content
+6. Awards:
+AwardID (Primary Key)
+Name (e.g., "Oscar", "Grammy")
+Category (Best Picture, Best Actor, etc.)
+Year
+Relationships:
+GivenTo -> Artist/Content
+7. Events:
+EventID (Primary Key)
+Name (e.g., "Concert", "Premiere")
+Date
+Location
+Description
+Relationships:
+Featured -> Artist
+Showcased -> Content (like a movie premiere)

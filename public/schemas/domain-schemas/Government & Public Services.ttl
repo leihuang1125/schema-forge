@@ -1,0 +1,439 @@
+@prefix pattern: <https://schemaForge.net/pattern/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+pattern:Benefit a rdfs:Class ;
+    rdfs:label "Public Benefits and Welfare" ;
+    rdfs:comment "A class representing public benefits and welfare schemes." .
+
+pattern:Citizen a rdfs:Class ;
+    rdfs:label "Citizen" ;
+    rdfs:comment "A citizen who can own properties.",
+        "A citizen.",
+        "A class representing a citizen.",
+        "A person who is a citizen of a country.",
+        "An individual who is a member of a nation or state.",
+        "Represents a citizen",
+        "Represents a citizen." .
+
+pattern:CitizenProfile a rdfs:Class ;
+    rdfs:label "Citizen Profile" ;
+    rdfs:comment "A class representing the profile of a citizen." .
+
+pattern:CriminalRecord a rdfs:Class ;
+    rdfs:label "CriminalRecord" ;
+    rdfs:comment "Represents a criminal record." .
+
+pattern:Department a rdfs:Class ;
+    rdfs:label "Department" ;
+    rdfs:comment "A class representing a department in an organization",
+        "A class representing a department.",
+        "An organizational unit responsible for managing something, such as voter registration." .
+
+pattern:Employment a rdfs:Class ;
+    rdfs:label "Employment" ;
+    rdfs:comment "A class representing the employment of a person at a specific job title in a department" .
+
+pattern:JobTitle a rdfs:Class ;
+    rdfs:label "JobTitle" ;
+    rdfs:comment "A class representing a job title" .
+
+pattern:MedicalRecord a rdfs:Class ;
+    rdfs:label "Medical Record" ;
+    rdfs:comment "A healthcare record containing information about a particular visit to a healthcare facility." .
+
+pattern:Patient a rdfs:Class ;
+    rdfs:label "Patient" ;
+    rdfs:comment "An individual who receives healthcare services." ;
+    rdfs:subClassOf pattern:Citizen .
+
+pattern:Property a rdfs:Class ;
+    rdfs:label "Property" ;
+    rdfs:comment "A property with a unique identifier, address, size, and assessed value." ;
+    rdfs:subClassOf pattern:PropertyOwnership .
+
+pattern:PropertyOwnership a rdfs:Class ;
+    rdfs:label "Property Ownership" ;
+    rdfs:comment "A pattern for representing property ownership." .
+
+pattern:TaxationProfile a rdfs:Class ;
+    rdfs:label "Taxation Profile" ;
+    rdfs:comment "Represents a taxation profile" .
+
+pattern:VehicleRegistration a rdf:Class,
+        rdfs:Class ;
+    rdfs:label "Vehicle Registration" ;
+    rdfs:comment "A vehicle registration record." ;
+    rdfs:subClassOf pattern:OwnedBy,
+        pattern:VehicleRegistration .
+
+pattern:VoterRegistration a rdfs:Class ;
+    rdfs:label "Voter Registration" ;
+    rdfs:comment "A pattern for representing voter registration information." .
+
+rdf:type a rdf:Property ;
+    rdfs:label "type" ;
+    rdfs:comment "Relates a statement to the class it identifies as " ;
+    rdfs:domain rdf:Statement ;
+    rdfs:range rdfs:Class .
+
+rdfs:comment a rdf:Property ;
+    rdfs:label "comment" ;
+    rdfs:comment "A description or comment about a resource." ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range rdf:Literal .
+
+rdfs:label a rdf:Property ;
+    rdfs:label "label" ;
+    rdfs:comment "The label or name of a resource." ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:range rdf:Literal .
+
+pattern:Address a rdfs:Property ;
+    rdfs:label "Address" ;
+    rdfs:comment "The address of a citizen." ;
+    rdfs:domain pattern:CitizenProfile ;
+    rdfs:range xsd:string .
+
+pattern:Age a rdfs:Property ;
+    rdfs:label "Age" ;
+    rdfs:comment "The age of a citizen." ;
+    rdfs:domain pattern:CitizenProfile ;
+    rdfs:range xsd:integer .
+
+pattern:AmountGranted a rdf:Property ;
+    rdfs:label "Amount Granted" ;
+    rdfs:comment "The amount of benefit granted to a citizen." ;
+    rdfs:domain pattern:Benefit ;
+    rdfs:range xsd:decimal .
+
+pattern:AssessedValue a rdf:Property ;
+    rdfs:label "Assessed Value" ;
+    rdfs:comment "The assessed value of a property." ;
+    rdfs:domain pattern:Property ;
+    rdfs:range xsd:decimal .
+
+pattern:BenefitID a rdf:Property ;
+    rdfs:label "Benefit ID" ;
+    rdfs:comment "A unique identifier for a public benefit." ;
+    rdfs:domain pattern:Benefit ;
+    rdfs:range xsd:string .
+
+pattern:BenefitID123 a pattern:Benefit ;
+    pattern:AmountGranted 1000.0 ;
+    pattern:BenefitID "123" ;
+    pattern:EndDate "2020-12-31"^^xsd:date ;
+    pattern:GrantedTo pattern:Citizen1 ;
+    pattern:StartDate "2020-01-01"^^xsd:date ;
+    pattern:TypeOfBenefit "Unemployment allowance" .
+
+pattern:CitizenID a rdfs:Property ;
+    rdfs:label "Citizen ID" ;
+    rdfs:comment "The primary identifier of a citizen profile." ;
+    rdfs:domain pattern:CitizenProfile ;
+    rdfs:range xsd:string .
+
+pattern:CitizenProfile_1 a pattern:CitizenProfile ;
+    pattern:Address "123 Main St, Anytown" ;
+    pattern:Age 30 ;
+    pattern:CitizenID "12345" ;
+    pattern:DateOfBirth "1990-01-01"^^xsd:date ;
+    pattern:Email "john.doe@example.com" ;
+    pattern:Gender "Male" ;
+    pattern:Name "John Doe" ;
+    pattern:PhoneNumber "123-456-7890" ;
+    pattern:RegisteredAt pattern:Department_1,
+        "Department of Health" .
+
+pattern:CommittedBy a rdf:Property ;
+    rdfs:label "Committed By" ;
+    rdfs:comment "The citizen who committed the crime, associated with the criminal record." ;
+    rdfs:domain pattern:CriminalRecord ;
+    rdfs:range pattern:Citizen .
+
+pattern:CrimeDescription a rdf:Property ;
+    rdfs:label "Crime Description" ;
+    rdfs:comment "A description of the crime in the criminal record." ;
+    rdfs:domain pattern:CriminalRecord ;
+    rdfs:range xsd:string .
+
+pattern:DateOfBirth a rdfs:Property ;
+    rdfs:label "Date of Birth" ;
+    rdfs:comment "The date of birth of a citizen." ;
+    rdfs:domain pattern:CitizenProfile ;
+    rdfs:range xsd:date .
+
+pattern:DateOfOffence a rdf:Property ;
+    rdfs:label "Date of Offence" ;
+    rdfs:comment "The date when the offence was committed." ;
+    rdfs:domain pattern:CriminalRecord ;
+    rdfs:range xsd:date .
+
+pattern:DateOfRegistration a rdf:Property ;
+    rdfs:label "Date of Registration" ;
+    rdfs:comment "The date when the voter registered." ;
+    rdfs:domain pattern:VoterRegistration ;
+    rdfs:range xsd:date .
+
+pattern:DateOfVisit a rdf:Property ;
+    rdfs:label "Date of Visit" ;
+    rdfs:comment "The date when the visit to the healthcare facility occurred." ;
+    rdfs:domain pattern:MedicalRecord ;
+    rdfs:range xsd:date .
+
+pattern:DepartmentID a rdf:Property ;
+    rdfs:label "Department ID" ;
+    rdfs:comment "The unique identifier for a department." .
+
+pattern:DueDate a rdf:Property ;
+    rdfs:label "Due Date" ;
+    rdfs:comment "The date the tax is due" ;
+    rdfs:domain pattern:TaxationProfile ;
+    rdfs:range xsd:date .
+
+pattern:Email a rdfs:Property ;
+    rdfs:label "Email" ;
+    rdfs:comment "The email address of a citizen." ;
+    rdfs:domain pattern:CitizenProfile ;
+    rdfs:range xsd:string .
+
+pattern:EmployedBy a rdf:Property ;
+    rdfs:label "EmployedBy" ;
+    rdfs:comment "The department where the employment takes place" ;
+    rdfs:domain pattern:Employment ;
+    rdfs:range pattern:Department .
+
+pattern:EndDate a rdf:Property,
+        rdfs:Datatype ;
+    rdfs:label "End Date",
+        "EndDate" ;
+    rdfs:comment "The date on which a benefit scheme ends.",
+        "The end date of an employment, if applicable" ;
+    rdfs:domain pattern:Benefit,
+        pattern:Employment ;
+    rdfs:range xsd:date .
+
+pattern:Gender a rdfs:Property ;
+    rdfs:label "Gender" ;
+    rdfs:comment "The gender of a citizen." ;
+    rdfs:domain pattern:CitizenProfile ;
+    rdfs:range xsd:string .
+
+pattern:GrantedTo a rdf:Property ;
+    rdfs:label "Granted To" ;
+    rdfs:comment "Specifies the citizen to whom the benefit is granted." ;
+    rdfs:domain pattern:Benefit ;
+    rdfs:range pattern:Citizen .
+
+pattern:Make a rdf:Property ;
+    rdfs:label "Make" ;
+    rdfs:comment "The make of a vehicle." ;
+    rdfs:domain pattern:VehicleRegistration ;
+    rdfs:range xsd:string .
+
+pattern:ManagedBy a rdf:Property ;
+    rdfs:label "Managed By" ;
+    rdfs:comment "The department that manages the voter registration." ;
+    rdfs:domain pattern:VoterRegistration ;
+    rdfs:range pattern:Department .
+
+pattern:MedicalHistory a rdf:Property ;
+    rdfs:label "Medical History" ;
+    rdfs:comment "The medical history of the patient." ;
+    rdfs:domain pattern:MedicalRecord ;
+    rdfs:range xsd:string .
+
+pattern:MedicalID a rdf:Property ;
+    rdfs:label "Medical ID" ;
+    rdfs:comment "The primary identifier for a medical record." ;
+    rdfs:domain pattern:MedicalRecord ;
+    rdfs:range xsd:string .
+
+pattern:Model a rdf:Property ;
+    rdfs:label "Model" ;
+    rdfs:comment "The model of a vehicle." ;
+    rdfs:domain pattern:VehicleRegistration ;
+    rdfs:range xsd:string .
+
+pattern:Name a rdfs:Property ;
+    rdfs:label "Name" ;
+    rdfs:comment "The name of a citizen." ;
+    rdfs:domain pattern:CitizenProfile ;
+    rdfs:range xsd:string .
+
+pattern:Outcome a rdf:Property ;
+    rdfs:label "Outcome" ;
+    rdfs:comment "The outcome of the criminal record, such as conviction or acquittal." ;
+    rdfs:domain pattern:CriminalRecord ;
+    rdfs:range xsd:string .
+
+pattern:OwedBy a rdf:Property ;
+    rdfs:label "Owed By" ;
+    rdfs:comment "Relates a tax profile to the citizen who owes the tax" ;
+    rdfs:domain pattern:TaxationProfile ;
+    rdfs:range pattern:Citizen .
+
+pattern:PaidDate a rdf:Property ;
+    rdfs:label "Paid Date" ;
+    rdfs:comment "The date the tax is paid" ;
+    rdfs:domain pattern:TaxationProfile ;
+    rdfs:range xsd:date .
+
+pattern:PhoneNumber a rdfs:Property ;
+    rdfs:label "Phone Number" ;
+    rdfs:comment "The phone number of a citizen." ;
+    rdfs:domain pattern:CitizenProfile ;
+    rdfs:range xsd:string .
+
+pattern:Prescriptions a rdf:Property ;
+    rdfs:label "Prescriptions" ;
+    rdfs:comment "The prescriptions given during the visit to the healthcare facility." ;
+    rdfs:domain pattern:MedicalRecord ;
+    rdfs:range xsd:string .
+
+pattern:PropertyAddress a rdf:Property ;
+    rdfs:label "Property Address" ;
+    rdfs:comment "The address of a property." ;
+    rdfs:domain pattern:Property ;
+    rdfs:range xsd:string .
+
+pattern:PropertyID a rdf:Property ;
+    rdfs:label "Property ID" ;
+    rdfs:comment "The unique identifier for a property." ;
+    rdfs:domain pattern:Property ;
+    rdfs:range xsd:string .
+
+pattern:ReasonForVisit a rdf:Property ;
+    rdfs:label "Reason for Visit" ;
+    rdfs:comment "The reason for the visit to the healthcare facility." ;
+    rdfs:domain pattern:MedicalRecord ;
+    rdfs:range xsd:string .
+
+pattern:RecordID a rdf:Property ;
+    rdfs:label "Record ID" ;
+    rdfs:comment "The primary identifier of a criminal record." ;
+    rdfs:domain pattern:CriminalRecord ;
+    rdfs:range xsd:int .
+
+pattern:RegisteredAt a rdfs:Property ;
+    rdfs:label "Registered At" ;
+    rdfs:comment "The department where a citizen is registered." ;
+    rdfs:domain pattern:CitizenProfile ;
+    rdfs:range xsd:string .
+
+pattern:RegisteredBy a rdf:Property ;
+    rdfs:label "Registered By" ;
+    rdfs:comment "The citizen who registered the voter." ;
+    rdfs:domain pattern:VoterRegistration ;
+    rdfs:range pattern:Citizen .
+
+pattern:RegistrationExpiryDate a rdf:Property ;
+    rdfs:label "Registration Expiry Date" ;
+    rdfs:comment "The expiry date of a vehicle registration." ;
+    rdfs:domain pattern:VehicleRegistration ;
+    rdfs:range xsd:date .
+
+pattern:Sentence a rdf:Property ;
+    rdfs:label "Sentence" ;
+    rdfs:comment "The sentence associated with the criminal record, if applicable." ;
+    rdfs:domain pattern:CriminalRecord ;
+    rdfs:range xsd:string .
+
+pattern:Size a rdf:Property ;
+    rdfs:label "Size" ;
+    rdfs:comment "The size of a property in square feet." ;
+    rdfs:domain pattern:Property ;
+    rdfs:range xsd:integer .
+
+pattern:StartDate a rdf:Property,
+        rdfs:Datatype ;
+    rdfs:label "Start Date",
+        "StartDate" ;
+    rdfs:comment "The date on which a benefit scheme starts.",
+        "The start date of an employment" ;
+    rdfs:domain pattern:Benefit,
+        pattern:Employment ;
+    rdfs:range xsd:date .
+
+pattern:TaxAmount a rdf:Property ;
+    rdfs:label "Tax Amount" ;
+    rdfs:comment "The amount of tax owed or paid" ;
+    rdfs:domain pattern:TaxationProfile ;
+    rdfs:range xsd:decimal .
+
+pattern:TaxID a rdf:Property ;
+    rdfs:label "Tax ID" ;
+    rdfs:comment "The primary identifier for a taxation profile" ;
+    rdfs:domain pattern:TaxationProfile ;
+    rdfs:range xsd:string .
+
+pattern:TypeOfBenefit a rdf:Property ;
+    rdfs:label "Type of Benefit" ;
+    rdfs:comment "Specifies the type of public benefit." ;
+    rdfs:domain pattern:Benefit ;
+    rdfs:range xsd:string .
+
+pattern:VehicleID a rdf:Property ;
+    rdfs:label "Vehicle ID" ;
+    rdfs:comment "The primary identifier for a vehicle." ;
+    rdfs:domain pattern:VehicleRegistration ;
+    rdfs:range xsd:string .
+
+pattern:VoterID a rdf:Property ;
+    rdfs:label "Voter ID" ;
+    rdfs:comment "The primary identifier for a voter." ;
+    rdfs:domain pattern:VoterRegistration ;
+    rdfs:range xsd:string .
+
+pattern:VotingDistrict a rdf:Property ;
+    rdfs:label "Voting District" ;
+    rdfs:comment "The district where the voter is registered to vote." ;
+    rdfs:domain pattern:VoterRegistration ;
+    rdfs:range xsd:string .
+
+pattern:WorksFor a rdf:Property ;
+    rdfs:label "WorksFor" ;
+    rdfs:comment "The citizen who holds the employment" ;
+    rdfs:domain pattern:Employment ;
+    rdfs:range pattern:Citizen .
+
+pattern:Year a rdf:Property ;
+    rdfs:label "Year" ;
+    rdfs:comment "The year of the taxation profile" ;
+    rdfs:domain pattern:TaxationProfile ;
+    rdfs:range xsd:gYear .
+
+pattern:YearOfManufacture a rdf:Property ;
+    rdfs:label "Year of Manufacture" ;
+    rdfs:comment "The year of manufacture of a vehicle." ;
+    rdfs:domain pattern:VehicleRegistration ;
+    rdfs:range xsd:gYear .
+
+pattern:hasMedicalRecord a rdf:Property ;
+    rdfs:label "has Medical Record" ;
+    rdfs:comment "Relates a citizen to their medical record." ;
+    rdfs:domain pattern:Citizen ;
+    rdfs:range pattern:MedicalRecord .
+
+pattern:isPatientOf a rdf:Property ;
+    rdfs:label "is Patient Of" ;
+    rdfs:comment "Relates a medical record to the patient." ;
+    rdfs:domain pattern:MedicalRecord ;
+    rdfs:range pattern:Patient .
+
+pattern:Citizen1 a pattern:Citizen ;
+    rdfs:label "John Smith" ;
+    rdfs:comment "A citizen named John Smith." .
+
+pattern:Department_1 a pattern:Department ;
+    rdfs:label "Department of Health" .
+
+pattern:OwnedBy a rdf:Property ;
+    rdfs:label "Owned By" ;
+    rdfs:comment "Indicates that a property is owned by a citizen.",
+        "Relationship between a vehicle and a citizen." ;
+    rdfs:domain pattern:Property,
+        pattern:VehicleRegistration ;
+    rdfs:range pattern:Citizen .
+

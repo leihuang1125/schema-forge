@@ -1,0 +1,555 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sf: <https://schemaForge.net/pattern/> .
+@prefix sfBuysFrom: <https://schemaForge.net/pattern/BuysFrom#> .
+@prefix sfDistribution: <https://schemaForge.net/pattern/Distribution#> .
+@prefix sfLocation: <https://schemaForge.net/pattern/Location#> .
+@prefix sfMarketplace: <https://schemaForge.net/pattern/Marketplace#> .
+@prefix sfOpeningHours: <https://schemaForge.net/pattern/OpeningHours#> .
+@prefix sfRelationships: <https://schemaForge.net/pattern/Relationships#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sf:AgriculturalResearch a rdfs:Class ;
+    rdfs:label "Agricultural Research" ;
+    rdfs:comment "A research on agricultural topics." .
+
+sf:Crop a rdfs:Class ;
+    rdfs:label "Crop" ;
+    rdfs:comment "A plant grown for agriculture or food production.",
+        "A type of crop." .
+
+sf:CropData a rdfs:Class ;
+    rdfs:label "Crop Data" ;
+    rdfs:comment "A class representing crop data" .
+
+sf:Equipment a rdfs:Class ;
+    rdfs:comment "Represents equipment and machinery used by farmers." .
+
+sf:FarmLand a rdfs:Class ;
+    rdfs:label "Farm Land",
+        "FarmLand" ;
+    rdfs:comment "A piece of land owned by a farmer for agricultural purposes.",
+        "A piece of land used for farming.",
+        "Land used for farming purposes." .
+
+sf:Farmer a rdfs:Class ;
+    rdfs:label "Farmer" ;
+    rdfs:comment "A class representing a farmer",
+        "A farmer who raises livestock.",
+        "A person or organization who farms or cultivates crops.",
+        "A person who owns and manages a farm.",
+        "A person who owns or operates a farm.",
+        "A representation of a farmer.",
+        "Represents farmers." .
+
+sf:FertilizerPesticides a rdfs:Class .
+
+sf:HarvestAndSales a rdfs:Class ;
+    rdfs:label "HarvestAndSales" ;
+    rdfs:comment "A pattern for recording harvest and sales information." .
+
+sf:Livestock a rdfs:Class ;
+    rdfs:label "Livestock" ;
+    rdfs:comment "An animal or group of animals kept by a farmer for agricultural purposes." .
+
+sf:Pond a rdfs:Class ;
+    rdfs:label "Pond" ;
+    rdfs:comment "A small body of water." ;
+    rdfs:subClassOf sf:WaterResourceManagement .
+
+sf:River a rdfs:Class ;
+    rdfs:label "River" ;
+    rdfs:comment "A large natural watercourse flowing towards an ocean, a lake, a sea or another river." ;
+    rdfs:subClassOf sf:WaterResourceManagement .
+
+sf:SeedSupplier a rdfs:Class ;
+    rdfs:label "Seed Supplier" ;
+    rdfs:comment "A supplier of seeds." .
+
+sf:WaterResourceManagement a rdfs:Class ;
+    rdfs:label "Water Resource Management" ;
+    rdfs:comment "The management of water resources." .
+
+sf:WeatherData a rdfs:Class ;
+    rdfs:label "Weather Data" ;
+    rdfs:comment "A collection of weather data attributes for a specific date." .
+
+sf:Well a rdfs:Class ;
+    rdfs:label "Well" ;
+    rdfs:comment "A water source created by digging into the ground." ;
+    rdfs:subClassOf sf:WaterResourceManagement .
+
+<file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/p1> a sf:AgriculturalResearch ;
+    sf:ConductedAt schema:Organization1 ;
+    sf:DateStarted "2021-05-15"^^xsd:date ;
+    sf:Findings "Study found improved soil fertility with the use of organic matter." ;
+    sf:Focus "Soil health" ;
+    sf:ResearchID "12345" ;
+    sf:Studies schema:Crop1 .
+
+sf:Affects a rdf:Property ;
+    rdfs:label "Affects" ;
+    rdfs:comment "Specifies the relationship between weather data and the crop it affects." ;
+    rdfs:domain sf:WeatherData ;
+    rdfs:range sf:Crop .
+
+sf:ApplicationInstructions a rdf:Property ;
+    rdfs:domain sf:FertilizerPesticides ;
+    rdfs:range xsd:string .
+
+sf:AppliedTo a rdf:Property ;
+    rdfs:domain sf:FertilizerPesticides ;
+    rdfs:range sf:Crop .
+
+sf:BirthDate a rdf:Property ;
+    rdfs:label "Birth Date" ;
+    rdfs:comment "The date of birth for the livestock." ;
+    rdfs:domain sf:Livestock ;
+    rdfs:range xsd:date .
+
+sfBuysFrom:FarmerID a rdf:Property ;
+    rdfs:label "FarmerID" ;
+    rdfs:domain sfBuysFrom:Farmer ;
+    rdfs:range xsd:string .
+
+sf:Capacity a rdf:Property ;
+    rdfs:label "Capacity" ;
+    rdfs:comment "The maximum capacity of the water resource." ;
+    rdfs:domain sf:WaterResourceManagement ;
+    rdfs:range xsd:decimal .
+
+sf:ConductedAt a rdf:Property ;
+    rdfs:label "Conducted At" ;
+    rdfs:comment "The institution where the research study was conducted." ;
+    rdfs:domain sf:AgriculturalResearch ;
+    rdfs:range schema:Organization .
+
+sf:Contact a rdf:Property ;
+    rdfs:label "Contact" ;
+    rdfs:domain sf:Farmer,
+        sf:SeedSupplier ;
+    rdfs:range xsd:string .
+
+sf:CropData_1 a sf:CropData ;
+    sf:CropID "C1" ;
+    sf:GrownBy sf:Farmer_1 ;
+    sf:HarvestDate "2022-07-15"^^xsd:date ;
+    sf:PlantingDate "2022-02-15"^^xsd:date ;
+    sf:Quantity 100 ;
+    sf:SoilRequirements "Well-drained soil, pH 6-7" ;
+    sf:Type "Tomato" ;
+    sf:Variety "Cherry" ;
+    sf:WaterRequirements "Regular watering" .
+
+sf:CropID a rdf:Property ;
+    rdfs:label "Crop ID" ;
+    rdfs:comment "The primary identifier of a crop",
+        "The primary identifier of the crop grown by a farmer" ;
+    rdfs:domain sf:CropData,
+        sf:GrownBy ;
+    rdfs:range xsd:string .
+
+sf:CropSold a rdf:Property ;
+    rdfs:label "CropSold" ;
+    rdfs:comment "The type of crop sold." ;
+    rdfs:domain sf:HarvestAndSales ;
+    rdfs:range xsd:string .
+
+sf:Date a rdf:Property ;
+    rdfs:label "Date" ;
+    rdfs:comment "The date for which the weather data is recorded." ;
+    rdfs:domain sf:WeatherData ;
+    rdfs:range xsd:date .
+
+sf:DateOfUse a rdf:Property ;
+    rdfs:domain sf:FertilizerPesticides ;
+    rdfs:range xsd:date .
+
+sf:DateStarted a rdfs:Property ;
+    rdfs:label "Date Started" ;
+    rdfs:comment "The date when the research study was initiated." ;
+    rdfs:domain sf:AgriculturalResearch ;
+    rdfs:range xsd:date .
+
+sfDistribution:BuysFrom a rdf:Property ;
+    rdfs:label "BuysFrom" ;
+    rdfs:domain sfDistribution:Distribution ;
+    rdfs:range sfBuysFrom:Farmer .
+
+sfDistribution:MarketplaceID a rdf:Property ;
+    rdfs:label "MarketplaceID" ;
+    rdfs:domain sfDistribution:Distribution ;
+    rdfs:range xsd:string .
+
+sf:EquipmentID a rdf:Property ;
+    rdfs:comment "The primary identifier of the equipment." .
+
+sf:FarmerID a rdf:Property ;
+    rdfs:label "Farmer ID" ;
+    rdfs:domain sf:Farmer ;
+    rdfs:range xsd:string .
+
+sf:Findings a rdfs:Property ;
+    rdfs:label "Findings" ;
+    rdfs:comment "The key findings/result of a research study." ;
+    rdfs:domain sf:AgriculturalResearch ;
+    rdfs:range xsd:string .
+
+sf:Focus a rdfs:Property ;
+    rdfs:label "Focus" ;
+    rdfs:comment "The main topic/focus of a research study." ;
+    rdfs:domain sf:AgriculturalResearch ;
+    rdfs:range xsd:string .
+
+sf:HarvestAndSales1 a sf:HarvestAndSales ;
+    sf:CropSold "Wheat"^^xsd:string ;
+    sf:SaleID "1"^^xsd:string .
+
+sf:HarvestDate a rdf:Property ;
+    rdfs:label "Harvest Date" ;
+    rdfs:comment "The date when the crop was harvested",
+        "The harvest date of the crop grown by a farmer" ;
+    rdfs:domain sf:CropData,
+        sf:GrownBy ;
+    rdfs:range xsd:date .
+
+sf:HealthRecords a rdf:Property ;
+    rdfs:label "Health Records" ;
+    rdfs:comment "The health records for the livestock." ;
+    rdfs:domain sf:Livestock ;
+    rdfs:range xsd:string .
+
+sf:Humidity a rdf:Property ;
+    rdfs:label "Humidity" ;
+    rdfs:comment "The humidity recorded for the given date." ;
+    rdfs:domain sf:WeatherData ;
+    rdfs:range xsd:float .
+
+sf:LivestockID a rdf:Property ;
+    rdfs:label "Livestock ID" ;
+    rdfs:comment "The primary identifier for a livestock." ;
+    rdfs:domain sf:Livestock ;
+    rdfs:range xsd:string .
+
+sf:Location a rdf:Property ;
+    rdfs:label "Location" ;
+    rdfs:domain sf:Farmer ;
+    rdfs:range xsd:string .
+
+sfLocation:LocationID a rdf:Property ;
+    rdfs:label "LocationID" ;
+    rdfs:domain sfLocation:Location ;
+    rdfs:range xsd:string .
+
+sf:MaintenanceSchedule a rdf:Property ;
+    rdfs:comment "The maintenance schedule for the equipment." .
+
+sfMarketplace:Location a rdf:Property ;
+    rdfs:label "Location" ;
+    rdfs:domain sfMarketplace:Marketplace ;
+    rdfs:range sfLocation:Location .
+
+sfMarketplace:MarketplaceID a rdf:Property ;
+    rdfs:label "MarketplaceID" ;
+    rdfs:domain sfMarketplace:Marketplace ;
+    rdfs:range xsd:string .
+
+sfMarketplace:OpeningHours a rdf:Property ;
+    rdfs:label "OpeningHours" ;
+    rdfs:domain sfMarketplace:Marketplace ;
+    rdfs:range sfOpeningHours:OpeningHours .
+
+sf:Name a rdf:Property ;
+    rdfs:label "Name" ;
+    rdfs:domain sf:Crop,
+        sf:Farmer,
+        sf:FertilizerPesticides,
+        sf:SeedSupplier ;
+    rdfs:range xsd:string .
+
+sfOpeningHours:OpeningHoursID a rdf:Property ;
+    rdfs:label "OpeningHoursID" ;
+    rdfs:domain sfOpeningHours:OpeningHours ;
+    rdfs:range xsd:string .
+
+sf:OperatedBy a rdf:Property ;
+    rdfs:comment "Relates the equipment to the farmer who operates it." ;
+    rdfs:range sf:Farmer .
+
+sf:Owns a rdf:Property ;
+    rdfs:label "Owns" ;
+    rdfs:domain sf:Farmer ;
+    rdfs:range sf:FarmLand .
+
+sf:PlantingDate a rdf:Property ;
+    rdfs:label "Planting Date" ;
+    rdfs:comment "The date when the crop was planted",
+        "The planting date of the crop grown by a farmer" ;
+    rdfs:domain sf:CropData,
+        sf:GrownBy ;
+    rdfs:range xsd:date .
+
+sf:Precipitation a rdf:Property ;
+    rdfs:label "Precipitation" ;
+    rdfs:comment "The amount of precipitation recorded for the given date." ;
+    rdfs:domain sf:WeatherData ;
+    rdfs:range xsd:float .
+
+sf:Price a rdf:Property ;
+    rdfs:label "Price" ;
+    rdfs:comment "The price per unit of the crop." ;
+    rdfs:domain sf:HarvestAndSales ;
+    rdfs:range xsd:decimal .
+
+sf:ProductID a rdf:Property ;
+    rdfs:domain sf:Crop,
+        sf:FertilizerPesticides ;
+    rdfs:range xsd:string .
+
+sf:PurchaseDate a rdf:Property ;
+    rdfs:comment "The date when the equipment was purchased." ;
+    rdfs:range xsd:date .
+
+sf:Quantity a rdf:Property ;
+    rdfs:label "Quantity" ;
+    rdfs:comment "The quantity of crops sold.",
+        "The quantity of the crop grown by a farmer",
+        "The quantity of the crop harvested",
+        "The quantity of the livestock." ;
+    rdfs:domain sf:CropData,
+        sf:GrownBy,
+        sf:HarvestAndSales,
+        sf:Livestock ;
+    rdfs:range xsd:int,
+        xsd:integer .
+
+sf:RaisedBy a rdf:Property ;
+    rdfs:label "Raised By" ;
+    rdfs:comment "The farmer who raised the livestock." ;
+    rdfs:domain sf:Livestock ;
+    rdfs:range sf:Farmer .
+
+sf:Raises a rdf:Property ;
+    rdfs:label "Raises" ;
+    rdfs:domain sf:Farmer ;
+    rdfs:range sf:Livestock .
+
+sfRelationships:belongs a rdf:Property ;
+    rdfs:label "belongs" ;
+    rdfs:domain sfRelationships:Relationships ;
+    rdfs:range sfDistribution:Distribution .
+
+sf:ResearchID a rdfs:Property ;
+    rdfs:label "Research ID" ;
+    rdfs:comment "The primary identifier for a research study." ;
+    rdfs:domain sf:AgriculturalResearch ;
+    rdfs:range xsd:string .
+
+sf:ResourceID a rdf:Property ;
+    rdfs:label "Resource ID" ;
+    rdfs:comment "The primary identifier for a water resource." ;
+    rdfs:domain sf:WaterResourceManagement ;
+    rdfs:range xsd:string .
+
+sf:SaleDate a rdf:Property ;
+    rdfs:label "SaleDate" ;
+    rdfs:comment "The date of the sale." ;
+    rdfs:domain sf:HarvestAndSales ;
+    rdfs:range xsd:date .
+
+sf:SaleID a rdf:Property ;
+    rdfs:label "SaleID" ;
+    rdfs:comment "The identifier for a sale." ;
+    rdfs:domain sf:HarvestAndSales ;
+    rdfs:range xsd:string .
+
+sf:SeedVarieties a rdf:Property ;
+    rdfs:label "Seed Varieties" ;
+    rdfs:domain sf:SeedSupplier ;
+    rdfs:range xsd:string .
+
+sf:SoilRequirements a rdf:Property ;
+    rdfs:label "Soil Requirements" ;
+    rdfs:comment "The soil requirements for growing the crop",
+        "The soil requirements of the crop grown by a farmer" ;
+    rdfs:domain sf:CropData,
+        sf:GrownBy ;
+    rdfs:range xsd:string .
+
+sf:SoldBy a rdf:Property ;
+    rdfs:label "SoldBy" ;
+    rdfs:comment "The farmer who sold the crops." ;
+    rdfs:domain sf:HarvestAndSales ;
+    rdfs:range sf:Farmer .
+
+sf:Studies a rdf:Property ;
+    rdfs:label "Studies" ;
+    rdfs:comment "The crop that was studied in a research study." ;
+    rdfs:domain sf:AgriculturalResearch ;
+    rdfs:range schema:Crop .
+
+sf:SupplierID a rdf:Property ;
+    rdfs:label "Supplier ID" ;
+    rdfs:domain sf:SeedSupplier ;
+    rdfs:range xsd:string .
+
+sf:SuppliesTo a rdf:Property ;
+    rdfs:label "Supplies To" ;
+    rdfs:domain sf:SeedSupplier ;
+    rdfs:range sf:Farmer .
+
+sf:Temperature a rdf:Property ;
+    rdfs:label "Temperature" ;
+    rdfs:comment "The temperature recorded for the given date." ;
+    rdfs:domain sf:WeatherData ;
+    rdfs:range xsd:float .
+
+sf:TotalLandArea a rdf:Property ;
+    rdfs:label "Total Land Area" ;
+    rdfs:domain sf:Farmer ;
+    rdfs:range xsd:float .
+
+sf:Type a rdf:Property ;
+    rdfs:label "Type" ;
+    rdfs:comment "The type of crop",
+        "The type of crop grown by a farmer",
+        "The type of the equipment.",
+        "The type of the livestock.",
+        "The type of water resource (e.g., Well, Pond, River)." ;
+    rdfs:domain sf:CropData,
+        sf:FertilizerPesticides,
+        sf:GrownBy,
+        sf:Livestock,
+        sf:WaterResourceManagement ;
+    rdfs:range xsd:string .
+
+sf:UsageRate a rdf:Property ;
+    rdfs:label "Usage Rate" ;
+    rdfs:comment "The rate at which water is used from the resource." ;
+    rdfs:domain sf:WaterResourceManagement ;
+    rdfs:range xsd:decimal .
+
+sf:UsedBy a rdf:Property ;
+    rdfs:label "Used By" ;
+    rdfs:comment "The farm land that uses the water resource." ;
+    rdfs:domain sf:WaterResourceManagement ;
+    rdfs:range xsd:string .
+
+sf:Variety a rdf:Property ;
+    rdfs:label "Variety" ;
+    rdfs:comment "The variety of the crop",
+        "The variety of the crop grown by a farmer" ;
+    rdfs:domain sf:CropData,
+        sf:GrownBy ;
+    rdfs:range xsd:string .
+
+sf:WaterRequirements a rdf:Property ;
+    rdfs:label "Water Requirements" ;
+    rdfs:comment "The water requirements for growing the crop",
+        "The water requirements of the crop grown by a farmer" ;
+    rdfs:domain sf:CropData,
+        sf:GrownBy ;
+    rdfs:range xsd:string .
+
+sf:WeatherID a rdf:Property ;
+    rdfs:label "Weather ID" ;
+    rdfs:comment "The primary identifier for the weather data." ;
+    rdfs:domain sf:WeatherData ;
+    rdfs:range xsd:string .
+
+sf:WindSpeed a rdf:Property ;
+    rdfs:label "Wind Speed" ;
+    rdfs:comment "The wind speed recorded for the given date." ;
+    rdfs:domain sf:WeatherData ;
+    rdfs:range xsd:float .
+
+sf:crop1 a sf:Crop ;
+    sf:isContainedIn sf:land1 .
+
+sf:equipment1 a sf:Equipment ;
+    sf:EquipmentID "1" ;
+    sf:MaintenanceSchedule "Every 6 months" ;
+    sf:OperatedBy sf:farmer1 ;
+    sf:PurchaseDate "2020-01-01"^^xsd:date ;
+    sf:Type "Tractor" .
+
+sf:equipment2 a sf:Equipment ;
+    sf:EquipmentID "2" ;
+    sf:MaintenanceSchedule "Every year" ;
+    sf:OperatedBy sf:farmer2 ;
+    sf:PurchaseDate "2018-05-15"^^xsd:date ;
+    sf:Type "Combine Harvester" .
+
+sf:hasIrrigationMethods a rdf:Property ;
+    rdfs:label "hasIrrigationMethods" ;
+    rdfs:comment "The methods used for irrigation on the farm land." ;
+    rdfs:domain sf:FarmLand ;
+    rdfs:range xsd:string .
+
+sf:hasLandID a rdf:Property ;
+    rdfs:label "hasLandID" ;
+    rdfs:comment "The primary identifier of the farm land." ;
+    rdfs:domain sf:FarmLand ;
+    rdfs:range xsd:string .
+
+sf:hasLocation a rdf:Property ;
+    rdfs:label "hasLocation" ;
+    rdfs:comment "The location of the farm land." ;
+    rdfs:domain sf:FarmLand ;
+    rdfs:range xsd:string .
+
+sf:hasSize a rdf:Property ;
+    rdfs:label "hasSize" ;
+    rdfs:comment "The size of the farm land in hectares." ;
+    rdfs:domain sf:FarmLand ;
+    rdfs:range xsd:double .
+
+sf:hasSoilType a rdf:Property ;
+    rdfs:label "hasSoilType" ;
+    rdfs:comment "The type of soil on the farm land." ;
+    rdfs:domain sf:FarmLand ;
+    rdfs:range xsd:string .
+
+sf:isContainedIn a rdf:Property ;
+    rdfs:label "isContainedIn" ;
+    rdfs:comment "Relates a crop to the farm land it is planted in." ;
+    rdfs:domain sf:Crop ;
+    rdfs:range sf:FarmLand .
+
+sf:isOwnedBy a rdf:Property ;
+    rdfs:label "isOwnedBy" ;
+    rdfs:comment "Relates a farm land to the farmer who owns it." ;
+    rdfs:domain sf:FarmLand ;
+    rdfs:range sf:Farmer .
+
+sf:Farmer_1 a sf:Farmer ;
+    sf:CropID "C1" ;
+    sf:HarvestDate "2022-07-15"^^xsd:date ;
+    sf:PlantingDate "2022-02-15"^^xsd:date ;
+    sf:Quantity 100 ;
+    sf:SoilRequirements "Well-drained soil, pH 6-7" ;
+    sf:Type "Tomato" ;
+    sf:Variety "Cherry" ;
+    sf:WaterRequirements "Regular watering" .
+
+sf:farmer2 a sf:Farmer ;
+    rdfs:comment "Another farmer who operates equipment." .
+
+sf:land1 a sf:FarmLand ;
+    sf:hasIrrigationMethods "Sprinkler, Drip" ;
+    sf:hasLandID "1" ;
+    sf:hasLocation "Example Location" ;
+    sf:hasSize 10.5 ;
+    sf:hasSoilType "Clay" ;
+    sf:isOwnedBy sf:farmer1 .
+
+sf:farmer1 a sf:Farmer ;
+    rdfs:comment "A farmer who operates equipment." .
+
+sf:GrownBy a rdf:Property ;
+    rdfs:label "Grown By" ;
+    rdfs:comment "The farmer who grows the crop" ;
+    rdfs:domain sf:CropData ;
+    rdfs:range sf:Farmer .
+

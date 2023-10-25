@@ -1,0 +1,291 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <https://schemaForge.net/pattern/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema1:Address a rdf:Class,
+        rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Address" ;
+    rdfs:comment "Address of the headquarters",
+        "The address of the location.",
+        "This class represents an address." ;
+    rdfs:domain schema1:BillingAddress,
+        schema1:Headquarters,
+        schema1:Location ;
+    rdfs:range xsd:string ;
+    rdfs:subClassOf rdf:Description .
+
+schema1:City a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "City" ;
+    rdfs:comment "City of the headquarters",
+        "The city of the address.",
+        "The city of the location." ;
+    rdfs:domain schema1:Address,
+        schema1:BillingAddress,
+        schema1:Headquarters,
+        schema1:Location ;
+    rdfs:range xsd:string .
+
+schema1:Country a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Country" ;
+    rdfs:comment "Country of the headquarters",
+        "The country of the address.",
+        "The country of the location." ;
+    rdfs:domain schema1:Address,
+        schema1:BillingAddress,
+        schema1:Headquarters,
+        schema1:Location ;
+    rdfs:range xsd:string .
+
+schema1:CustomerDetails a rdfs:Class ;
+    rdfs:comment "A pattern for capturing customer details." .
+
+schema1:EventID a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "EventID" ;
+    rdfs:comment "A unique identifier for each event." ;
+    rdfs:domain schema1:TrackingEvent ;
+    rdfs:range xsd:string .
+
+schema1:EventType a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "EventType" ;
+    rdfs:comment "The type of event." ;
+    rdfs:domain schema1:TrackingEvent ;
+    rdfs:range xsd:string .
+
+schema1:Location a rdfs:Class ;
+    rdfs:label "Location" ;
+    rdfs:comment "Location information for the event." ;
+    schema1:hasAddress schema1:Address ;
+    schema1:hasCity schema1:City ;
+    schema1:hasCountry schema1:Country ;
+    schema1:hasPostalCode schema1:PostalCode ;
+    schema1:hasState schema1:State .
+
+schema1:LogisticsProviderDetails a rdfs:Class ;
+    rdfs:label "Logistics Provider Details" ;
+    rdfs:comment "A class that represents the details of a logistics provider" .
+
+schema1:PostalCode a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "PostalCode" ;
+    rdfs:comment "Postal code of the headquarters",
+        "The postal code of the address.",
+        "The postal code of the location." ;
+    rdfs:domain schema1:Address,
+        schema1:BillingAddress,
+        schema1:Headquarters,
+        schema1:Location ;
+    rdfs:range xsd:string .
+
+schema1:Shipment a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Shipment" ;
+    rdfs:comment "A shipment.",
+        "This class represents a shipment." ;
+    rdfs:domain schema1:Orders ;
+    rdfs:range xsd:string ;
+    rdfs:subClassOf rdf:Description .
+
+schema1:ShipmentID a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "ShipmentID" ;
+    rdfs:comment "A unique identifier for each shipment.",
+        "The identifier for the associated shipment." ;
+    rdfs:domain schema1:Shipment,
+        schema1:TrackingEvent ;
+    rdfs:range xsd:int,
+        xsd:string .
+
+schema1:State a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "State/Province" ;
+    rdfs:comment "The state/province of the address.",
+        "The state/province of the location." ;
+    rdfs:domain schema1:Address,
+        schema1:Location ;
+    rdfs:range xsd:string .
+
+schema1:Timestamp a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Timestamp" ;
+    rdfs:comment "Date and time of the event." ;
+    rdfs:domain schema1:TrackingEvent ;
+    rdfs:range xsd:dateTime .
+
+schema1:TrackingEvent a rdfs:Class ;
+    rdfs:label "TrackingEvent" ;
+    rdfs:comment "A tracking event associated with a shipment." ;
+    rdfs:subClassOf schema1:Location ;
+    schema1:hasEventID schema1:EventID ;
+    schema1:hasEventType schema1:EventType ;
+    schema1:hasTimestamp schema1:Timestamp ;
+    schema1:relatesTo schema1:ShipmentID .
+
+schema1:Vehicle a rdfs:Class ;
+    rdfs:label "Vehicle" ;
+    rdfs:comment "A vehicle." .
+
+schema1:ContentsDescription a rdf:Property ;
+    rdfs:comment "A brief description of the shipment's contents." ;
+    rdfs:domain schema1:Shipment ;
+    rdfs:range xsd:string .
+
+schema1:CurrentLocation a rdf:Property ;
+    rdfs:label "Current Location" ;
+    rdfs:comment "The current geographical location of the vehicle." ;
+    rdfs:domain schema1:Vehicle ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdf:type .
+
+schema1:Customer a rdf:Property ;
+    rdfs:domain schema1:Orders ;
+    rdfs:range schema1:CustomerDetails .
+
+schema1:CustomerID a rdf:Property ;
+    rdfs:domain schema1:CustomerDetails ;
+    rdfs:range xsd:string .
+
+schema1:CustomerName a rdf:Property ;
+    rdfs:domain schema1:CustomerDetails ;
+    rdfs:range xsd:string .
+
+schema1:Destination a rdf:Property ;
+    rdfs:comment "The destination address of the shipment." ;
+    rdfs:domain schema1:Shipment ;
+    rdfs:range schema1:Address .
+
+schema1:ETA a rdf:Property ;
+    rdfs:comment "The estimated time of arrival for the shipment." ;
+    rdfs:domain schema1:Shipment ;
+    rdfs:range xsd:dateTime .
+
+schema1:Email a rdf:Property ;
+    rdfs:domain schema1:ContactInformation ;
+    rdfs:range xsd:string .
+
+schema1:HandledBy a rdf:Property ;
+    rdfs:comment "The logistics provider handling the shipment." ;
+    rdfs:domain schema1:Shipment ;
+    rdfs:range schema1:LogisticsProvider .
+
+schema1:Operates a rdf:Property ;
+    rdfs:label "Operates" ;
+    rdfs:comment "Relationship that states a logistics provider operates a vehicle fleet" ;
+    rdfs:domain schema1:LogisticsProviderDetails ;
+    rdfs:range schema1:VehicleFleet .
+
+schema1:OperationalStatus a rdf:Property ;
+    rdfs:label "Operational Status" ;
+    rdfs:comment "The operational status of the vehicle." ;
+    rdfs:domain schema1:Vehicle ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdf:type .
+
+schema1:Origin a rdf:Property ;
+    rdfs:comment "The origin address of the shipment." ;
+    rdfs:domain schema1:Shipment ;
+    rdfs:range schema1:Address .
+
+schema1:Phone a rdf:Property ;
+    rdfs:domain schema1:ContactInformation ;
+    rdfs:range xsd:string .
+
+schema1:ProviderID a rdf:Property ;
+    rdfs:label "ProviderID" ;
+    rdfs:comment "A unique identifier for each logistics provider" ;
+    rdfs:domain schema1:LogisticsProviderDetails ;
+    rdfs:range xsd:string .
+
+schema1:ProviderName a rdf:Property ;
+    rdfs:label "ProviderName" ;
+    rdfs:comment "Name of the logistics company" ;
+    rdfs:domain schema1:LogisticsProviderDetails ;
+    rdfs:range xsd:string .
+
+schema1:ServicesOffered a rdf:Property ;
+    rdfs:label "ServicesOffered" ;
+    rdfs:comment "Types of transportation services offered" ;
+    rdfs:domain schema1:LogisticsProviderDetails ;
+    rdfs:range xsd:string .
+
+schema1:ShipmentStatus a rdf:Property ;
+    rdfs:comment "The status of the shipment." ;
+    rdfs:domain schema1:Shipment ;
+    rdfs:range xsd:string .
+
+schema1:ShippingMethod a rdf:Property ;
+    rdfs:comment "The shipping method used for the shipment." ;
+    rdfs:domain schema1:Shipment ;
+    rdfs:range xsd:string .
+
+schema1:StateProvince a rdf:Property ;
+    rdfs:label "State/Province" ;
+    rdfs:comment "State or province of the headquarters" ;
+    rdfs:domain schema1:BillingAddress,
+        schema1:Headquarters ;
+    rdfs:range xsd:string .
+
+schema1:VehicleID a rdf:Property ;
+    rdfs:label "Vehicle ID" ;
+    rdfs:comment "A unique identifier for each vehicle." ;
+    rdfs:domain schema1:Vehicle ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdf:ID .
+
+schema1:VehicleType a rdf:Property ;
+    rdfs:label "Vehicle Type" ;
+    rdfs:comment "The type of the vehicle." ;
+    rdfs:domain schema1:Vehicle ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdf:type .
+
+schema1:Volume a rdf:Property ;
+    rdfs:comment "The volume of the shipment." ;
+    rdfs:domain schema1:Shipment ;
+    rdfs:range xsd:float .
+
+schema1:Weight a rdf:Property ;
+    rdfs:comment "The weight of the shipment." ;
+    rdfs:domain schema1:Shipment ;
+    rdfs:range xsd:float .
+
+schema1:transports a rdf:Property ;
+    rdfs:label "transports" ;
+    rdfs:comment "Indicates the vehicle transports a shipment." ;
+    rdfs:domain schema1:Vehicle ;
+    rdfs:range schema1:Shipment ;
+    rdfs:subPropertyOf rdf:type .
+
+schema1:Capacity a rdf:Property ;
+    rdfs:label "Capacity" ;
+    rdfs:comment "The maximum weight or volume the vehicle can carry." ;
+    rdfs:domain schema1:Vehicle ;
+    rdfs:range xsd:float ;
+    rdfs:subPropertyOf schema1:Capacity .
+
+schema1:LogisticsProvider a rdf:Class ;
+    rdfs:comment "This class represents a logistics provider." ;
+    rdfs:subClassOf rdf:Description .
+
+schema1:VehicleFleet a rdf:Class ;
+    rdfs:label "Vehicle Fleet" ;
+    rdfs:comment "Class representing a fleet of vehicles" .
+
+schema1:ContactInformation a rdf:Class ;
+    rdfs:comment "A pattern for capturing contact information." .
+
+schema1:Orders a rdf:Class ;
+    rdfs:comment "A pattern for capturing customer orders." .
+
+schema1:BillingAddress a rdf:Class ;
+    rdfs:comment "A pattern for capturing billing address information." .
+
+schema1:Headquarters a rdf:Class ;
+    rdfs:label "Headquarters" ;
+    rdfs:comment "Class representing the headquarters of a logistics provider" .
+

@@ -1,0 +1,506 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <https://schemaForge.net/pattern/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema1:Category a rdfs:Class,
+        rdfs:Property ;
+    rdfs:label "Category" ;
+    rdfs:comment "A category for grouping related products." ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:string .
+
+schema1:Customer a rdfs:Class ;
+    rdfs:label "Customer",
+        "Customer"@en ;
+    rdfs:comment "A customer entity represents an individual who creates and owns a wishlist.",
+        "A customer who can write reviews.",
+        "The customer entity represents an individual who made a purchase.",
+        "A person who purchases products from an online store."@en .
+
+schema1:CustomerProfile a rdfs:Class ;
+    rdfs:label "Customer Profile" ;
+    rdfs:comment "Represents a customer profile." .
+
+schema1:Discount a rdfs:Class ;
+    rdfs:label "Discount" .
+
+schema1:DiscountPromotion a rdfs:Class ;
+    rdfs:label "Discount/Promotion" ;
+    rdfs:comment "A pattern representing a discount or promotion." ;
+    schema1:appliesTo "Product" .
+
+schema1:Order a rdf:Class,
+        rdfs:Class ;
+    rdfs:label "Order" ;
+    rdfs:comment "An order entity",
+        "Represents an order made by a customer.",
+        "The order entity represents a purchase order made by a customer." .
+
+schema1:PaymentMethod a rdf:Property,
+        rdfs:Class ;
+    rdfs:label "Payment Method" ;
+    rdfs:comment "A method used for making payments.",
+        "The payment method used for the order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:string .
+
+schema1:Product a rdf:Class,
+        rdfs:Class ;
+    rdfs:label "Product",
+        "Product"@en ;
+    rdfs:comment "A product entity",
+        "A product entity represents a specific item that can be included in a wishlist.",
+        "A product that belongs to a category.",
+        "A product that can be reviewed.",
+        "Represents a product entity.",
+        "The product entity represents a specific product included in an order.",
+        "An item available for purchase in an online store."@en .
+
+schema1:ProductReviewList a rdfs:Class ;
+    rdfs:label "Product Review List" ;
+    rdfs:comment "A collection of product review entities." .
+
+schema1:PurchaseList a rdfs:Class ;
+    rdfs:label "Purchase List" ;
+    rdfs:comment "A collection of purchase entities." .
+
+schema1:Review a rdfs:Class ;
+    rdfs:label "Review" ;
+    rdfs:comment "A customer review of a product." .
+
+schema1:Seller a rdfs:Class ;
+    rdfs:label "Seller",
+        "Seller/Supplier" ;
+    rdfs:comment "A seller or supplier entity",
+        "The seller entity represents the seller who fulfills the order." .
+
+schema1:ShippingProvider a rdfs:Class ;
+    rdfs:label "Shipping Provider" ;
+    rdfs:comment "A provider that offers shipping services.",
+        "The shipping provider entity represents the company responsible for shipping and delivery." .
+
+schema1:ShoppingCart a rdfs:Class ;
+    rdfs:label "Shopping Cart"@en ;
+    rdfs:comment "A container for holding products selected by a customer for purchase."@en .
+
+schema1:Wishlist a rdfs:Class ;
+    rdfs:label "Wishlist" ;
+    rdfs:comment "A wishlist entity represents a list of desired products created by a customer." .
+
+<file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/order1> schema1:Ships <file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/shippingProvider1> .
+
+<file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/order2> schema1:Ships <file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/shippingProvider2> .
+
+schema1:AccountCreationDate a rdf:Property ;
+    rdfs:label "Account Creation Date" ;
+    rdfs:comment "The date when the customer's account was created." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:date .
+
+schema1:Address a rdf:Property ;
+    rdfs:label "Address" ;
+    rdfs:comment "The address of the seller" ;
+    rdfs:domain schema1:Seller ;
+    rdfs:range xsd:string .
+
+schema1:AverageRating a rdfs:Property ;
+    rdfs:label "AverageRating" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:float .
+
+schema1:BelongsIn a rdf:Property ;
+    rdfs:label "BelongsIn" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range schema1:Category .
+
+schema1:BelongsTo a rdf:Property ;
+    rdfs:label "Belongs To",
+        "Belongs To"@en ;
+    rdfs:comment "Specifies the customer who the wishlist belongs to.",
+        "Indicates the customer who owns the shopping cart."@en ;
+    rdfs:domain schema1:ShoppingCart ;
+    rdfs:range schema1:Customer .
+
+schema1:BillingAddress a rdf:Property ;
+    rdfs:label "Billing Address" ;
+    rdfs:comment "The billing address of a customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:Brand a rdfs:Property ;
+    rdfs:label "Brand" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:string .
+
+schema1:CardNumber a rdf:Property ;
+    rdfs:label "Card Number" ;
+    rdfs:comment "The last 4 digits of a credit card number for security." ;
+    rdfs:domain schema1:PaymentMethod ;
+    rdfs:range xsd:string .
+
+schema1:CartID a rdf:Property ;
+    rdfs:label "Cart ID"@en ;
+    rdfs:comment "A unique identifier for a shopping cart."@en ;
+    rdfs:domain schema1:ShoppingCart ;
+    rdfs:range xsd:integer .
+
+schema1:CategoryID a rdf:Property ;
+    rdfs:label "Category ID" ;
+    rdfs:comment "The unique identifier for a category." ;
+    rdfs:domain schema1:Category ;
+    rdfs:range xsd:integer .
+
+schema1:Comment a rdf:Property ;
+    rdfs:label "Comment" ;
+    rdfs:comment "The comment written in the review." ;
+    rdfs:domain schema1:Review ;
+    rdfs:range xsd:string .
+
+schema1:Contains a rdf:Property ;
+    rdfs:label "Contains",
+        "Contains"@en ;
+    rdfs:comment "Defines the relationship between a category and its products.",
+        "Specifies the products that are contained in the wishlist.",
+        "The products included in the order.",
+        "Indicates the product(s) present in the shopping cart."@en ;
+    rdfs:domain schema1:Category,
+        schema1:Order,
+        schema1:ShoppingCart ;
+    rdfs:range schema1:Product .
+
+schema1:CustomerID a rdf:Property ;
+    rdfs:label "Customer ID" ;
+    rdfs:comment "The unique identifier of a customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:Date a rdf:Property ;
+    rdfs:label "Date" ;
+    rdfs:comment "The date when the order was placed.",
+        "The date when the review was written." ;
+    rdfs:domain schema1:Order,
+        schema1:Review ;
+    rdfs:range xsd:date .
+
+schema1:DateLastModified a rdf:Property ;
+    rdfs:label "Date Last Modified"@en ;
+    rdfs:comment "The date when the shopping cart was last modified."@en ;
+    rdfs:domain schema1:ShoppingCart ;
+    rdfs:range xsd:date .
+
+schema1:Description a rdf:Property,
+        rdfs:Property ;
+    rdfs:label "Description" ;
+    rdfs:comment "The description of a category." ;
+    rdfs:domain schema1:Category,
+        schema1:Product ;
+    rdfs:range xsd:string .
+
+schema1:Dimensions a rdfs:Property ;
+    rdfs:label "Dimensions" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:string .
+
+schema1:Email a rdf:Property ;
+    rdfs:label "Email" ;
+    rdfs:comment "The email address of a customer.",
+        "The email address of the seller" ;
+    rdfs:domain schema1:CustomerProfile,
+        schema1:Seller ;
+    rdfs:range xsd:string .
+
+schema1:ExpiryDate a rdf:Property ;
+    rdfs:label "Expiry Date" ;
+    rdfs:comment "The expiry date of a credit card." ;
+    rdfs:domain schema1:PaymentMethod ;
+    rdfs:range xsd:date .
+
+schema1:FirstName a rdf:Property ;
+    rdfs:label "First Name" ;
+    rdfs:comment "The first name of a customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:FulfilledBy a rdf:Property ;
+    rdfs:comment "The seller who fulfilled the order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range schema1:Seller .
+
+schema1:Fulfills a rdf:Property ;
+    rdfs:label "Fulfills" ;
+    rdfs:comment "Relates a seller to the order they fulfill" ;
+    rdfs:domain schema1:Seller ;
+    rdfs:range schema1:Order .
+
+schema1:HasDiscount a rdf:Property ;
+    rdfs:label "HasDiscount" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range schema1:Discount .
+
+schema1:Images a rdfs:Property ;
+    rdfs:label "Images" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:string .
+
+schema1:LastName a rdf:Property ;
+    rdfs:label "Last Name" ;
+    rdfs:comment "The last name of a customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:Manufacturer a rdfs:Property ;
+    rdfs:label "Manufacturer" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:string .
+
+schema1:Name a rdf:Property,
+        rdfs:Property ;
+    rdfs:label "Name" ;
+    rdfs:comment "The name of a category.",
+        "The name of a shipping provider.",
+        "The name of the seller" ;
+    rdfs:domain schema1:Category,
+        schema1:Product,
+        schema1:Seller,
+        schema1:ShippingProvider ;
+    rdfs:range xsd:string .
+
+schema1:OrderID a rdf:Property ;
+    rdfs:comment "The unique identifier for the order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:string .
+
+schema1:PaymentID a rdf:Property ;
+    rdfs:label "Payment ID" ;
+    rdfs:comment "A unique identifier for a payment." ;
+    rdfs:domain schema1:PaymentMethod ;
+    rdfs:range xsd:integer .
+
+schema1:PaysFor a rdf:Property ;
+    rdfs:label "Pays For" ;
+    rdfs:comment "The order that was paid for using the payment method." ;
+    rdfs:domain schema1:PaymentMethod ;
+    rdfs:range schema1:Order .
+
+schema1:Phone a rdf:Property ;
+    rdfs:label "Phone" ;
+    rdfs:comment "The phone number of a customer.",
+        "The phone number of the seller" ;
+    rdfs:domain schema1:CustomerProfile,
+        schema1:Seller ;
+    rdfs:range xsd:string .
+
+schema1:Price a rdfs:Property ;
+    rdfs:label "Price" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:float .
+
+schema1:ProductID a rdfs:Property ;
+    rdfs:label "ProductID" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:string .
+
+schema1:ProviderID a rdf:Property ;
+    rdfs:label "Provider ID" ;
+    rdfs:comment "A unique identifier for a shipping provider." ;
+    rdfs:domain schema1:ShippingProvider ;
+    rdfs:range xsd:string .
+
+schema1:PurchaseHistory a rdf:Property ;
+    rdfs:label "Purchase History" ;
+    rdfs:comment "A collection of purchases made by the customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range schema1:PurchaseList .
+
+schema1:PurchasedBy a rdf:Property ;
+    rdfs:comment "The customer who made the purchase." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range schema1:Customer .
+
+schema1:Rating a rdf:Property ;
+    rdfs:label "Rating" ;
+    rdfs:comment "The rating given in the review.",
+        "The rating of the seller" ;
+    rdfs:domain schema1:Review,
+        schema1:Seller ;
+    rdfs:range xsd:integer .
+
+schema1:ReviewID a rdf:Property ;
+    rdfs:label "Review ID" ;
+    rdfs:comment "The unique identifier for a review." ;
+    rdfs:domain schema1:Review ;
+    rdfs:range xsd:string .
+
+schema1:Reviews a rdf:Property,
+        rdfs:Property ;
+    rdfs:label "Reviews" ;
+    rdfs:comment "A collection of reviews made by the customer.",
+        "The reviews of a product." ;
+    rdfs:domain schema1:CustomerProfile,
+        schema1:Product ;
+    rdfs:range xsd:string,
+        schema1:ProductReviewList,
+        schema1:Review .
+
+schema1:SKU a rdfs:Property ;
+    rdfs:label "SKU" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:string .
+
+schema1:SellerID a rdf:Property ;
+    rdfs:label "SellerID" ;
+    rdfs:comment "The unique identifier for a seller" ;
+    rdfs:domain schema1:Seller ;
+    rdfs:range xsd:integer .
+
+schema1:Sells a rdf:Property ;
+    rdfs:label "Sells" ;
+    rdfs:comment "Relates a seller to the product they sell" ;
+    rdfs:domain schema1:Seller ;
+    rdfs:range schema1:Product .
+
+schema1:ShippingAddress a rdf:Property ;
+    rdfs:label "Shipping Address" ;
+    rdfs:comment "The shipping address of a customer." ;
+    rdfs:domain schema1:CustomerProfile ;
+    rdfs:range xsd:string .
+
+schema1:ShippingFee a rdf:Property ;
+    rdfs:comment "The shipping fee for the order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:decimal .
+
+schema1:ShipsThrough a rdf:Property ;
+    rdfs:comment "The shipping provider used for delivering the order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range schema1:ShippingProvider .
+
+schema1:SoldBy a rdf:Property ;
+    rdfs:label "SoldBy" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range schema1:Seller .
+
+schema1:Status a rdf:Property ;
+    rdfs:comment "The status of the order (e.g., Pending, Shipped, Delivered, Returned)." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:string .
+
+schema1:StockQuantity a rdfs:Property ;
+    rdfs:label "StockQuantity" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:int .
+
+schema1:SubCategory a rdfs:Property ;
+    rdfs:label "SubCategory" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:string .
+
+schema1:Title a rdf:Property ;
+    rdfs:label "Title" ;
+    rdfs:comment "The title of the review." ;
+    rdfs:domain schema1:Review ;
+    rdfs:range xsd:string .
+
+schema1:TotalAmount a rdf:Property ;
+    rdfs:comment "The total amount of the order, including shipping fee." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:decimal .
+
+schema1:TrackingNumber a rdf:Property ;
+    rdfs:comment "The tracking number for the order." ;
+    rdfs:domain schema1:Order ;
+    rdfs:range xsd:string .
+
+schema1:TrackingWebsite a rdf:Property ;
+    rdfs:label "Tracking Website" ;
+    rdfs:comment "The website where customers can track their shipments." ;
+    rdfs:domain schema1:ShippingProvider ;
+    rdfs:range xsd:anyURI .
+
+schema1:Type a rdf:Property ;
+    rdfs:label "Type" ;
+    rdfs:comment "The type of payment method used." ;
+    rdfs:domain schema1:PaymentMethod ;
+    rdfs:range xsd:string .
+
+schema1:UsedBy a rdf:Property ;
+    rdfs:label "Used By" ;
+    rdfs:comment "The customer who used the payment method." ;
+    rdfs:domain schema1:PaymentMethod ;
+    rdfs:range schema1:Customer .
+
+schema1:Website a rdf:Property ;
+    rdfs:label "Website" ;
+    rdfs:comment "The website URL of the seller" ;
+    rdfs:domain schema1:Seller ;
+    rdfs:range xsd:anyURI .
+
+schema1:Weight a rdfs:Property ;
+    rdfs:label "Weight" ;
+    rdfs:domain schema1:Product ;
+    rdfs:range xsd:float .
+
+schema1:WishlistID a rdf:Property ;
+    rdfs:label "Wishlist ID" ;
+    rdfs:comment "The unique identifier of a wishlist." ;
+    rdfs:range xsd:integer .
+
+schema1:WrittenBy a rdf:Property ;
+    rdfs:label "Written By" ;
+    rdfs:comment "The customer who wrote the review." ;
+    rdfs:domain schema1:Review ;
+    rdfs:range schema1:Customer .
+
+schema1:appliesTo a rdf:Property ;
+    rdfs:label "applies To" ;
+    rdfs:comment "Specifies the product to which the discount or promotion is applied." ;
+    rdfs:domain schema1:DiscountPromotion ;
+    rdfs:range xsd:string .
+
+schema1:hasAmount a rdf:Property ;
+    rdfs:label "has Amount" ;
+    rdfs:comment "Specifies the amount of the discount or promotion." ;
+    rdfs:domain schema1:DiscountPromotion ;
+    rdfs:range xsd:float .
+
+schema1:hasDiscountID a rdf:Property ;
+    rdfs:label "has Discount ID" ;
+    rdfs:comment "Specifies the unique identifier for the discount." ;
+    rdfs:domain schema1:DiscountPromotion ;
+    rdfs:range xsd:string .
+
+schema1:hasEndDate a rdf:Property ;
+    rdfs:label "has End Date" ;
+    rdfs:comment "Specifies the end date of the discount or promotion." ;
+    rdfs:domain schema1:DiscountPromotion ;
+    rdfs:range xsd:date .
+
+schema1:hasPromoCode a rdf:Property ;
+    rdfs:label "has Promo Code" ;
+    rdfs:comment "Specifies the promo code for the discount or promotion." ;
+    rdfs:domain schema1:DiscountPromotion ;
+    rdfs:range xsd:string .
+
+schema1:hasStartDate a rdf:Property ;
+    rdfs:label "has Start Date" ;
+    rdfs:comment "Specifies the start date of the discount or promotion." ;
+    rdfs:domain schema1:DiscountPromotion ;
+    rdfs:range xsd:date .
+
+schema1:hasType a rdf:Property ;
+    rdfs:label "has Type" ;
+    rdfs:comment "Specifies the type of discount or promotion (e.g., percentage, fixed amount, buy one get one)." ;
+    rdfs:domain schema1:DiscountPromotion ;
+    rdfs:range xsd:string .
+
+<file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/shippingProvider1> a schema1:ShippingProvider ;
+    schema1:Name "DHL" ;
+    schema1:ProviderID "123456789" ;
+    schema1:TrackingWebsite "https://www.dhl.com" .
+
+<file:///c:/Users/Francois%20Scharffe/Documents/GitHub/schema-forge/shippingProvider2> a schema1:ShippingProvider ;
+    schema1:Name "FedEx" ;
+    schema1:ProviderID "987654321" ;
+    schema1:TrackingWebsite "https://www.fedex.com" .
+

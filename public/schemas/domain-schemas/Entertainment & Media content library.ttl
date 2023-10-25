@@ -1,0 +1,350 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <https://schemaForge.net/pattern/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema1:Artist a rdfs:Class ;
+    rdfs:label "Artist" ;
+    rdfs:comment "A person who creates art." .
+
+schema1:ContentLibrary a rdfs:Class ;
+    rdfs:comment "A library of multimedia content available for streaming or purchase" .
+
+schema1:Review a rdf:Class,
+        rdfs:Class ;
+    rdfs:label "Review" ;
+    rdfs:comment "A review entity made by a user.",
+        "A review of a content by a user" .
+
+schema1:Series a rdfs:Class ;
+    rdfs:label "Series"@en ;
+    rdfs:comment "A collection of content released in a sequential order."@en .
+
+schema1:User a rdfs:Class ;
+    rdfs:label "User" ;
+    rdfs:comment "A user entity representing a registered user." .
+
+<example:series2> a schema1:Series ;
+    schema1:Contains () ;
+    schema1:Description "This is the second series."^^xsd:string ;
+    schema1:EndDate "2022-12-31"^^xsd:date ;
+    schema1:SeriesID "2"^^xsd:string ;
+    schema1:StartDate "2022-01-01"^^xsd:date ;
+    schema1:Title "Series 2"^^xsd:string ;
+    schema1:Type "Movie Sequels"^^xsd:string .
+
+<example:triple1> a schema1:Triple ;
+    schema1:object <example:series1> ;
+    schema1:predicate schema1:contentInSeries ;
+    schema1:subject <example:content1> .
+
+<example:triple2> a schema1:Triple ;
+    schema1:object <example:series1> ;
+    schema1:predicate schema1:contentInSeries ;
+    schema1:subject <example:content2> .
+
+schema1:ActiveYears a rdf:Property ;
+    rdfs:label "activeYears" ;
+    rdfs:comment "The active years of the artist." ;
+    rdfs:domain schema1:Artist ;
+    rdfs:range xsd:string .
+
+schema1:ArtistID a rdf:Property ;
+    rdfs:label "artistID" ;
+    rdfs:comment "The unique identifier for an artist." ;
+    rdfs:domain schema1:Artist ;
+    rdfs:range xsd:integer .
+
+schema1:BelongsTo a rdf:Property ;
+    rdfs:comment "The series that a sequel or TV show belongs to" ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:Biography a rdf:Property ;
+    rdfs:label "biography" ;
+    rdfs:comment "The biography of the artist." ;
+    rdfs:domain schema1:Artist ;
+    rdfs:range xsd:string .
+
+schema1:CollaboratedWith a rdf:Property ;
+    rdfs:label "collaboratedWith" ;
+    rdfs:comment "Relates an artist with other artists they have collaborated with." ;
+    rdfs:domain schema1:Artist ;
+    rdfs:range schema1:Artist .
+
+schema1:Comment a rdf:Property,
+        rdfs:Datatype ;
+    rdfs:comment "The text review left by the user" ;
+    rdfs:domain schema1:Review ;
+    rdfs:range xsd:string .
+
+schema1:Contains a rdf:Property ;
+    rdfs:label "Contains"@en ;
+    rdfs:comment "The list of content in a series."@en ;
+    rdfs:range rdf:List .
+
+schema1:ContentID a rdf:Property,
+        rdfs:Datatype ;
+    rdfs:comment "The identifier of the content being reviewed",
+        "The unique identifier for a content item" ;
+    rdfs:domain schema1:ContentLibrary,
+        schema1:Review ;
+    rdfs:range xsd:integer .
+
+schema1:Created a rdf:Property ;
+    rdfs:label "created" ;
+    rdfs:comment "Relates an artist with the content created by them." ;
+    rdfs:domain schema1:Artist ;
+    rdfs:range schema1:Content .
+
+schema1:CreatedBy a rdf:Property ;
+    rdfs:comment "The artist/producer who created a content item" ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:DateJoined a rdf:Property ;
+    rdfs:label "DateJoined" ;
+    rdfs:comment "The date when the user joined the platform." ;
+    rdfs:range xsd:date .
+
+schema1:DateOfBirth a rdf:Property ;
+    rdfs:label "dateOfBirth" ;
+    rdfs:comment "The date of birth of the artist." ;
+    rdfs:domain schema1:Artist ;
+    rdfs:range xsd:date .
+
+schema1:DatePosted a rdf:Property,
+        rdfs:Datatype ;
+    rdfs:comment "The date when the review was posted" ;
+    rdfs:domain schema1:Review ;
+    rdfs:range xsd:date .
+
+schema1:Description a rdf:Property ;
+    rdfs:label "Description"@en ;
+    rdfs:comment "A short summary/description of a content item",
+        "A description of a series."@en ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:Duration a rdf:Property ;
+    rdfs:comment "The duration of a content item" ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:Email a rdf:Property ;
+    rdfs:label "Email" ;
+    rdfs:comment "The email address of a user." ;
+    rdfs:range xsd:string .
+
+schema1:EndDate a rdf:Property ;
+    rdfs:label "End Date"@en ;
+    rdfs:comment "The date when the last content in a series was released."@en ;
+    rdfs:range xsd:date .
+
+schema1:Favorited a rdf:Property ;
+    rdfs:label "Favorited" ;
+    rdfs:comment "The property indicating a user favorited a content." ;
+    rdfs:domain schema1:User ;
+    rdfs:range schema1:Content .
+
+schema1:FeaturedArtists a rdf:Property ;
+    rdfs:comment "The list of artists featured in a content item (e.g., for songs or movies with guest appearances)" ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:Genre a rdf:Property ;
+    rdfs:comment "The genre/category of a content item" ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:Language a rdf:Property ;
+    rdfs:comment "The language of a content item" ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:Name a rdf:Property ;
+    rdfs:label "name" ;
+    rdfs:comment "The name of the artist." ;
+    rdfs:domain schema1:Artist ;
+    rdfs:range xsd:string .
+
+schema1:Nationality a rdf:Property ;
+    rdfs:label "nationality" ;
+    rdfs:comment "The nationality of the artist." ;
+    rdfs:domain schema1:Artist ;
+    rdfs:range xsd:string .
+
+schema1:Preferences a rdf:Property ;
+    rdfs:label "Preferences" ;
+    rdfs:comment "The list of genres, artists, etc. that the user likes." ;
+    rdfs:range xsd:string .
+
+schema1:ProfilePicture a rdf:Property ;
+    rdfs:label "profilePicture" ;
+    rdfs:comment "The URL of the profile picture of the artist." ;
+    rdfs:domain schema1:Artist ;
+    rdfs:range xsd:string .
+
+schema1:Rating a rdf:Property,
+        rdfs:Datatype ;
+    rdfs:comment "The rating given to the content by the user",
+        "The rating of a content item (e.g., PG-13, R)" ;
+    rdfs:domain schema1:ContentLibrary,
+        schema1:Review ;
+    rdfs:range xsd:integer,
+        xsd:string .
+
+schema1:ReleaseDate a rdf:Property ;
+    rdfs:comment "The date of release for a content item" ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:date .
+
+schema1:ReviewID a rdf:Property,
+        rdfs:Datatype ;
+    rdfs:comment "The identifier of a review" ;
+    rdfs:domain schema1:Review ;
+    rdfs:range xsd:integer .
+
+schema1:SeriesID a rdf:Property ;
+    rdfs:label "Series ID"@en ;
+    rdfs:comment "The unique identifier for a series."@en ;
+    rdfs:range xsd:string .
+
+schema1:Source a rdf:Property ;
+    rdfs:comment "The source of a content item (e.g., streaming service, DVD)" ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:StartDate a rdf:Property ;
+    rdfs:label "Start Date"@en ;
+    rdfs:comment "The date when the first content in a series was released."@en ;
+    rdfs:range xsd:date .
+
+schema1:Thumbnail a rdf:Property ;
+    rdfs:comment "An image representing a content item" ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:Title a rdf:Property ;
+    rdfs:label "Title"@en ;
+    rdfs:comment "The title of a content item",
+        "The title of a series."@en ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:Type a rdf:Property ;
+    rdfs:label "Type"@en ;
+    rdfs:comment "The type/category of a content item (e.g., movie, song, TV show)",
+        "The type of a series (e.g. Movie Sequels, TV Show, etc.)."@en ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:string .
+
+schema1:URL a rdf:Property ;
+    rdfs:comment "The URL/link to a content item if available online" ;
+    rdfs:domain schema1:ContentLibrary ;
+    rdfs:range xsd:anyURI .
+
+schema1:UserID a rdf:Property,
+        rdfs:Datatype ;
+    rdfs:label "UserID" ;
+    rdfs:comment "The identifier of the user who wrote the review",
+        "The unique identifier of a user." ;
+    rdfs:domain schema1:Review ;
+    rdfs:range xsd:int,
+        xsd:integer .
+
+schema1:Username a rdf:Property ;
+    rdfs:label "Username" ;
+    rdfs:comment "The username of a user." ;
+    rdfs:range xsd:string .
+
+schema1:Wrote a rdf:Property ;
+    rdfs:label "Wrote" ;
+    rdfs:comment "The property indicating a user wrote a review." ;
+    rdfs:domain schema1:User ;
+    rdfs:range schema1:Review .
+
+schema1:namespace a rdf:Property ;
+    rdfs:label "namespace"@en ;
+    rdfs:comment "Specifies the namespace for a prefix."@en ;
+    rdfs:range xsd:anyURI .
+
+schema1:object a rdf:Property ;
+    rdfs:label "object"@en ;
+    rdfs:comment "Specifies the object of a triple."@en ;
+    rdfs:range rdfs:Resource .
+
+schema1:owl a rdf:Property ;
+    rdfs:label "owl"@en ;
+    rdfs:comment "Namespace for the OWL vocabulary."@en ;
+    rdfs:domain schema1:namespaceDefinitionHeader ;
+    rdfs:range xsd:anyURI .
+
+schema1:predicate a rdf:Property ;
+    rdfs:label "predicate"@en ;
+    rdfs:comment "Specifies the predicate of a triple."@en ;
+    rdfs:range rdfs:Resource .
+
+schema1:prefix a rdf:Property ;
+    rdfs:label "prefix"@en ;
+    rdfs:comment "Specifies the prefix for a namespace."@en ;
+    rdfs:range xsd:string .
+
+schema1:rdf a rdf:Property ;
+    rdfs:label "rdf"@en ;
+    rdfs:comment "Namespace for the RDF vocabulary."@en ;
+    rdfs:domain schema1:namespaceDefinitionHeader ;
+    rdfs:range xsd:anyURI .
+
+schema1:rdfs a rdf:Property ;
+    rdfs:label "rdfs"@en ;
+    rdfs:comment "Namespace for the RDFS vocabulary."@en ;
+    rdfs:domain schema1:namespaceDefinitionHeader ;
+    rdfs:range xsd:anyURI .
+
+schema1:subject a rdf:Property ;
+    rdfs:label "subject"@en ;
+    rdfs:comment "Specifies the subject of a triple."@en ;
+    rdfs:range rdfs:Resource .
+
+schema1:xsd a rdf:Property ;
+    rdfs:label "xsd"@en ;
+    rdfs:comment "Namespace for the XSD vocabulary."@en ;
+    rdfs:domain schema1:namespaceDefinitionHeader ;
+    rdfs:range xsd:anyURI .
+
+<example:content1> a schema1:Content ;
+    schema1:contentInSeries <example:series1> .
+
+<example:content2> a schema1:Content ;
+    schema1:contentInSeries <example:series1> .
+
+schema1:Triple a rdf:Class ;
+    rdfs:label "Triple"@en ;
+    rdfs:comment "A representation of a triple in the turtle format."@en .
+
+schema1:contentInSeries a rdf:Property ;
+    rdfs:label "contentInSeries"@en ;
+    rdfs:comment "Specifies the relationship between a content and a series it belongs to."@en ;
+    rdfs:domain schema1:Content ;
+    rdfs:range schema1:Series .
+
+<example:series1> a schema1:Series ;
+    schema1:Contains ( <example:content1> <example:content2> ) ;
+    schema1:Description "This is the first series."^^xsd:string ;
+    schema1:EndDate "2021-06-30"^^xsd:date ;
+    schema1:SeriesID "1"^^xsd:string ;
+    schema1:StartDate "2021-01-01"^^xsd:date ;
+    schema1:Title "Series 1"^^xsd:string ;
+    schema1:Type "TV Show"^^xsd:string .
+
+schema1:namespaceDefinitionHeader a rdf:Class ;
+    rdfs:label "Namespace Definition Header"@en ;
+    rdfs:comment "A header for defining namespaces used in the RDF document."@en .
+
+schema1:Content a rdf:Class ;
+    rdfs:label "Content",
+        "Content"@en ;
+    rdfs:comment "A content entity that can be favorited by a user.",
+        "A piece of content in a series."@en .
+

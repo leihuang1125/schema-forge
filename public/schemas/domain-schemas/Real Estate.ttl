@@ -1,0 +1,492 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sf: <https://schemaForge.net/pattern/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sf:Agent a rdfs:Class ;
+    rdfs:label "Agent" ;
+    rdfs:comment "A real estate agent.",
+        "A schema for an agent who lists properties.",
+        "An individual agent working for a realty company." .
+
+sf:BuyerProfile a rdfs:Class ;
+    rdfs:label "Buyer Profile" ;
+    rdfs:comment "A profile of a buyer interested in purchasing a property." .
+
+sf:InspectionReports a rdfs:Class ;
+    rdfs:comment "A class representing inspection reports." .
+
+sf:MortgageInformation a rdfs:Class ;
+    rdfs:comment "The mortgage information for a property listing." .
+
+sf:Owner a rdfs:Class ;
+    rdfs:label "Owner" ;
+    rdfs:comment "A schema for the owner of a property.",
+        "An owner of a property listing." .
+
+sf:PropertyListing a rdfs:Class ;
+    rdfs:label "Property Listing",
+        "PropertyListing" ;
+    rdfs:comment "A class representing a property listing.",
+        "A listing for a property available for rent",
+        "A listing for a property available for sale.",
+        "A listing for a property.",
+        "A listing of a property available for sale or rent.",
+        "A real estate property listing.",
+        "A schema for a property listing." .
+
+sf:RealtyCompany a rdfs:Class ;
+    rdfs:label "RealtyCompany" ;
+    rdfs:comment "A company involved in real estate business.",
+        "A real estate company." .
+
+sf:RentalAgreement a rdfs:Class ;
+    rdfs:label "Rental Agreement" ;
+    rdfs:comment "A rental agreement for a property.",
+        "An agreement for renting a property" .
+
+sf:TenantProfile a rdfs:Class ;
+    rdfs:label "Tenant Profile" ;
+    rdfs:comment "A profile for a tenant" .
+
+sf:Address a rdf:Property ;
+    rdfs:label "Address" ;
+    rdfs:comment "The address of a realty company.",
+        "The full address of the property listing." ;
+    rdfs:domain sf:PropertyListing,
+        sf:RealtyCompany ;
+    rdfs:range xsd:string .
+
+sf:AgentID a rdf:Property ;
+    rdfs:label "AgentID" ;
+    rdfs:comment "The unique identifier for an agent." ;
+    rdfs:domain sf:Agent ;
+    rdfs:range xsd:string .
+
+sf:AgreementID a rdf:Property ;
+    rdfs:label "Agreement ID" ;
+    rdfs:comment "The unique identifier of a rental agreement." ;
+    rdfs:domain sf:RentalAgreement ;
+    rdfs:range xsd:string .
+
+sf:AgreementWith a rdf:Property ;
+    rdfs:label "Agreement With" ;
+    rdfs:comment "Specifies the rental agreements associated with a tenant" ;
+    rdfs:domain sf:TenantProfile ;
+    rdfs:range sf:RentalAgreement .
+
+sf:Amenities a rdf:Property ;
+    rdfs:label "Amenities" ;
+    rdfs:comment "The amenities available in the property, e.g., Pool, Gym, Fireplace, Garage." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:string .
+
+sf:AttachedTo a rdf:Property ;
+    rdfs:comment "The property listing attached to the mortgage." ;
+    rdfs:domain sf:MortgageInformation ;
+    rdfs:range sf:PropertyListing .
+
+sf:Bathrooms a rdf:Property ;
+    rdfs:label "Bathrooms" ;
+    rdfs:comment "The number of bathrooms in the property." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:integer .
+
+sf:Bedrooms a rdf:Property ;
+    rdfs:label "Bedrooms" ;
+    rdfs:comment "The number of bedrooms in the property." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:integer .
+
+sf:Bio a rdf:Property ;
+    rdfs:label "Bio" ;
+    rdfs:comment "The biography of an agent." ;
+    rdfs:domain sf:Agent ;
+    rdfs:range xsd:string .
+
+sf:BuyerID a rdf:Property ;
+    rdfs:label "Buyer ID" ;
+    rdfs:comment "The unique identifier of a buyer." ;
+    rdfs:domain sf:BuyerProfile ;
+    rdfs:range xsd:string .
+
+sf:City a rdf:Property ;
+    rdfs:label "City" ;
+    rdfs:comment "The city where the property is located." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:string .
+
+sf:CompanyID a rdf:Property ;
+    rdfs:label "CompanyID" ;
+    rdfs:comment "A unique identifier for a realty company." ;
+    rdfs:domain sf:RealtyCompany ;
+    rdfs:range xsd:integer .
+
+sf:Country a rdf:Property ;
+    rdfs:label "Country" ;
+    rdfs:comment "The country where the property is located." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:string .
+
+sf:Date a rdf:Property ;
+    rdfs:comment "The date of an inspection report." ;
+    rdfs:domain sf:InspectionReports ;
+    rdfs:range xsd:date .
+
+sf:DepositAmount a rdf:Property ;
+    rdfs:label "Deposit Amount" ;
+    rdfs:comment "The amount of deposit required for a rental agreement." ;
+    rdfs:domain sf:RentalAgreement ;
+    rdfs:range xsd:decimal .
+
+sf:Description a rdf:Property ;
+    rdfs:label "Description" ;
+    rdfs:comment "A description of the property listing." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:string .
+
+sf:DetailedFindings a rdf:Property ;
+    rdfs:comment "Detailed findings of an inspection report." ;
+    rdfs:domain sf:InspectionReports ;
+    rdfs:range xsd:string .
+
+sf:Duration a rdf:Property ;
+    rdfs:comment "The duration of the mortgage in months." ;
+    rdfs:domain sf:MortgageInformation ;
+    rdfs:range xsd:integer .
+
+sf:Email a rdf:Property ;
+    rdfs:label "Email" ;
+    rdfs:comment "The email address of a tenant",
+        "The email address of an agent." ;
+    rdfs:domain sf:Agent,
+        sf:TenantProfile ;
+    rdfs:range xsd:string .
+
+sf:Employs a rdf:Property ;
+    rdfs:label "Employs" ;
+    rdfs:comment "Specifies the relationship between a realty company and the agents it employs." ;
+    rdfs:domain sf:RealtyCompany ;
+    rdfs:range sf:Agent .
+
+sf:EndDate a rdf:Property ;
+    rdfs:label "End Date" ;
+    rdfs:comment "The end date of a rental agreement." ;
+    rdfs:domain sf:RentalAgreement ;
+    rdfs:range xsd:date .
+
+sf:FirstName a rdf:Property ;
+    rdfs:label "First Name",
+        "FirstName" ;
+    rdfs:comment "The first name of a tenant",
+        "The first name of an agent." ;
+    rdfs:domain sf:Agent,
+        sf:TenantProfile ;
+    rdfs:range xsd:string .
+
+sf:FoundedDate a rdf:Property ;
+    rdfs:label "FoundedDate" ;
+    rdfs:comment "The date when a realty company was founded." ;
+    rdfs:domain sf:RealtyCompany ;
+    rdfs:range xsd:date .
+
+sf:InspectorName a rdf:Property ;
+    rdfs:comment "The name of the inspector for an inspection report." ;
+    rdfs:domain sf:InspectionReports ;
+    rdfs:range xsd:string .
+
+sf:InterestRate a rdf:Property ;
+    rdfs:comment "The interest rate of the mortgage." ;
+    rdfs:domain sf:MortgageInformation ;
+    rdfs:range xsd:decimal .
+
+sf:LastName a rdf:Property ;
+    rdfs:label "Last Name",
+        "LastName" ;
+    rdfs:comment "The last name of a tenant",
+        "The last name of an agent." ;
+    rdfs:domain sf:Agent,
+        sf:TenantProfile ;
+    rdfs:range xsd:string .
+
+sf:LicenseNumber a rdf:Property ;
+    rdfs:label "LicenseNumber" ;
+    rdfs:comment "The license number of an agent." ;
+    rdfs:domain sf:Agent ;
+    rdfs:range xsd:string .
+
+sf:ListedBy a rdf:Property ;
+    rdfs:label "Listed By" ;
+    rdfs:comment "The agent who listed the property." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range sf:Agent .
+
+sf:Lists a rdf:Property ;
+    rdfs:label "Lists" ;
+    rdfs:comment "The property listings associated with an agent." ;
+    rdfs:domain sf:Agent ;
+    rdfs:range sf:PropertyListing .
+
+sf:LoanAmount a rdf:Property ;
+    rdfs:comment "The amount of money loaned for the mortgage." ;
+    rdfs:domain sf:MortgageInformation ;
+    rdfs:range xsd:decimal .
+
+sf:MonthlyPayment a rdf:Property ;
+    rdfs:comment "The monthly payment amount for the mortgage." ;
+    rdfs:domain sf:MortgageInformation ;
+    rdfs:range xsd:decimal .
+
+sf:MonthlyRent a rdf:Property ;
+    rdfs:label "Monthly Rent" ;
+    rdfs:comment "The monthly rent amount for a rental agreement." ;
+    rdfs:domain sf:RentalAgreement ;
+    rdfs:range xsd:decimal .
+
+sf:MortgageID a rdf:Property ;
+    rdfs:comment "The unique identifier for a mortgage." ;
+    rdfs:domain sf:MortgageInformation ;
+    rdfs:range xsd:string .
+
+sf:Name a rdf:Property ;
+    rdfs:label "Name" ;
+    rdfs:comment "The name of a realty company." ;
+    rdfs:domain sf:RealtyCompany ;
+    rdfs:range xsd:string .
+
+sf:NumberofAgents a rdf:Property ;
+    rdfs:label "NumberofAgents" ;
+    rdfs:comment "The number of agents employed by a realty company." ;
+    rdfs:domain sf:RealtyCompany ;
+    rdfs:range xsd:integer .
+
+sf:OwnedBy a rdf:Property ;
+    rdfs:label "Owned By" ;
+    rdfs:comment "The owner of the property." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range sf:Owner .
+
+sf:PertainsTo a rdf:Property ;
+    rdfs:label "Pertains To" ;
+    rdfs:comment "A relation between an inspection report and a property listing.",
+        "The property listing that the rental agreement pertains to." ;
+    rdfs:domain sf:InspectionReports,
+        sf:RentalAgreement ;
+    rdfs:range sf:PropertyListing .
+
+sf:Phone a rdf:Property ;
+    rdfs:label "Phone" ;
+    rdfs:comment "The phone number of a realty company.",
+        "The phone number of a tenant",
+        "The phone number of an agent." ;
+    rdfs:domain sf:Agent,
+        sf:RealtyCompany,
+        sf:TenantProfile ;
+    rdfs:range xsd:string .
+
+sf:Photo a rdf:Property ;
+    rdfs:label "Photo" ;
+    rdfs:comment "The photo of an agent." ;
+    rdfs:domain sf:Agent ;
+    rdfs:range xsd:anyURI .
+
+sf:Photos a rdf:Property ;
+    rdfs:label "Photos" ;
+    rdfs:comment "A collection of images or links to images of the property listing." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:anyURI .
+
+sf:PostalCode a rdf:Property ;
+    rdfs:label "Postal Code" ;
+    rdfs:comment "The postal code of the property listing." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:string .
+
+sf:PreviousRentalHistory a rdf:Property ;
+    rdfs:label "Previous Rental History" ;
+    rdfs:comment "The previous rental history of a tenant" ;
+    rdfs:domain sf:TenantProfile ;
+    rdfs:range xsd:string .
+
+sf:Price a rdf:Property ;
+    rdfs:label "Price" ;
+    rdfs:comment "The price of the property listing." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:float .
+
+sf:PropertyID a rdf:Property ;
+    rdfs:label "Property ID" ;
+    rdfs:comment "The unique identifier of the property listing." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:string .
+
+sf:ProvidedBy a rdf:Property ;
+    rdfs:comment "The bank or financial institution that provides the mortgage." ;
+    rdfs:domain sf:MortgageInformation ;
+    rdfs:range sf:Bank .
+
+sf:Ratings a rdf:Property ;
+    rdfs:label "Ratings" ;
+    rdfs:comment "The ratings of an agent." ;
+    rdfs:domain sf:Agent ;
+    rdfs:range xsd:float .
+
+sf:Rents a rdf:Property ;
+    rdfs:label "Rents" ;
+    rdfs:comment "Specifies the properties rented by a tenant" ;
+    rdfs:domain sf:TenantProfile ;
+    rdfs:range sf:PropertyListing .
+
+sf:ReportID a rdf:Property ;
+    rdfs:comment "An identifier for an inspection report." ;
+    rdfs:domain sf:InspectionReports ;
+    rdfs:range xsd:string .
+
+sf:Represents a rdf:Property ;
+    rdfs:label "Represents" ;
+    rdfs:comment "Specifies the relationship between a realty company and the property listings it represents." ;
+    rdfs:domain sf:RealtyCompany ;
+    rdfs:range sf:PropertyListing .
+
+sf:Reviews a rdf:Property ;
+    rdfs:label "Reviews" ;
+    rdfs:comment "The reviews of an agent." ;
+    rdfs:domain sf:Agent ;
+    rdfs:range xsd:string .
+
+sf:SignedBy a rdf:Property ;
+    rdfs:label "Signed By" ;
+    rdfs:comment "The tenant who signed the rental agreement." ;
+    rdfs:domain sf:RentalAgreement ;
+    rdfs:range sf:Tenant .
+
+sf:Size a rdf:Property ;
+    rdfs:label "Size" ;
+    rdfs:comment "The size of the property in square meters or square feet." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:float .
+
+sf:StartDate a rdf:Property ;
+    rdfs:label "Start Date" ;
+    rdfs:comment "The start date of a rental agreement." ;
+    rdfs:domain sf:RentalAgreement ;
+    rdfs:range xsd:date .
+
+sf:State a rdf:Property ;
+    rdfs:label "State/Province" ;
+    rdfs:comment "The state or province where the property is located." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:string .
+
+sf:Status a rdf:Property ;
+    rdfs:label "Status" ;
+    rdfs:comment "The status of the property listing, e.g., Available, Sold, Rented." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:string .
+
+sf:StreetAddress a rdf:Property ;
+    rdfs:label "Street Address" ;
+    rdfs:comment "The street address of the property listing." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:string .
+
+sf:Summary a rdf:Property ;
+    rdfs:comment "A summary of the inspection findings." ;
+    rdfs:domain sf:InspectionReports ;
+    rdfs:range xsd:string .
+
+sf:TenantID a rdf:Property ;
+    rdfs:label "Tenant ID" ;
+    rdfs:comment "The unique identifier for a tenant" ;
+    rdfs:domain sf:TenantProfile ;
+    rdfs:range xsd:string .
+
+sf:TermsAndConditions a rdf:Property ;
+    rdfs:label "Terms and Conditions" ;
+    rdfs:comment "The terms and conditions of a rental agreement." ;
+    rdfs:domain sf:RentalAgreement ;
+    rdfs:range xsd:string .
+
+sf:Type a rdf:Property ;
+    rdfs:label "Type" ;
+    rdfs:comment "The type of property, e.g., House, Apartment, Condo, Townhouse." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:string .
+
+sf:Website a rdf:Property ;
+    rdfs:label "Website" ;
+    rdfs:comment "The website of a realty company." ;
+    rdfs:domain sf:RealtyCompany ;
+    rdfs:range xsd:string .
+
+sf:WorksFor a rdf:Property ;
+    rdfs:label "WorksFor" ;
+    rdfs:comment "The realty company an agent works for." ;
+    rdfs:domain sf:Agent ;
+    rdfs:range sf:RealtyCompany .
+
+sf:YearBuilt a rdf:Property ;
+    rdfs:label "Year Built" ;
+    rdfs:comment "The year the property was built." ;
+    rdfs:domain sf:PropertyListing ;
+    rdfs:range xsd:gYear .
+
+sf:budget a rdf:Property ;
+    rdfs:label "Budget" ;
+    rdfs:comment "The budget of a buyer." ;
+    rdfs:domain sf:BuyerProfile ;
+    rdfs:range xsd:double .
+
+sf:dealtWith a rdf:Property ;
+    rdfs:label "Dealt With" ;
+    rdfs:comment "The agent that the buyer has dealt with." ;
+    rdfs:domain sf:BuyerProfile ;
+    rdfs:range sf:Agent .
+
+sf:email a rdf:Property ;
+    rdfs:label "Email" ;
+    rdfs:comment "The email address of a buyer." ;
+    rdfs:domain sf:BuyerProfile ;
+    rdfs:range xsd:string .
+
+sf:firstName a rdf:Property ;
+    rdfs:label "First Name" ;
+    rdfs:comment "The first name of a buyer." ;
+    rdfs:domain sf:BuyerProfile ;
+    rdfs:range xsd:string .
+
+sf:interestedIn a rdf:Property ;
+    rdfs:label "Interested In" ;
+    rdfs:comment "The properties that the buyer is interested in." ;
+    rdfs:domain sf:BuyerProfile ;
+    rdfs:range sf:PropertyListing .
+
+sf:lastName a rdf:Property ;
+    rdfs:label "Last Name" ;
+    rdfs:comment "The last name of a buyer." ;
+    rdfs:domain sf:BuyerProfile ;
+    rdfs:range xsd:string .
+
+sf:phone a rdf:Property ;
+    rdfs:label "Phone" ;
+    rdfs:comment "The phone number of a buyer." ;
+    rdfs:domain sf:BuyerProfile ;
+    rdfs:range xsd:string .
+
+sf:preferences a rdf:Property ;
+    rdfs:label "Preferences" ;
+    rdfs:comment "The preferences of a buyer." ;
+    rdfs:domain sf:BuyerProfile ;
+    rdfs:range xsd:string .
+
+sf:preferredLocation a rdf:Property ;
+    rdfs:label "Preferred Location" ;
+    rdfs:comment "The preferred location of a buyer." ;
+    rdfs:domain sf:BuyerProfile ;
+    rdfs:range xsd:string .
+
+sf:Bank a rdf:Property ;
+    rdfs:comment "The bank or financial institution providing the mortgage." ;
+    rdfs:domain sf:MortgageInformation ;
+    rdfs:range xsd:string .
+

@@ -1,0 +1,98 @@
+Manufacturing & Production
+Product Specification
+Attributes:
+ProductID (Primary Identifier)
+Name
+Type
+Materials
+Dimensions
+Weight
+Color
+ProductionDate
+ExpiryDate (if applicable)
+QualityStandards
+Relationships:
+ManufacturedBy -> Factory
+Factory
+Attributes:
+FactoryID (Primary Identifier)
+FactoryName
+Location
+Capacity
+OperatingHours
+ContactNumber
+Relationships:
+Operates -> ProductionLine
+Production Line
+Attributes:
+LineID (Primary Identifier)
+Capacity
+OperatingHours
+Equipment
+Relationships:
+Produces -> Product
+LocatedIn -> Factory
+Supplier
+Attributes:
+SupplierID (Primary Identifier)
+SupplierName
+Location
+Contact
+MaterialsSupplied
+Relationships:
+SuppliesTo -> Factory
+Inventory
+Attributes:
+InventoryID (Primary Identifier)
+Quantity
+StockDate
+ReorderLevel
+Relationships:
+Contains -> Product
+StoredIn -> Warehouse
+Warehouse
+Attributes:
+WarehouseID (Primary Identifier)
+Location
+Capacity
+SecurityLevel
+Relationships:
+Stores -> Inventory
+Quality Control
+Attributes:
+QCID (Primary Identifier)
+CheckDate
+Results
+Recommendations
+Relationships:
+Checks -> Product
+SupervisedBy -> Factory
+Machinery & Equipment
+Attributes:
+MachineID (Primary Identifier)
+Type
+PurchaseDate
+MaintenanceSchedule
+LastMaintenanceDate
+Relationships:
+UsedIn -> ProductionLine
+Distribution
+Attributes:
+DistributionID (Primary Identifier)
+VehicleType
+StartLocation
+EndLocation
+DispatchDate
+ArrivalDate
+Relationships:
+Transports -> Product
+Customer Order
+Attributes:
+OrderID (Primary Identifier)
+CustomerName
+OrderDate
+DeliveryDate
+TotalAmount
+PaymentStatus
+Relationships:
+Orders -> Product

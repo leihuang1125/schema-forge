@@ -1,0 +1,156 @@
+Energy & Utilities
+Power Distribution
+1. Entities & Attributes:
+1.1. Power Station
+StationID (Primary Key): A unique identifier for each power station.
+StationName: Name of the power station.
+Capacity: The maximum amount of power the station can produce (in Megawatts, MW).
+Location:
+Latitude: Latitude of the station.
+Longitude: Longitude of the station.
+Address: Detailed postal address.
+City: City where the station is located.
+State/Province: State or province of the station.
+Country: Country of the station.
+Type: Type of the power station (e.g., Thermal, Hydro, Nuclear, Solar, Wind).
+Status: Operational status (e.g., Active, Under Maintenance, Decommissioned).
+1.2. Distribution Area
+AreaID (Primary Key): A unique identifier for each distribution area.
+AreaName: Name of the distribution area.
+PopulationServed: Number of people being served in the area.
+AreaSize: Size of the distribution area (in square kilometers).
+Demand: Average power demand of the area (in Megawatts, MW).
+1.3. Transmission Line
+LineID (Primary Key): A unique identifier for each transmission line.
+StartStationID: The ID of the starting power station.
+EndStationID or AreaID: The ID of the ending power station or distribution area.
+LineCapacity: Maximum power capacity the line can transmit (in Megawatts, MW).
+LineLength: Length of the transmission line (in kilometers).
+Type: Type of the transmission line (e.g., Overhead, Underground).
+Status: Operational status (e.g., Active, Under Maintenance, Broken).
+1.4. Consumer
+ConsumerID (Primary Key): A unique identifier for each consumer.
+Name: Name of the consumer.
+Address: Address of the consumer.
+AreaID: The ID of the distribution area the consumer is in.
+Consumption: Average monthly power consumption (in Kilowatt-hours, kWh).
+Type: Type of the consumer (e.g., Residential, Commercial, Industrial).
+2. Relationships:
+2.1. SuppliesTo
+Power Station -SuppliesTo-> Distribution Area
+2.2. TransmitsThrough
+Power Station -TransmitsThrough-> Transmission Line -EndsAt-> Distribution Area/Power Station
+2.3. Serves
+Distribution Area -Serves-> Consumer
+Renewable energies
+1. Entities & Attributes:
+1.1. Renewable Energy Station
+StationID (Primary Key): A unique identifier for each renewable energy station.
+StationName: Name of the station.
+Capacity: The maximum amount of power the station can produce (in Megawatts, MW).
+Location: As before.
+Type: Specific renewable energy type (e.g., Solar PV, Solar Thermal, Onshore Wind, Offshore Wind, Tidal, Geothermal, Biomass).
+Intermittency: Indicator of generation variability (e.g., High, Medium, Low).
+OperationalHours: Expected operating hours (e.g., Daytime for solar).
+Status: As before.
+1.2. Energy Storage Facility
+StorageID (Primary Key): Unique identifier for the storage facility.
+StorageName: Name of the storage facility.
+Capacity: Storage capacity (in Megawatt-hours, MWh).
+Type: Type of storage (e.g., Battery, Pumped Hydro, Thermal, Flywheel).
+Charge/Discharge Rate: Speed at which energy can be stored or released (in MW).
+Location: As before.
+Efficiency: Percentage of energy retained when stored.
+1.3. Smart Grid
+GridID (Primary Key): Unique identifier for the grid.
+AreaID: Related distribution area.
+AdaptiveLoadManagement: Capability to adjust demand in real-time.
+RenewableIntegration: Percentage of renewable sources feeding the grid.
+StorageIntegration: Percentage of storage solutions integrated.
+1.4. Prosumer
+ProsumerID (Primary Key): A unique identifier for each prosumer.
+Name: Name of the prosumer.
+Address: Address of the prosumer.
+AreaID: Distribution area the prosumer is located in.
+Generation: Average monthly power generation (e.g., from rooftop solar).
+Consumption: As before.
+StorageID: If the prosumer has storage, the related storage facility ID.
+NetMetering: Capability to sell back excess power to the grid.
+2. Relationships:
+2.1. ChargesAt
+Renewable Energy Station -ChargesAt-> Energy Storage Facility
+2.2. SuppliesTo (Extended)
+Energy Storage Facility -SuppliesTo-> Distribution Area (during peak demand or low generation times)
+2.3. FeedsInto
+Prosumer -FeedsInto-> Smart Grid
+2.4. IntegratedWith
+Smart Grid -IntegratedWith-> Renewable Energy Station
+Smart Grid -IntegratedWith-> Energy Storage Facility
+Oil and Gaz
+1. Entities & Attributes:
+1.1. Exploration Site
+Attributes:
+SiteID (Primary Key): Unique identifier.
+SiteName: Name of the exploration site.
+Location: Geographical details.
+Latitude
+Longitude
+Depth (for offshore sites)
+Terrain type (e.g., desert, arctic)
+EstimatedReserves: Amount of oil or gas estimated.
+ExplorationStatus: e.g., Surveying, Drilling, Completed.
+LicenseNumber: Government or regulatory body license identifier.
+1.2. Production Well
+Attributes:
+WellID (Primary Key): Unique identifier for the well.
+WellName: Name of the well.
+ProductionRate: Barrels (or cubic meters) per day.
+WellType: e.g., Oil, Gas, Condensate.
+OperationalStatus: e.g., Active, Inactive, Maintenance.
+SiteID: Foreign key to Exploration Site.
+1.3. Storage Facility
+Attributes:
+FacilityID (Primary Key): Unique identifier.
+FacilityName: Name of the storage.
+Capacity: Maximum storage capacity.
+CurrentVolume: Current amount stored.
+Type: e.g., Tank, Underground Cavern.
+Location: Geographical details.
+1.4. Refinery
+Attributes:
+RefineryID (Primary Key): Unique identifier.
+RefineryName: Name of the refinery.
+Location: Geographical details.
+ProcessingCapacity: Barrels (or cubic meters) per day.
+OperationalStatus: e.g., Active, Maintenance.
+1.5. Pipeline
+Attributes:
+PipelineID (Primary Key): Unique identifier.
+PipelineName: Name of the pipeline.
+Length: Length of the pipeline in kilometers or miles.
+Diameter: Diameter of the pipeline.
+Type: e.g., Crude, Refined Product, Natural Gas.
+StartLocation and EndLocation: Geographical details.
+1.6. Retail Station (for downstream)
+Attributes:
+StationID (Primary Key): Unique identifier.
+StationName: Name of the station.
+Location: Geographical details.
+FuelTypesAvailable: e.g., Gasoline, Diesel, LPG.
+OperationalStatus: e.g., Open, Closed for Maintenance.
+2. Relationships:
+2.1. IsLocatedAt
+Production Well -IsLocatedAt-> Exploration Site
+Description: Connects a well to its respective exploration site.
+2.2. TransportsTo
+Pipeline -TransportsTo-> Storage Facility or Refinery
+Description: Indicates which facility a pipeline is transporting oil or gas to.
+2.3. ProcessesFrom
+Refinery -ProcessesFrom-> Storage Facility
+Description: Indicates the source of crude oil for a refinery.
+2.4. SuppliesTo
+Refinery -SuppliesTo-> Retail Station
+Description: Denotes which refinery supplies products to retail stations.
+2.5. ConnectedTo
+Pipeline -ConnectedTo-> Pipeline
+Description: Shows interconnections between pipelines.
